@@ -6,6 +6,7 @@
 * [Numbers and printing](section_01_introduccion.md#numbers-and-printing)
 * [Strings and string formating](section_01_introduccion.md#strings-and-string-formating)
 * [Getting user input](section_01_introduccion.md#getting-user-input)
+* [Booleans y comparaciones](section_01_introduccion.md#booleans-y-comparaciones)
 
 ## Referencias
 

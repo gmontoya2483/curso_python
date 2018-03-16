@@ -8,6 +8,7 @@
 * [Numbers and printing](#numbers-and-printing)
 * [Strings and string formating](#strings-and-string-formating)
 * [Getting user input](#getting-user-input)
+* [Booleans y comparaciones](#booleans-y-comparaciones)
 
 
 ## Usar ``repl.it``
@@ -110,3 +111,38 @@
 ```
 
 [Video: Getting user input](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412514?start=0)
+
+## Booleans y comparaciones
+
+```python
+    truthy = True
+    falsy = False
+
+    age = 20
+    is_over_age = age>=18
+    is_under_age = age < 18
+    is_twenty = age == 20
+
+    my_number = 5
+    user_number = int(input("Enter a number: "))
+    print (f'Are the same: {my_number == user_number}')
+    print (f'Are not the same: {my_number != user_number}')
+
+    # -- Combining booleans --
+    verdadero = True and True
+    falso = True and False
+    false = False and False
+
+    verdadero = True or False
+    verdadero = False or True
+    verdadero = True or True
+    falso = False or False
+
+    # -- Invertir
+    verdadero = not False # True
+    false = not True # False
+```
+
+
+
+[Video: Booleans y comapraciones](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412516?start=0)
