@@ -1,4 +1,14 @@
-# Introcducción
+# Section 01: Introcducción
+
+
+[VOLVER a README.md](README.md)
+
+# Indice
+
+* [Usar ``repl.it``](#usar-replit)
+* [Numbers and printing](#numbers-and-printing)
+* [Strings and string formating](#strings-and-string-formating)
+
 
 ## Usar ``repl.it``
 
@@ -48,4 +58,39 @@
 
 [Video: Numbers and printing](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412506?start=0)
 
+## Strings and string formating
 
+```python
+    my_string = "Hello, world!"
+    print(my_string)
+
+    single_quote_string = 'Hello, world!'
+
+    string_with_qoutes = "Hello, it's me." # Cuando se utiliza un ' en el string si o si se deben usar ""
+    another_with_quotes = 'He said "You are amazing!" yesterday.' # Cuando se utiliza un " en el string si o si se deben usar ''
+
+    escaped_quotes = "He said \"You are amazing\" yesterday."
+
+    #------ String formating -----
+
+    # concatenacion
+    name = 'Jose'
+    greeting = 'Hello, ' + name
+    print(greeting)
+
+    # f strings
+    another_greeting = f'Hello, {name}'
+    print(another_greeting)
+
+    # Format
+    format_greeting = 'How are you, {}?'.format(name)
+    print(format_greeting)
+
+    """
+    Recomendación: Si se utiliza python 3.6 o superior utilizar los f strings, 
+    si se utiliza python 3.5 o inferior utilizar format. 
+    Tratar de no usar la concatenación
+    """
+```
+
+[Video: Strings and string formating](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412510?start=0)
