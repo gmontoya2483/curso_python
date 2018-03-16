@@ -1,13 +1,13 @@
 # Section 01: Introcducción
 
-
 [VOLVER a README.md](README.md)
 
-# Indice
+## Indice
 
 * [Usar ``repl.it``](#usar-replit)
 * [Numbers and printing](#numbers-and-printing)
 * [Strings and string formating](#strings-and-string-formating)
+* [Getting user input](#getting-user-input)
 
 
 ## Usar ``repl.it``
@@ -94,3 +94,19 @@
 ```
 
 [Video: Strings and string formating](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412510?start=0)
+
+## Getting user input
+
+```python
+    your_name = input('Ingrese su nombre: ')
+
+    print(f'Hello {your_name}!!')
+
+    age = int(input('Ingrese su edad: '))
+    months = age * 12
+    seconds = age * 365 * 24 * 60 *60
+    print(f'Usted ha vivido {months} meses.')
+    print(f'Usted ha vivido {seconds} segundos.')
+```
+
+[Video: Getting user input](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412514?start=0)
