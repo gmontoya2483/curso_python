@@ -139,6 +139,7 @@
     por ejemplo:
 
     cmp = True or 18 -> cmp = True
+    cmp = False or 18 -> cmp = 18
     """
 
     verdadero = True or False
