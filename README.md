@@ -7,6 +7,7 @@
 * [Strings and string formating](section_01_introduccion.md#strings-and-string-formating)
 * [Getting user input](section_01_introduccion.md#getting-user-input)
 * [Booleans y comparaciones](section_01_introduccion.md#booleans-y-comparaciones)
+* [List, tuples and sets](section_01_introduccion.md#list-tuples-and-sets)
 
 ## Referencias
 

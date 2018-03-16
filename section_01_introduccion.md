@@ -9,6 +9,7 @@
 * [Strings and string formating](#strings-and-string-formating)
 * [Getting user input](#getting-user-input)
 * [Booleans y comparaciones](#booleans-y-comparaciones)
+* [List, tuples and sets](#list-tuples-and-sets)
 
 
 ## Usar ``repl.it``
@@ -133,6 +134,13 @@
     falso = True and False
     false = False and False
 
+    """
+   `or` is used to get the second value if the first one is False. If the first one is True, it gets the first one.
+    por ejemplo:
+
+    cmp = True or 18 -> cmp = True
+    """
+
     verdadero = True or False
     verdadero = False or True
     verdadero = True or True
@@ -143,6 +151,8 @@
     false = not True # False
 ```
 
-
-
 [Video: Booleans y comapraciones](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412516?start=0)
+
+## List, tuples and sets
+
+[Video: Listas, tuplas y sets](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412520?start=0)

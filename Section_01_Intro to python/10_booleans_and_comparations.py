@@ -21,6 +21,14 @@ verdadero = False or True
 verdadero = True or True
 falso = False or False
 
+"""
+   `or` is used to get the second value if the first one is False. If the first one is True, it gets the first one.
+    por ejemplo:
+
+    cmp = True or 18 -> cmp = True
+    cmp = False or 18 -> cmp = 18
+"""
+
 # -- Invertir
 verdadero = not False # True
 false = not True # False
