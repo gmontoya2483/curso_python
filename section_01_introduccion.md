@@ -10,7 +10,7 @@
 * [Getting user input](#getting-user-input)
 * [Booleans y comparaciones](#booleans-y-comparaciones)
 * [List, tuples and sets](#list-tuples-and-sets)
-
+* [Operaciones avanzadas con sets](#operaciones-avanzadas-con-sets)
 
 ## Usar ``repl.it``
 
@@ -166,7 +166,7 @@
 
         **Output:**
 
-        ```
+        ```console
         ['hello', 'hi', 'nice to meet you']
         hello
         ```
@@ -203,8 +203,8 @@
         ```
 
         **Output:**
-        
-        ```
+
+        ```console
         ('hello', 'hi', 'nice to meet you')
         hello
         ```
@@ -216,7 +216,7 @@
         ```
 
         **Output:**
-        ```
+        ```console
         Traceback (most recent call last):
             File "11_lists_tuples_sets.py", line 21, in <module>
             my_tuple_variable.append('another string')
@@ -260,7 +260,7 @@
 
         **Output:**
 
-        ```
+        ```consolo
         Traceback (most recent call last):
             File "11_lists_tuples_sets.py", line 26, in <module>
                 print (my_set_variable[0])
@@ -292,4 +292,40 @@
         ``
 
 [Video: Listas, tuplas y sets](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412520?start=0)
+
+## Operaciones avanzadas con sets
+
+```python
+set_one = {1, 2, 3, 4, 5}
+set_two = {1, 3, 5, 7, 9, 11}
+
+print (f'set_one: {set_one}')
+print (f'set_two: {set_two}')
+
+
+print(f'Intersección: {set_one.intersection(set_two)}')
+print(f'Intersección (&): {set_one & set_two}')
+
+print(f'Unión: {set_one.union(set_two)}')
+print(f'Unión (|): {set_one | set_two}')
+
+print(f'Diferencia: {set_one.difference(set_two)}')
+print(f'Diferencia (-): {set_one - set_two}')
+```
+
+**Output:**
+
+```console
+set_one: {1, 2, 3, 4, 5}
+set_two: {1, 3, 5, 7, 9, 11}
+Intersección: {1, 3, 5}
+Intersección (&): {1, 3, 5}
+Unión: {1, 2, 3, 4, 5, 7, 9, 11}
+Unión (|): {1, 2, 3, 4, 5, 7, 9, 11}
+Diferencia: {2, 4}
+Diferencia (-): {2, 4}
+```
+
+[Video: Operaciones avanzadas con sets](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412522?start=0)
+
 

@@ -8,6 +8,7 @@
 * [Getting user input](section_01_introduccion.md#getting-user-input)
 * [Booleans y comparaciones](section_01_introduccion.md#booleans-y-comparaciones)
 * [List, tuples and sets](section_01_introduccion.md#list-tuples-and-sets)
+* [Operaciones avanzadas con sets](section_01_introduccion.md#operaciones-avanzadas-con-sets)
 
 ## Referencias
 
