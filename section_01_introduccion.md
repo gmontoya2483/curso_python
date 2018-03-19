@@ -156,4 +156,140 @@
 
 ## List, tuples and sets
 
+1. **Lists**
+    * Se puede acceder a los lementos de la Lista a través del índice:
+        ```python
+        my_list_variable = ['hello', 'hi', 'nice to meet you']
+        print(my_list_variable)
+        print (my_list_variable[0]) 
+        ```
+
+        **Output:**
+
+        ```
+        ['hello', 'hi', 'nice to meet you']
+        hello
+        ```
+    * Se pueden agregar elementos a una Lista:
+        ```python
+        my_list_variable.append('another string')
+        print(my_list_variable)
+        ```
+        **Output:**
+
+        ``
+        ['hello', 'hi', 'nice to meet you', 'another string']
+        ``
+
+2. **Tuples**
+
+    * Las Tuplas de un único valor deben finalizar con una coma:
+        ```python
+        my_short_tuple_variable = ('hello',)
+        print(my_short_tuple_variable)
+        ```
+
+        **Output:**  
+
+        ``
+        ('hello',)
+        ``
+
+    * Se puede acceder a los lementos de la tupla a través del índice:
+        ```python
+        my_tuple_variable = ('hello', 'hi', 'nice to meet you')
+        print(my_tuple_variable)
+        print (my_tuple_variable[0])
+        ```
+
+        **Output:**
+        
+        ```
+        ('hello', 'hi', 'nice to meet you')
+        hello
+        ```
+
+    * No se pueden agregar elementos en una tupla:
+        ```python
+        my_tuple_variable.append('another string')
+        print(my_tuple_variable)
+        ```
+
+        **Output:**
+        ```
+        Traceback (most recent call last):
+            File "11_lists_tuples_sets.py", line 21, in <module>
+            my_tuple_variable.append('another string')
+        AttributeError: 'tuple' object has no attribute 'append'
+        ```
+
+    * Las tuplas se puede concatenar:
+        ```python
+        my_tuple_variable = my_tuple_variable + ('another string',)
+        print (my_tuple_variable)
+        ```
+
+        **Output:**
+
+        ``
+        ('hello', 'hi', 'nice to meet you', 'another string')
+        ``
+
+        >**NOTA:** El resultado es similar a agregar un nuevo elemento.
+
+3. **Sets**
+
+    * Los set no tienen orden:
+        ```python
+        # Sets
+        my_set_variable = {'hello', 'hi', 'nice to meet you'}
+        print(my_set_variable)
+        ```
+
+        **Output:**
+
+        ``
+        {'nice to meet you', 'hi', 'hello'}
+        ``
+
+    * No se puede acceder a los items por indice:
+
+        ```python
+        print (my_set_variable[0])
+        ```
+
+        **Output:**
+
+        ```
+        Traceback (most recent call last):
+            File "11_lists_tuples_sets.py", line 26, in <module>
+                print (my_set_variable[0])
+        TypeError: 'set' object does not support indexing
+        ```
+
+    * Se puede agregar un nuevo elemento a un set:
+        ```python
+        my_set_variable.add('another string')
+        print(my_set_variable)
+        ```
+
+        **Output:**
+
+        ``
+        {'hello', 'hi', 'another string', 'nice to meet you'}
+        ``
+
+    * Los sets no permiten valores duplicados
+        ```python
+        my_set_variable.add('hello')
+        print(my_set_variable)
+        ```
+
+        **Output:**
+
+        ``
+        {'hi', 'hello', 'nice to meet you', 'another string'}
+        ``
+
 [Video: Listas, tuplas y sets](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412520?start=0)
+
