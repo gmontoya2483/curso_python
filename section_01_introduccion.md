@@ -11,6 +11,7 @@
 * [Booleans y comparaciones](#booleans-y-comparaciones)
 * [List, tuples and sets](#list-tuples-and-sets)
 * [Operaciones avanzadas con sets](#operaciones-avanzadas-con-sets)
+* [Dictionaries](#dictionaries)
 
 ## Usar ``repl.it``
 
@@ -329,3 +330,44 @@ Diferencia (-): {2, 4}
 [Video: Operaciones avanzadas con sets](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412522?start=0)
 
 
+## Dictionaries
+
+* Es similar a los set pero cada item esta formado por una clave y un valor.
+* Las claves son únicas y no estan ordenadas.
+* Las operaciones de Interseccion, union, diference no pueden ser aplicadas a los dictionaries.
+* Los valores de un diccionario pueden ser cualquiera.
+* Se accede a los valores de un diccionario a traves de la clave de los sus atributos.
+
+```python
+my_friends = {
+    'Jose': 6,
+    'Rodolf': 12,
+    'Anne': 6
+}
+
+
+my_friends = {
+    'jose': {'last_seen':6},
+    'Rolf': {'surname': 'Smith'},
+    'Anne': 6
+}
+
+
+players = [
+    {
+        'name': 'Rolf',
+        'numbers': (13, 22, 3, 6, 9)
+    },
+    {
+        'name': 'John',
+        'numbers': (22, 3, 5, 7, 9)
+    }
+]
+
+player_one = players[0]
+print(player_one['name'])
+print(player_one['numbers'])
+print(sum(player_one['numbers']))
+```
+
+[Video: Dictionaries](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412524?start=0)

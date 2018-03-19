@@ -1,5 +1,7 @@
 # Curso de Python
 
+![Python banner](documentation/python_banner.png)
+
 ## [Section 01: Introducción](section_01_introduccion.md)  
 
 * [Usar ``repl.it``](section_01_introduccion.md#usar-replit)
@@ -9,6 +11,7 @@
 * [Booleans y comparaciones](section_01_introduccion.md#booleans-y-comparaciones)
 * [List, tuples and sets](section_01_introduccion.md#list-tuples-and-sets)
 * [Operaciones avanzadas con sets](section_01_introduccion.md#operaciones-avanzadas-con-sets)
+* [Dictionaries](section_01_introduccion.md#dictionaries)
 
 ## Referencias
 
