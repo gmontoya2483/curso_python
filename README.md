@@ -13,6 +13,10 @@
 * [Operaciones avanzadas con sets](section_01_introduccion.md#operaciones-avanzadas-con-sets)
 * [Dictionaries](section_01_introduccion.md#dictionaries)
 
+## [Section 02: Functions and Loops](section_02_functions_and_loops.md)
+
+* [If statements](section_02_functions_and_loops.md#if-statements)
+
 ## Referencias
 
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)
