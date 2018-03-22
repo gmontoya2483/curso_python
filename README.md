@@ -16,6 +16,7 @@
 ## [Section 02: Functions and Loops](section_02_functions_and_loops.md)
 
 * [If statements](section_02_functions_and_loops.md#if-statements)
+* [``bool()`` built-in function](section_02_functions_and_loops#bool-built-in-function)
 
 ## Referencias
 
