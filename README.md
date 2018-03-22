@@ -16,9 +16,10 @@
 ## [Section 02: Functions and Loops](section_02_functions_and_loops.md)
 
 * [If statements](section_02_functions_and_loops.md#if-statements)
-* [``bool()`` built-in function](section_02_functions_and_loops#bool-built-in-function)
-* [While loops](section_02_functions_and_loops#while-loops)
-* [For loop, range() function and in keyword](section_02_functions_and_loops#for-loop-range-function-and-in-keyword)
+* [``bool()`` built-in function](section_02_functions_and_loop.mds#bool-built-in-function)
+* [While loops](section_02_functions_and_loops.md#while-loops)
+* [For loop, range() function and in keyword](section_02_functions_and_loops.md#for-loop-range-function-and-in-keyword)
+* [## Loops important keywords](section_02_functions_and_loops.md#loops-important-keywords)
 
 ## Referencias
 
