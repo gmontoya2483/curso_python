@@ -5,7 +5,8 @@
 ## Indice
 
 * [If statements](#if-statements)
-* [``bool()`` built-in function](bool-built-in-function)
+* [``bool()`` built-in function](#bool-built-in-function)
+* [While loops](#while-loops)
 
 
 
@@ -83,3 +84,28 @@ The ``bool()``  function gives us ``True``  for most things (e.g. ``bool('hello,
 > ``bool([])  # empty list``  
 > And a few others. Hope this clears some things up!
 
+## While loops
+
+* Ejemplos
+
+```python
+is_programmer = False
+while not is_programmer:
+    print('Learn programing')
+    user_is_programmer = input('Are you a programmer yet? ')
+    is_programmer = user_is_programmer == 'yes'
+
+
+# repetir algo N veces
+i = 0
+while i < 10:
+    print(f'Repeated {i} times')
+    i = i + 1
+
+temperature = 15
+while temperature < 20:
+    print('Heating...')
+    temperature += 1 # temperature = temperature + 1
+```
+
+[Video: While loops](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412528?start=0)
