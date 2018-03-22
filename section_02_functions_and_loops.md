@@ -7,8 +7,7 @@
 * [If statements](#if-statements)
 * [``bool()`` built-in function](#bool-built-in-function)
 * [While loops](#while-loops)
-
-
+* [For loop, range() function and in keyword](#for-loop-range-function-and-in-keyword)
 
 ## If statements
 
@@ -109,3 +108,58 @@ while temperature < 20:
 ```
 
 [Video: While loops](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412528?start=0)
+
+## For loop, range() function and in keyword
+
+```python
+# Sequences en iterables
+primes = [2, 3, 5, 7, 11]
+for number in primes:
+    print(f'{number} is a prime number.')
+
+
+kid_ages = (3, 7, 12)
+for age in kid_ages:
+    print(f'I have a {age} year old kid.')
+```
+
+```python
+# range function: generator
+print (range(20))
+
+for i in range(20):
+    print(i)
+```
+
+```python
+# Iterar en diccionarios
+my_friends = {
+    'jose': 6,
+    'Rolf': 12,
+    'Anne': 6
+}
+
+for key in my_friends:
+    print (f'I last saw {key} {my_friends[key]} days ago')
+```
+
+```python
+# Solo en python 3
+print(my_friends.items()) # nos da una lista de tuplas
+for t in my_friends.items():
+    (key, value) = t # Tuple destructuring
+    print (f'I last saw {key} {value} days ago')
+
+
+for (key, value) in my_friends.items():
+     print (f'I last saw {key} {value} days ago')
+```
+
+```python
+# in keyword in iterables
+who_do_i_know = 'Anne'
+if who_do_i_know in my_friends:
+    print ('I know Anne')
+```
+
+[Video: for loop and range() funtion](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9413286?start=0)
