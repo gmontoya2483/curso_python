@@ -8,7 +8,8 @@
 * [``bool()`` built-in function](#bool-built-in-function)
 * [While loops](#while-loops)
 * [For loop, range() function and in keyword](#for-loop-range-function-and-in-keyword)
-* [## Loops important keywords](#loops-important-keywords)
+* [Loops important keywords](#loops-important-keywords)
+* [List slicing](#list-slicing)
 
 ## If statements
 
@@ -210,3 +211,107 @@ for n in range(2, 10):
 ```
 
 [Video: Loop important keywords](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412530?start=0)
+
+
+## List slicing
+
+Es una forma de extraer parate de una lista y contruir una nueva en base al resultado.  
+``[x:y]`` x es el indice de inicio e y es el indice final,  python el indice final no se muestra
+
+### Ejemplos
+
+```python
+friends = ['rolf', 'jose','anna', 'charlie', 'mary']
+```
+
+* Rango positivo:
+
+```python
+print (friends[2:4])
+```
+
+**Output:**
+
+```console
+['anna', 'charlie']
+```
+
+> **Note:** Arranca de ```friends[2]``` hasta ```friend < 4```. Python no muestra el último valor.
+
+* Números negativos:
+
+```python
+print (friends[-1])
+```
+
+**Output:**
+
+```console
+mary
+```
+
+> **Note:** Nos devuelve el último elemento de la lista.
+
+* Rango negativo:
+
+```python
+print (friends[-3:-1])
+```
+
+**Output:**
+
+```console
+['anna', 'charlie']
+```
+
+> **Note:** Arranca de ```friends[-3]``` hasta ```friend < que el último```. Python no muestra el último valor.
+
+* Mostrar los X últimos elementos de la lista:
+
+```python
+print (friends[-3:])
+```
+
+**Output:**
+
+```console
+['anna', 'charlie', 'mary']
+```
+
+* Mostrar los X primeros elementos de la lista:
+
+```python
+print (friends[:2])
+```
+
+**Output:**
+
+```console
+['rolf', 'jose']
+```
+
+* Mostrar desde el principio al -2, sin incluirlo:
+
+```python
+print (friends[:-2])
+```
+
+**Output:**
+
+```console
+['rolf', 'jose', 'anna']
+```
+
+* Ambos valores iguales:
+
+```python
+print (friends[1:1])
+```
+
+**Output:**
+
+```console
+[]
+```
+
+[Video: List slicing](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412532?start=0)
