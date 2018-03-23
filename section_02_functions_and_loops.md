@@ -354,7 +354,7 @@ print (present_friends)
 
 [Video: List comprehension](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412534?start=0)
 
-## Set and Dictionary comprehension
+## Set and Dictionary comprehension and zip() function
 
 ```python
 # sets comprehension
