@@ -21,7 +21,7 @@
 * [For loop, range() function and in keyword](section_02_functions_and_loops.md#for-loop-range-function-and-in-keyword)
 * [Loops important keywords](section_02_functions_and_loops.md#loops-important-keywords)
 * [List slicing](section_02_functions_and_loops.md#list-slicing)]
-* [List comprehension](section_02_functions_and_loops.md#list comprehension)
+* [List comprehension](section_02_functions_and_loops.md#list-comprehension)
 * [Set and Dictionary comprehension and zip() function](section_02_functions_and_loops.md#set-and-dictionary-comprehension-and-zip-function)
 
 ## Referencias
