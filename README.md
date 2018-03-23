@@ -21,7 +21,7 @@
 * [For loop, range() function and in keyword](section_02_functions_and_loops.md#for-loop-range-function-and-in-keyword)
 * [Loops important keywords](section_02_functions_and_loops.md#loops-important-keywords)
 * [List slicing](section_02_functions_and_loops.md#list-slicing)]
-
+* [List comprehension](section_02_functions_and_loops.md# List comprehension)
 ## Referencias
 
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)
