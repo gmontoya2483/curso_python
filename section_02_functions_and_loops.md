@@ -10,7 +10,7 @@
 * [For loop, range() function and in keyword](#for-loop-range-function-and-in-keyword)
 * [Loops important keywords](#loops-important-keywords)
 * [List slicing](#list-slicing)
-* [List comprehension](#list comprehension)
+* [List comprehension](#list-comprehension)
 * [Set and Dictionary comprehension and zip() function](#set-and-dictionary-comprehension-and-zip-function)
 
 ## If statements
