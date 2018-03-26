@@ -25,6 +25,7 @@
 * [Set and Dictionary comprehension and zip() function](section_02_functions_and_loops.md#set-and-dictionary-comprehension-and-zip-function)
 * [Functions and arguments](section_02_functions_and_loops.md#functions-and-arguments)
 * [Functions: return values](section_02_functions_and_loops.md#functions-return-values)
+* [Funciones Lambda y first-class](section_02_functions_and_loops.md#funciones-lambda-y-first-class)
 
 ## Referencias
 

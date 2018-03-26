@@ -14,6 +14,7 @@
 * [Set and Dictionary comprehension and zip() function](#set-and-dictionary-comprehension-and-zip-function)
 * [Functions and arguments](#functions-and-arguments)
 * [Functions: return values](#functions-return-values)
+* [Funciones Lambda y first-class](#funciones-lambda-y-first-class)
 
 ## If statements
 
@@ -436,3 +437,35 @@ print(f'Another is {another}')
 
 [Video: return values](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412544?start=0)
 
+## Funciones Lambda y first-class
+
+```python
+def add_two(x, y):
+    return x + y
+
+# Anonymous functions - lambda
+
+print((lambda x, y: x + y)(10, 5))
+
+add = lambda x,y : x + y
+print (add(10,5))
+
+# First-class functions
+# Una función puede ser argumento de otra funcion
+
+def who(data, identify):
+    return identify(data)
+
+def my_identifier_function(some_data):
+    return some_data['name']
+
+user = {'name': 'jose', 'surname': 'Salvatierra'}
+
+print (my_identifier_function(user))
+print (who(user, my_identifier_function))
+
+# Con función Lambda
+print (who(user, lambda x: x['name']))
+```
+
+[Video: Funciones lambda](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412546?start=0)
