@@ -12,6 +12,8 @@
 * [List slicing](#list-slicing)
 * [List comprehension](#list-comprehension)
 * [Set and Dictionary comprehension and zip() function](#set-and-dictionary-comprehension-and-zip-function)
+* [Functions and arguments](#functions-and-arguments)
+* [Functions: return values](#functions-return-values)
 
 ## If statements
 
@@ -381,3 +383,37 @@ print(friends_last_seen)
 ```
 
 [Video: set and Dictionary comprehension](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412536?start=0)
+
+## Functions and arguments
+
+```python
+def greet():
+    name = input ('enter your name: ')
+    print (f'Hello, { name }!!')
+
+
+def check_primes(limit):
+    for n in range (2, limit):
+        check_if_prime(n)
+
+
+def check_if_prime(num):
+    for x in range(2, num):
+        if num % x == 0:
+            print(num, 'equals', x, '*', num//x)
+            break
+    else:
+        # loop fell through without finding a factor
+        print(num, 'is a prime number')
+
+
+greet()
+check_primes (100)
+```
+
+[Video: Functions and Arguments](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412540?start=0)
+
+## Functions: return values
+
+[Video: return values](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412544?start=0)
+
