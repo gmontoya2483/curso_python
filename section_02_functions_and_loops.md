@@ -415,5 +415,24 @@ check_primes (100)
 
 ## Functions: return values
 
+```python
+def i_return():
+    return 5 + 5
+
+def i_print():
+    addition = 5 + 5
+    print (addition)
+    return addition
+
+
+result = i_return()
+another = i_print()
+
+print(f'Result is {result}')
+print(f'Another is {another}')
+```
+
+> **NOTA:** en Python si a una función no se le coloca un return por default devuelve ``None``
+
 [Video: return values](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9412544?start=0)
 
