@@ -23,5 +23,7 @@ class Student:
 student_one = Student('Rolf Smith', [70, 88, 90, 99])
 print(f'{ student_one.name } grade average is { student_one.average()}')
 
+print(f'Grade average is { Student.average(student_one)}')
+
 
 

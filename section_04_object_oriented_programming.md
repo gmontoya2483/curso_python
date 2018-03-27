@@ -20,6 +20,9 @@ class Student:
 
 student_one = Student('Rolf Smith', [70, 88, 90, 99])
 print(f'{ student_one.name } grade average is { student_one.average()}')
+
+print(f'Grade average is { Student.average(student_one)}')
 ```
 
-[Video: Introducción a OOP](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9417788?start=0)
+[Video: Introducción a OOP](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9417788?start=0)  
+[Video: More about classes and Objects](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9417796?start=0)
