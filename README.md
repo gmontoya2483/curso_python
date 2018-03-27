@@ -27,6 +27,10 @@
 * [Functions: return values](section_02_functions_and_loops.md#functions-return-values)
 * [Funciones Lambda y first-class](section_02_functions_and_loops.md#funciones-lambda-y-first-class)
 
+## [Section 04: Object Oriented Programming](section_04_object_oriented_programming.md)
+
+* [Introduccion a Programacion Orientada a Objetos](section_04_object_oriented_programming.md#introduccion-a-programacion-orientada-a-objetos)
+
 ## Referencias
 
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)
