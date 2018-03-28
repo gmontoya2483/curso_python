@@ -8,6 +8,7 @@
 * [Metodos especiales - dunder methods](#metodos-especiales-dunder-methods)
 * [Herencia](#herencia)
 * [Decorador Property](#decorador-property)
+* [Decoradores classmethod y staticmethod](#decoradores-classmethod-y-staticmethod)
 
 ## Introduccion a Programacion Orientada a Objetos
 
@@ -204,3 +205,52 @@ C:\Users\montoya\Desktop\CursoPython\Section_04_Object_Oriented_Programming>pyth
 
 [Video: Decorador - @property](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9417822?start=0)
 
+## Decoradores classmethod y staticmethod
+
+* @classmethod
+
+    Usa la clase como primer argumento y tiene acceso a la clase, pero no al objeto. La convencion es tener el primer argumento con el nombre ``cls``:
+
+    ```python
+    class Foo:
+    @classmethod
+    def hi(cls):
+        print(cls.__name__)
+
+
+    my_object = Foo()
+    my_object.hi()
+    Foo.hi()
+    ```
+
+    **Output:**
+
+    ```console
+    Foo
+    Foo
+    ```
+
+* @staticmethod
+
+    No utiliza ni el objeto, ni la clase como primer argumento. No tiene acceso a la clase, ni al objeto:
+
+    ```python
+    class Bar:
+    @staticmethod
+    def hi():
+        print('Hello, I don\'t take parameters.')
+
+    my_object_bar = Bar()
+    my_object_bar.hi()
+    Bar.hi()
+    ```
+
+    **Output:**
+
+    ```console
+    Hello, I don't take parameters.
+    Hello, I don't take parameters.
+    ```
+
+[Video: Decoradores classmethod y staticmethod](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9417826?start=0)  
+[Video: Ejemplos classmethod y staticmethod](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9417828?start=0)
