@@ -35,6 +35,11 @@
 * [Decorador Property](section_04_object_oriented_programming.md#decorador-property)
 * [Decoradores classmethod y staticmethod](section_04_object_oriented_programming.md#decoradores-classmethod-y-staticmethod)
 
+## [Section 05: Errors in Python](section_05_errors.md)
+
+* [Introduccion](section_05_errors.md#introduccion)
+* [Built-in errors](section_05_errors.md#built-in-errors)
+
 ## Referencias
 
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)
