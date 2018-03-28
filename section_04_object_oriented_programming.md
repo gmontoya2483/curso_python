@@ -7,6 +7,7 @@
 * [Introduccion a Programacion Orientada a Objetos](#introduccion-a-programacion-orientada-a-objetos)
 * [Metodos especiales - dunder methods](#metodos-especiales-dunder-methods)
 * [Herencia](#herencia)
+* [Decorador Property](#decorador-property)
 
 ## Introduccion a Programacion Orientada a Objetos
 
@@ -144,6 +145,8 @@ if __name__ == '__main__':
     print (rolf.weekly_salary())
 ```
 
+**Output:**
+
 ```console
 C:\Users\montoya\Desktop\CursoPython\Section_04_Object_Oriented_Programming>python 53_herencia.py
 15.5
@@ -152,3 +155,52 @@ C:\Users\montoya\Desktop\CursoPython\Section_04_Object_Oriented_Programming>pyth
 ```
 
 [Video: Herencia](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9417806?start=0)
+
+## Decorador Property
+
+El decorador property, se puede usar en methodos que no tienen parametors.
+Al utilizar este decorado, el metodo puede ser llamado como una propiedad de la clase, sin utilizar los ()
+
+```python
+class Student:
+    def __init__(self, name, school):
+        self.name = name
+        self.school = school
+        self.marks = []
+
+    @property
+    def average(self):
+        return sum(self.marks)/len(self.marks)
+
+
+
+class WorkingStudent(Student):
+    def __init__(self, name, school, salary):
+        super().__init__(name, school)
+        self.salary = salary
+
+    @property
+    def weekly_salary(self):
+        return self.salary * 37.5
+
+
+if __name__ == '__main__':
+    rolf = WorkingStudent('Rolf','MIT', 15.50)
+    rolf.marks.append(56)
+    rolf.marks.append(12)
+    print (rolf.salary)
+    print (rolf.average)
+    print (rolf.weekly_salary)
+```
+
+**Output:**
+
+```console
+C:\Users\montoya\Desktop\CursoPython\Section_04_Object_Oriented_Programming>python python 54_decorador_property.py
+15.5
+34.0
+581.25
+```
+
+[Video: Decorador - @property](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9417822?start=0)
+
