@@ -5,8 +5,8 @@
 ## Indice
 
 * [Introduccion a Programacion Orientada a Objetos](#introduccion-a-programacion-orientada-a-objetos)
-
 * [Metodos especiales - dunder methods](#metodos-especiales-dunder-methods)
+* [Herencia](#herencia)
 
 ## Introduccion a Programacion Orientada a Objetos
 
@@ -111,3 +111,44 @@ Garage with 2 cars.
 ```
 
 [Video: Magic methods](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9417802?start=0)
+
+## Herencia
+
+```python
+class Student:
+    def __init__(self, name, school):
+        self.name = name
+        self.school = school
+        self.marks = []
+
+    def average(self):
+        return sum(self.marks)/len(self.marks)
+
+
+
+class WorkingStudent(Student):
+    def __init__(self, name, school, salary):
+        super().__init__(name, school)
+        self.salary = salary
+
+    def weekly_salary(self):
+        return self.salary * 37.5
+
+
+if __name__ == '__main__':
+    rolf = WorkingStudent('Rolf','MIT', 15.50)
+    rolf.marks.append(56)
+    rolf.marks.append(12)
+    print (rolf.salary)
+    print (rolf.average())
+    print (rolf.weekly_salary())
+```
+
+```console
+C:\Users\montoya\Desktop\CursoPython\Section_04_Object_Oriented_Programming>python 53_herencia.py
+15.5
+34.0
+581.25
+```
+
+[Video: Herencia](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9417806?start=0)

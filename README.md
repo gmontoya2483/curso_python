@@ -31,6 +31,7 @@
 
 * [Introduccion a Programacion Orientada a Objetos](section_04_object_oriented_programming.md#introduccion-a-programacion-orientada-a-objetos)
 * [Metodos especiales - dunder methods](section_04_object_oriented_programming.md#metodos-especiales-dunder-methods)
+* [Herencia](section_04_object_oriented_programming.md#herencia)
 
 ## Referencias
 
