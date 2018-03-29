@@ -1,26 +1,3 @@
-﻿# Section 04: Object Oriented programming
-
-[VOLVER a README.md](README.md)
-
-## Indice
-
-* [Introduccion](#introduccion)
-* [Built-in errors](#built-in-errors)
-* [Raising erros](#raising-errors)
-
-## Introduccion
-
-[Video: Introducción a errores en python](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445238?start=0)
-
-
-## Built-in errors
-
-[Video: Built-in errors](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445244?start=0)
-
-
-## Raising erros
-
-```python
 class Car:
     def __init__(self, make, model):
         self.make = make
@@ -53,6 +30,6 @@ if __name__ == '__main__':
 
     ford.add_car(car)
     print(len(ford))
-```
 
-[Video: Raising errors](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445250?start=0)
+
+

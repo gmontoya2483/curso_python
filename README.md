@@ -1,4 +1,4 @@
-# Curso de Python
+﻿# Curso de Python
 
 ![Python banner](documentation/python_banner.png)
 
@@ -39,6 +39,7 @@
 
 * [Introduccion](section_05_errors.md#introduccion)
 * [Built-in errors](section_05_errors.md#built-in-errors)
+* [Raising erros](section_05_errors.md#raising-errors)
 
 ## Referencias
 
