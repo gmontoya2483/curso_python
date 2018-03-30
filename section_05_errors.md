@@ -1,4 +1,4 @@
-﻿# Section 04: Object Oriented programming
+﻿# Section 05: Errors in Python
 
 [VOLVER a README.md](README.md)
 
@@ -8,6 +8,7 @@
 * [Built-in errors](#built-in-errors)
 * [Raising erros](#raising-errors)
 * [Creando nuestros propios errores y docstrings](#creando-nuestros-propios-errores-y-docstrings)
+* [Dealing with errors](#dealing-with-errors)
 
 ## Introduccion
 
@@ -103,3 +104,62 @@ Process finished with exit code 1
 > **NOTA:** El multiline ``docstring`` tiene que ser colocado debajo de la definicion de la clase. Este string se utiliza para documentar que realiza la clase.
 
 [Video: Creando nuestros propios errores](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445258?start=0)
+
+## Dealing with errors
+
+```python
+class Car:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def __repr__(self):
+        return f'<Car { self.make } {self.model }>'
+
+
+class Garage:
+    def __init__(self):
+        self.cars = []
+
+    def __len__(self):
+        return len(self.cars)
+
+    def add_car(self, car):
+        if not isinstance(car, Car):
+            raise TypeError(f'Tried to add a `{car.__class__.__name__}` to the garage, '
+                            f'but you can only add `Car` objects')
+
+        self.cars.append(car)
+
+
+if __name__ == '__main__':
+    ford = Garage()
+
+    car = Car('Ford', 'Fiesta')
+    print(car)
+    ford.add_car(car)
+
+    try:
+        ford.add_car('Focus')
+    except TypeError:
+        print('Your car is not a Car!!')
+    except ValueError:
+        print('Something weird happened!!')
+    finally:
+        print("Este bloque se ejecuta siempre al final del try. Haya o no haya un error")
+
+```
+
+**Output:**
+
+```console
+C:\Users\montoya\AppData\Local\Programs\Python\Python36-32\python.exe C:/Users/montoya/Desktop/CursoPython/Section_05_Errors/app.py
+<Car Ford Fiesta>
+Your car is not a Car!!
+Este bloque se ejecuta siempre al final del try. Haya o no haya un error
+
+Process finished with exit code 0
+
+```
+
+[Video: Dealing with errors](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445260?start=0)

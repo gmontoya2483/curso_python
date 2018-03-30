@@ -27,9 +27,17 @@ if __name__ == '__main__':
 
     car = Car('Ford', 'Fiesta')
     print(car)
-
     ford.add_car(car)
-    print(len(ford))
+
+    try:
+        ford.add_car('Focus')
+    except TypeError:
+        print('Your car is not a Car!!')
+    except ValueError:
+        print('Something weird happened!!')
+    finally:
+        print("Este bloque se ejecuta siempre al final del try. Haya o no haya un error")
+
 
 
 
