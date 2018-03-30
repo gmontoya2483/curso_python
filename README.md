@@ -40,6 +40,7 @@
 * [Introduccion](section_05_errors.md#introduccion)
 * [Built-in errors](section_05_errors.md#built-in-errors)
 * [Raising erros](section_05_errors.md#raising-errors)
+* [Creando nuestros propios errores y docstrings](section_05_errors.md#creando-nuestros-propios-errores-y-docstrings)
 
 ## Referencias
 
