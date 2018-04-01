@@ -14,8 +14,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="69" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
+            <state relative-caret-position="187">
+              <caret line="11" column="23" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="11" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -46,7 +46,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-1928" />
     <option name="y" value="-320" />
     <option name="width" value="1936" />
@@ -159,8 +159,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="69" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
+        <state relative-caret-position="187">
+          <caret line="11" column="23" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="11" selection-end-column="23" />
         </state>
       </provider>
     </entry>
