@@ -45,6 +45,9 @@
 *  [Success block and re-raising exceptions](section_05_errors.md#success-block-and-re-raising-exceptions)
 * [Debugging en PyCharm](section_05_errors.md#debugging-en-pycharm)
 
+## [Section 06: Files in Python](section_06_files.md)
+
+
 ## Referencias
 
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)

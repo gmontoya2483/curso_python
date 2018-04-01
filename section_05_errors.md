@@ -1,4 +1,5 @@
-﻿# Section 05: Errors in Python
+
+# Section 05: Errors in Python
 
 [VOLVER a README.md](README.md)
 
