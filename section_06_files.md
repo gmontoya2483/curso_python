@@ -9,6 +9,7 @@
 * [Archivos CSV](#archivos-csv)
 * [Archivos JSON](#archivos-json)
 * [Usando la sintaxis with - context managers](#usando-la-sintaxis-with---context-managers)
+* [Importar nuestros propios archivos](#importar-nuestros-propios-archivos)
 
 
 ## Files (Open - read - write)
@@ -163,3 +164,30 @@ with open('cars.json', 'w') as file:
 
 
 [Video: Usando with syntax](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445290?start=0)
+
+## Importar nuestros propios archivos
+
+Solo se pueden importar de forma directa los archivos que se encuentran en el directorio base de nuestro proyecto. En caso que se necesite usar un paquete se debe hacer referencia al mismo.
+Para decirle a python que un directorio es un paquete se debe crear dentro del mismo un archivo vacio llamado ``__init__.py``  
+
+* Importar todo el archivo
+
+```python
+import utils.file_operations
+
+if __name__ == '__main__':
+    utils.file_operations.save_to_file('Rolf','76_data.txt')
+```
+> **Nota:** Al utilizar las funciones del archivo importado se las debe llamar con su path completo.
+
+* Importar solo algunas funciones
+```python
+from utils.file_operations import save_to_file, read_file
+
+
+if __name__ == '__main__':
+    save_to_file('Rolf', '76_data.txt')
+```
+> **Nota:** En este caso no es necesario utilizar el path completo al llamar las funciones. Sin embargo puede llevar a confusiones si se necesitan utilizar funciones que pertenecen a distintos archivos pero que tienen el mismo nombre.
+
+[Video: Importing our own files](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445292?start=0)
