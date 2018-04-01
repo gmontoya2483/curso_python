@@ -11,6 +11,7 @@
 * [Usando la sintaxis with - context managers](#usando-la-sintaxis-with---context-managers)
 * [Importar nuestros propios archivos](#importar-nuestros-propios-archivos)
 * [Relative imports](#relative-imports)
+* [Import Errors](#import-errors)
 
 
 ## Files (Open - read - write)
@@ -198,3 +199,7 @@ if __name__ == '__main__':
 
 [Video: Relative imports - Childrens](#https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445296?start=0)  
 [Video: Relative imports - Parents](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445298?start=0)
+
+## Import Errors
+
+[Video: Import Errors](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445300?start=0)
