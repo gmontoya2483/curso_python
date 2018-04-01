@@ -10,6 +10,7 @@
 * [Archivos JSON](#archivos-json)
 * [Usando la sintaxis with - context managers](#usando-la-sintaxis-with---context-managers)
 * [Importar nuestros propios archivos](#importar-nuestros-propios-archivos)
+* [Relative imports](#relative-imports)
 
 
 ## Files (Open - read - write)
@@ -169,6 +170,7 @@ with open('cars.json', 'w') as file:
 
 Solo se pueden importar de forma directa los archivos que se encuentran en el directorio base de nuestro proyecto. En caso que se necesite usar un paquete se debe hacer referencia al mismo.
 Para decirle a python que un directorio es un paquete se debe crear dentro del mismo un archivo vacio llamado ``__init__.py``  
+Al momento de hacer un import python ejecuta el archivo que se esta importando, incluso si solo se importa una función.
 
 * Importar todo el archivo
 
@@ -191,3 +193,8 @@ if __name__ == '__main__':
 > **Nota:** En este caso no es necesario utilizar el path completo al llamar las funciones. Sin embargo puede llevar a confusiones si se necesitan utilizar funciones que pertenecen a distintos archivos pero que tienen el mismo nombre.
 
 [Video: Importing our own files](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445292?start=0)
+
+## Relative imports
+
+[Video: Relative imports - Childrens](#https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445296?start=0)  
+[Video: Relative imports - Parents](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445298?start=0)
