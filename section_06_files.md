@@ -8,6 +8,8 @@
 * [Copiar archivos](#copiar-archivos)
 * [Archivos CSV](#archivos-csv)
 * [Archivos JSON](#archivos-json)
+* [Usando la sintaxis with](#usando-la-sintaxis-with)
+
 
 ## Files (Open - read - write)
 
@@ -91,3 +93,49 @@ print(sample_csv_value)
 [Video: Archivos csv](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445284?start=0)
 
 ## Archivos JSON
+
+```python
+import json
+
+# Leer un archivo JSON (load). Json file a Diccionario
+file = open('friends_json.txt', 'r')
+file_contents = json.load(file)  # Lee el archivo y lo convierte en un diccionario
+file.close()
+
+print(file_contents['friends'][0])
+
+
+# Escribir en un archivo Json (dump). Diccionario a Json file
+cars = {'cars': [
+    {'make': 'Ford', 'model': 'Fiesta'},
+    {'make': 'Ford', 'model': 'Focus'},
+    {'make': 'Audi', 'model': 'S3'}
+    ]
+}
+
+file = open('cars.json', 'w')
+json.dump(cars, file)
+file.close()
+
+# Convertir un string Json en un Diccionario (loads). Json string a Diccionario
+
+my_json_string = '[{"name": "Alfa Romeo", "released": 1950}]'
+cars_dictionary = json.loads(my_json_string)
+print(cars_dictionary[0])
+
+# Convertir un diccionario a un string Json (dumps). Diccionario a Json String
+
+cars_dictionary = {'cars': [
+    {'make': 'Mercedes Benz', 'model': 'A120'},
+    {'make': 'Audi', 'model': 'Q7'}
+]}
+
+json_string = json.dumps(cars_dictionary)
+print(json_string)
+```
+
+[Video: Archivos JSON](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445286?start=0)
+
+## Usando la sintaxis with
+
+[Video: Usando with syntax](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445290?start=0)

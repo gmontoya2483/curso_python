@@ -11,11 +11,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="json_imports.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/json_imports.py">
+      <file leaf-file-name="75_json_context_managers.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/75_json_context_managers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="36" column="18" lean-forward="true" selection-end-line="36" selection-end-column="18" />
+            <state>
+              <caret selection-end-line="17" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="74_json_imports.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/74_json_imports.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="37" lean-forward="true" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -41,6 +50,8 @@
         <option value="$PROJECT_DIR$/friends_json.txt" />
         <option value="$PROJECT_DIR$/friends.json" />
         <option value="$PROJECT_DIR$/json_imports.py" />
+        <option value="$PROJECT_DIR$/45_json_context_managers.py" />
+        <option value="$PROJECT_DIR$/75_json_context_managers.py" />
       </list>
     </option>
   </component>
@@ -94,7 +105,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Gabriel\Documents\Projects\curso_python\Section_06_Files\71_app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -112,7 +123,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/csv_read.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Gabriel\Documents\Projects\curso_python\Section_06_Files\73_csv_read.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -130,7 +141,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/friends.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Gabriel\Documents\Projects\curso_python\Section_06_Files\72_friends.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,7 +159,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/json_imports.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Gabriel\Documents\Projects\curso_python\Section_06_Files\74_json_imports.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -186,12 +197,12 @@
     <frame x="-1928" y="-320" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="R Packages" />
       <window_info anchor="right" id="R Graphics" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32897604" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -223,13 +234,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="119" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Section_02_Functions_and_Loops/26_list_comprehension.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -254,14 +258,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/csv_read.py">
+    <entry file="file://$PROJECT_DIR$/73_csv_read.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/friends.py">
+    <entry file="file://$PROJECT_DIR$/72_friends.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="18" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="12" selection-end-column="18" />
@@ -283,10 +287,24 @@
     <entry file="file://$PROJECT_DIR$/cars.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/json_imports.py">
+    <entry file="file://$PROJECT_DIR$/71_app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="36" column="18" lean-forward="true" selection-end-line="36" selection-end-column="18" />
+        <state relative-caret-position="289">
+          <caret line="17" column="119" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/74_json_imports.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="37" lean-forward="true" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/75_json_context_managers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="17" selection-end-column="25" />
         </state>
       </provider>
     </entry>
