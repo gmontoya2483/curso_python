@@ -7,6 +7,7 @@
 * [Files (Open - read - write)](#files-open---read---write)
 * [Copiar archivos](#copiar-archivos)
 * [Archivos CSV](#archivos-csv)
+* [Archivos JSON](#archivos-json)
 
 ## Files (Open - read - write)
 
@@ -89,4 +90,4 @@ print(sample_csv_value)
 
 [Video: Archivos csv](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445284?start=0)
 
-
+## Archivos JSON
