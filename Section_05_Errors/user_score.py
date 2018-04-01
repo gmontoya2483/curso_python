@@ -2,21 +2,20 @@ class User:
     def __init__(self, name, engagement):
         self.name = name
         self.engagement_metrics = engagement
+        self.score = 0
 
     def __repr__(self):
         return f'<User {self.name}>'
 
 
-def email_engaged_user (user):
+def email_engaged_user(user):
     try:
-        perform_calculation(user.engagement_metrics)
+        user.score = perform_calculation(user.engagement_metrics)
     except KeyError:
         print('Incorrect values provided to our calculation function.')
-        # raise este raise haria un re raise de la exception para obtener el trace, pero interrumpe la ejecucion
-    else:  # El else dentro del try, se ejecuta si no hubo ningun error. A diferencia del finally que se ejecuta siempre
-        send_engagement_notification(user)
-    finally:
-        print('Print finally.')
+    else:
+        if user.score > 500:
+            send_engagement_notification(user)
 
 
 def perform_calculation(metrics):

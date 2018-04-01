@@ -42,6 +42,8 @@
 * [Raising erros](section_05_errors.md#raising-errors)
 * [Creando nuestros propios errores y docstrings](section_05_errors.md#creando-nuestros-propios-errores-y-docstrings)
 * [Dealing with errors](section_05_errors.md#dealing-with-errors)
+*  [Success block and re-raising exceptions](section_05_errors.md#success-block-and-re-raising-exceptions)
+* [Debugging en PyCharm](section_05_errors.md#debugging-en-pycharm)
 
 ## Referencias
 

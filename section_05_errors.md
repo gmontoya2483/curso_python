@@ -9,6 +9,8 @@
 * [Raising erros](#raising-errors)
 * [Creando nuestros propios errores y docstrings](#creando-nuestros-propios-errores-y-docstrings)
 * [Dealing with errors](#dealing-with-errors)
+* [Success block and re-raising exceptions](#success-block-and-re-raising-exceptions)
+* [Debugging en PyCharm](#debugging-en-pycharm)
 
 ## Introduccion
 
@@ -164,7 +166,7 @@ Process finished with exit code 0
 
 [Video: Dealing with errors](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445260?start=0)
 
-## Success block and re raising exception
+## Success block and re-raising exceptions
 
 ```python
 class User:
@@ -202,3 +204,7 @@ if __name__ == '__main__':
 ```
 
 [Video: The sucess block and re-raising exceptions](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445266?start=0)
+
+## Debugging en PyCharm
+
+[Video: Debugging en PyCharm](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445270?start=0)
