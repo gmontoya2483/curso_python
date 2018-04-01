@@ -1,4 +1,4 @@
-﻿# Curso de Python
+# Curso de Python
 
 ![Python banner](documentation/python_banner.png)
 
@@ -46,6 +46,15 @@
 * [Debugging en PyCharm](section_05_errors.md#debugging-en-pycharm)
 
 ## [Section 06: Files in Python](section_06_files.md)
+
+* [Files (Open - read - write)](section_06_files.md#files-open---read---write)
+* [Copiar archivos](section_06_files.md#copiar-archivos)
+* [Archivos CSV](section_06_files.md#archivos-csv)
+* [Archivos JSON](section_06_files.md#archivos-json)
+* [Usando la sintaxis with - context managers](section_06_files.md#usando-la-sintaxis-with---context-managers)
+* [Importar nuestros propios archivos](section_06_files.md#importar-nuestros-propios-archivos)
+* [Relative imports](section_06_files.md#relative-imports)
+* [Import Errors](section_06_files.md#import-errors)
 
 
 ## Referencias
