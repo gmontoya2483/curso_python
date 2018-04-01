@@ -197,7 +197,7 @@ if __name__ == '__main__':
 
 ## Relative imports
 
-[Video: Relative imports - Childrens](#https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445296?start=0)  
+[Video: Relative imports - Childrens](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445296?start=0)  
 [Video: Relative imports - Parents](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445298?start=0)
 
 ## Import Errors
