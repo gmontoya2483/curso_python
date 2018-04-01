@@ -18,6 +18,21 @@
 
 ## Built-in errors
 
+* ``IndexError``
+* ``KeyError``
+* ``NameError``
+* ``AttributeError``
+* ``NotImplementedError``
+* ``RuntimeError``
+* ``SyntaxError``
+* ``IndentationError``
+* ``TabError``
+* ``TypeError``
+* ``ValueError``
+* ``ImportError``
+* ``DeprecationWarning``
+
+
 [Video: Built-in errors](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445244?start=0)
 
 ## Raising erros
