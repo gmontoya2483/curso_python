@@ -8,7 +8,7 @@
 * [Copiar archivos](#copiar-archivos)
 * [Archivos CSV](#archivos-csv)
 * [Archivos JSON](#archivos-json)
-* [Usando la sintaxis with](#usando-la-sintaxis-with)
+* [Usando la sintaxis with - context managers](#usando-la-sintaxis-with---context-managers)
 
 
 ## Files (Open - read - write)
@@ -136,6 +136,30 @@ print(json_string)
 
 [Video: Archivos JSON](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445286?start=0)
 
-## Usando la sintaxis with
+## Usando la sintaxis with - context managers
+
+```python
+import json
+
+with open('friends_json.txt', 'r') as file:
+    file_contents = json.load(file)  # Lee el archivo y lo convierte en un diccionario
+
+
+print(file_contents['friends'][0])
+
+
+cars = {'cars': [
+    {'make': 'Ford', 'model': 'Fiesta'},
+    {'make': 'Ford', 'model': 'Focus'},
+    {'make': 'Audi', 'model': 'S3'}
+    ]
+}
+
+with open('cars.json', 'w') as file:
+    json.dump(cars, file)
+```
+>**NOTA:** los context mamagers pueden ser utilizados para hacer tareas de setup y tear down o para hacer open y close de una base de datos.  
+>En los ejemplos de arriba el archivo es cerrado por el context manager una vez que  finaliza la ejecuci'on del bloque ``with``
+
 
 [Video: Usando with syntax](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445290?start=0)
