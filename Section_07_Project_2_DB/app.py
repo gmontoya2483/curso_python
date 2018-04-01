@@ -53,7 +53,11 @@ def list_books():
     Show all the book in our list
     :return:
     """
-    database.list_books()
+    books = database.list_books()
+    print('List of books:')
+    for book in books:
+        read = 'YES' if book['read'] else 'NO'
+        print(f"{ book['name'].title() } by { book['author'].title() }, read: { read }")
 
 
 def prompt_read_book():
@@ -61,7 +65,8 @@ def prompt_read_book():
     Ask for book name and change it to 'Read' in our list
     :return:
     """
-    pass
+    name = input('Enter the name of the book you just finished reading: ')
+    database.mark_book_as_read(name)
 
 
 def prompt_delete_book():
@@ -69,7 +74,8 @@ def prompt_delete_book():
     Ask for book name and delete it to 'Read' in our list
     :return:
     """
-    pass
+    name = input('Enter the name of the book you wish to delete: ')
+    database.delete_book(name)
 
 
 if __name__ == '__main__':

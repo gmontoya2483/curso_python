@@ -10,6 +10,15 @@ def add_book(name, author):
 
 
 def list_books():
-    print('Listado de Libros:')
+    return books
+
+
+def delete_book(name):
+    global books
+    books = [book for book in books if book['name'].lower() != name.lower()]
+
+
+def mark_book_as_read(name):
     for book in books:
-        print(f"Book Name: { book['name'] }, author: { book['author'] }, read { book['read'] }")
+        if book['name'].lower() == name.lower():
+            book['read'] = True

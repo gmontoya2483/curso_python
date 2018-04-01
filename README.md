@@ -56,6 +56,10 @@
 * [Relative imports](section_06_files.md#relative-imports)
 * [Import Errors](section_06_files.md#import-errors)
 
+## [Section 07: Milestone Project 2 - Databases](section_07_databases.md)
+
+* [Milestone: Project 2 (en memoria)](section_07_databases.md#milestone-project-2-en-memoria)
+
 
 ## Referencias
 
