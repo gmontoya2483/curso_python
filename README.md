@@ -59,6 +59,7 @@
 ## [Section 07: Milestone Project 2 - Databases](section_07_databases.md)
 
 * [Milestone: Project 2 (en memoria)](section_07_databases.md#milestone-project-2-en-memoria)
+* [Milestone: Project 2 (en un CSV file)](section_07_databases.md#milestone-project-2-en-un-csv-file)
 
 
 ## Referencias

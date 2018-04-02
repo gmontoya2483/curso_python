@@ -53,10 +53,10 @@ def list_books():
     Show all the book in our list
     :return:
     """
-    books = database.list_books()
+    books = database.get_all_books()
     print('List of books:')
     for book in books:
-        read = 'YES' if book['read'] else 'NO'
+        read = 'YES' if book['read'] == '1' else 'NO'
         print(f"{ book['name'].title() } by { book['author'].title() }, read: { read }")
 
 
@@ -79,4 +79,5 @@ def prompt_delete_book():
 
 
 if __name__ == '__main__':
+    database.create_book_table()
     menu()
