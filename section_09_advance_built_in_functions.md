@@ -7,6 +7,7 @@
 * [Generators](#generators)
 * [Generators classes and iterators](#generators-classes-and-iterators)
 * [Iterables](#iterables)
+* [Filter function](#filter-function)
 
 
 ## Generators
@@ -296,5 +297,94 @@ Process finished with exit code 0
 
 ```
 
-
 [Video: Iterables](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445610?start=0)
+
+## Filter function
+
+La funcion ``filter()`` toma dos argumentos, el primer argumento es una ``función`` y el segundo un ``iterable``
+
+La función ``filter()`` devuelve un generator.
+
+
+```python
+def starts_with_r(friend):
+    return friend.startswith('R')
+
+
+if __name__ == '__main__':
+    friends = ['Rolf', 'Jose', 'Randy', 'Anna', 'Mary']
+    start_with_r = filter(starts_with_r, friends)  # arg 1: function that returns True/False
+
+    print(next(start_with_r))
+    print(list(start_with_r))
+    print(list(start_with_r))
+
+```
+
+**OUTPUT:**
+
+```console
+C:\Users\montoya\AppData\Local\Programs\Python\Python36-32\python.exe C:/Users/montoya/Desktop/CursoPython/Section_09_Advance_buit_in_Functions/filter.py
+Rolf
+['Randy']
+[]
+
+Process finished with exit code 0
+```
+
+Se puede utilizar una funcón ``lambda`` en el filter también:
+
+```python
+
+
+if __name__ == '__main__':
+    friends = ['Rolf', 'Jose', 'Randy', 'Anna', 'Mary']
+
+    start_with_r_lambda = filter(lambda friend: friend.startswith('R'), friends)
+
+    print(next(start_with_r_lambda))
+    print(list(start_with_r_lambda))
+    print(list(start_with_r_lambda))
+
+```
+
+**OUTPUT:**
+
+```console
+C:\Users\montoya\AppData\Local\Programs\Python\Python36-32\python.exe C:/Users/montoya/Desktop/CursoPython/Section_09_Advance_buit_in_Functions/filter.py
+Rolf
+['Randy']
+[]
+
+Process finished with exit code 0
+```
+
+También se puede utilizar el ``if`` en el *generator comprehansion*. esta opción es la mas performante. Además es la más ``Pythonic``
+
+```python
+
+
+if __name__ == '__main__':
+    
+    friends = ['Rolf', 'Jose', 'Randy', 'Anna', 'Mary']
+
+    start_with_r_generator_comprehension = (friend for friend in friends if friend.startswith('R'))
+    
+    print(next(start_with_r_generator_comprehension))
+    print(list(start_with_r_generator_comprehension))
+    print(list(start_with_r_generator_comprehension))
+
+```
+
+**OUTPUT:**
+
+```console
+C:\Users\montoya\AppData\Local\Programs\Python\Python36-32\python.exe C:/Users/montoya/Desktop/CursoPython/Section_09_Advance_buit_in_Functions/filter.py
+Rolf
+['Randy']
+[]
+
+Process finished with exit code 0
+```
+
+[Video: the filter() function](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445618?start=0)
