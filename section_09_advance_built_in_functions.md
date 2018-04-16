@@ -10,6 +10,7 @@
 * [Filter function](#filter-function)
 * [Map function](#map-function)
 * [any and all functions](#any-and-all-functions)
+* [enumerate function](#enumerate-function)
 
 ## Generators
 
@@ -490,7 +491,50 @@ True
 Process finished with exit code 0
 ```
 
-
-
-
 [Video: any() and all()](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445626?start=0)
+
+## enumerate function
+
+La funcion ``enumerate()`` nos permite tener el índice y el valor cuando se mueve a través de una lista.
+
+```python
+top_friends = ['Jose', 'Rolf', 'Anna','Santiago']
+
+for i, friend in enumerate(top_friends):
+    print(f'My top { i+1 } friend is { friend }.')
+```
+
+**OUTPUT:**
+
+```console
+My top 1 friend is Jose.
+My top 2 friend is Rolf.
+My top 3 friend is Anna.
+My top 4 friend is Santiago.
+
+Process finished with exit code 0
+```
+
+La función ``enumerate()`` devuelve un ``generator``, una tupla (índice, valor):
+
+```python
+top_friends = ['Jose', 'Rolf', 'Anna','Santiago']
+
+friends_generator = enumerate(top_friends)
+
+print(next(friends_generator))
+print(list(friends_generator))
+print(list(friends_generator))
+```
+
+**OUTPUT:**
+
+```console
+(0, 'Jose')
+[(1, 'Rolf'), (2, 'Anna'), (3, 'Santiago')]
+[]
+
+Process finished with exit code 0
+```
+
+[Video: enumerate() function](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445628?start=0)
