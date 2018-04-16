@@ -9,6 +9,7 @@
 * [Iterables](#iterables)
 * [Filter function](#filter-function)
 * [Map function](#map-function)
+* [any and all functions](#any-and-all-functions)
 
 ## Generators
 
@@ -451,5 +452,45 @@ Process finished with exit code 0
 
 ```
 
-
 [Video: map() function](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445620?start=0)
+
+## any and all functions
+
+* ``any()``: toma un ``iterable`` y devuelve ``True`` si alguno de sus elementos evaluan como ``True``.
+
+* ``all()``: toma un ``iterable`` y devuelve ``True`` si todos sus elementos eveluan como ``True``.
+
+
+>**NOTA:** Los siguientes valores evaluan siempre como ``False``:  
+> * `0`, ``0.00``
+> * `None`
+> * `[]`
+> * `()`
+> * `{}`
+> * `False`
+>  
+> Cualquier otro valor evalua como ``True``
+
+
+Ejemplo: 
+
+```python
+print(any([0, 1, 2, 3, 4, 5]))
+print(all([0, 1, 2, 3, 4, 5]))
+print(all([1, 2, 3, 4, 5]))
+```
+
+**OUTPUT:**
+
+```console
+True
+False
+True
+
+Process finished with exit code 0
+```
+
+
+
+
+[Video: any() and all()](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445626?start=0)

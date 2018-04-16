@@ -70,6 +70,7 @@
 * [Iterables](section_09_advance_built_in_functions.md#iterables)
 * [Filter function](section_09_advance_built_in_functions.md#filter-function)
 * [Map function](section_09_advance_built_in_functions.md#map-function)
+* [any and all functions](section_09_advance_built_in_functions.md#any-and-all-functions)
 
 ## Referencias
 
