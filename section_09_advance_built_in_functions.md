@@ -8,7 +8,7 @@
 * [Generators classes and iterators](#generators-classes-and-iterators)
 * [Iterables](#iterables)
 * [Filter function](#filter-function)
-
+* [Map function](#map-function)
 
 ## Generators
 
@@ -388,3 +388,68 @@ Process finished with exit code 0
 ```
 
 [Video: the filter() function](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445618?start=0)
+
+## Map function
+
+La función ``map()`` toma un ``iterable`` y devuelve un nuevo ``iterable`` donde cada elemento es modificado de acuerdo a alguna función. Nuevamente es mejor utilizar *generator comprehension*.
+
+```python
+def to_lower(friend):
+    return friend.lower()
+
+
+if __name__ == '__main__':
+    friends = ['Rolf', 'Jose', 'Randy', 'Anna', 'Mary']
+
+    # Using a regular function
+    friends_lower_map_regular = map(to_lower, friends)
+
+    print(next(friends_lower_map_regular))
+    print(list(friends_lower_map_regular))
+    print(list(friends_lower_map_regular))
+
+    print('\n')
+
+    # Using map() con lambda
+    friends_lower_map_lambda = map(lambda x: x.lower(), friends)
+
+    print(next(friends_lower_map_lambda))
+    print(list(friends_lower_map_lambda))
+    print(list(friends_lower_map_lambda))
+
+    print('\n')
+
+    # Using generator comprehension
+    friends_lower_generator_comprehension = (friend.lower() for friend in friends)
+
+    print(next(friends_lower_generator_comprehension))
+    print(list(friends_lower_generator_comprehension))
+    print(list(friends_lower_generator_comprehension))
+
+
+```
+
+**OUTPUT:**
+
+```console
+C:\Users\montoya\AppData\Local\Programs\Python\Python36-32\python.exe C:/Users/montoya/Desktop/CursoPython/Section_09_Advance_buit_in_Functions/map.py
+rolf
+['jose', 'randy', 'anna', 'mary']
+[]
+
+
+rolf
+['jose', 'randy', 'anna', 'mary']
+[]
+
+
+rolf
+['jose', 'randy', 'anna', 'mary']
+[]
+
+Process finished with exit code 0
+
+```
+
+
+[Video: map() function](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445620?start=0)

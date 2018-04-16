@@ -69,7 +69,7 @@
 * [Generators classes and iterators](section_09_advance_built_in_functions.md#generators-classes-and-iterators)
 * [Iterables](section_09_advance_built_in_functions.md#iterables)
 * [Filter function](section_09_advance_built_in_functions.md#filter-function)
-
+* [Map function](section_09_advance_built_in_functions.md#map-function)
 
 ## Referencias
 
