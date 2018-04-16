@@ -6,6 +6,7 @@
 
 * [Generators](#generators)
 * [Generators classes and iterators](#generators-classes-and-iterators)
+* [Iterables](#iterables)
 
 
 ## Generators
@@ -66,10 +67,10 @@ Process finished with exit code 0
 
 ## Generators classes and iterators
 
-Toda clase que implemente el metodo ``__next__`` es considerada un iterator.  
-No todas las clases que implementan el metodo ``__next__`` son ``generators``. para que una clase sea considerada generator debe **generar** los datos cuando se llama al metodo ``next``.
+Toda clase que implemente el metodo ``__next__()`` es considerada un iterator.  
+No todas las clases que implementan el metodo ``__next__()`` son ``generators``. para que una clase sea considerada generator debe **generar** los datos cuando se llama al metodo ``next``.
 
-En el ejemplo siguiente la clase ``FirstFiveGenerator`` es un ``generator`` dado que va generando los valores a medida que se llama el método ``next``. Por otro lado la clase ``FirstFiceIterator`` no es un ``generator`` debeido a que el metodo next lee los valores de una ``Lista``.
+En el ejemplo siguiente la clase ``FirstFiveGenerator`` es un ``generator`` dado que va generando los valores a medida que se llama el método ``next()``. Por otro lado la clase ``FirstFiceIterator`` no es un ``generator`` debeido a que el metodo next lee los valores de una ``Lista``.
 
 ```python
 class FirstFiveGenerator:
@@ -140,5 +141,160 @@ Process finished with exit code 0
 
 >**NOTA:** Un ``Iterator`` no es un ``iterable`` por lo que no se puede hacer ``for i in my_gen:`` 
 
-
 [Video: generators classes and iterators](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445604?start=0)
+
+## Iterables
+
+El ``iterable`` es un objeto que tiene un metodo ``__iter__()``. Este método tiene que devolver un ``iterator``.
+
+* El ``iterable`` puede ser una clase aparte como en el ejemplo siguiente:
+
+    ```python
+    class FirstFiveGenerator:
+        def __init__(self):
+            self.number = 0
+
+        def __next__(self):
+            if self.number < 5:
+                current = self.number
+                self.number += 1
+                return current
+            else:
+                raise StopIteration()
+
+
+    class FirstFiveIterable:
+        def __iter__(self):
+            return FirstFiveGenerator()
+
+
+    if __name__ == '__main__':
+        print(sum(FirstFiveIterable()))
+
+        print('\n')
+
+        for i in FirstFiveIterable():
+            print(i)
+    ```
+
+    **OUTPUT:**
+
+    ```console
+    C:\Users\montoya\AppData\Local\Programs\Python\Python36-32\python.exe C:/Users/montoya/Desktop/CursoPython/Section_09_Advance_buit_in_Functions/iterables.py
+    10
+
+
+    0
+    1
+    2
+    3
+    4
+
+    Process finished with exit code 0
+    ```
+
+* o bien, puede ser definido dentro de la clase ``iterator`` que se quiere hacer ``iterable`` (es lo recomendable):
+
+    ```python
+    class FirstFiveGenerator:
+        def __init__(self):
+            self.number = 0
+
+        def __next__(self):
+            if self.number < 5:
+                current = self.number
+                self.number += 1
+                return current
+            else:
+                raise StopIteration()
+
+        def __iter__(self):
+            return self
+
+
+    if __name__ == '__main__':
+        print(sum(FirstFiveGenerator()))
+
+        print('\n')
+
+        for i in FirstFiveGenerator():
+            print(i)
+    ```
+
+    **OUTPUT:**
+
+        ```console
+        C:\Users\montoya\AppData\Local\Programs\Python\Python36-32\python.exe C:/Users/montoya/Desktop/CursoPython/Section_09_Advance_buit_in_Functions/iterables.py
+        10
+
+
+        0
+        1
+        2
+        3
+        4
+
+        Process finished with exit code 0
+        ```
+
+
+* Tambien se puede definir un ``iterable`` agregando los métodos  ``__len__()__`` y ``__getitem__()``, esto no sirve si el ``iterator`` es tambien un ``generator``:
+
+    ```python
+    class AnotherIterable:
+        def __init__(self):
+            self.cars = ['Fiesta', 'Focus']
+
+        def __len__(self):
+            return len(self.cars)
+
+        def __getitem__(self, item):
+            return self.cars[item]
+
+
+    if __name__ == '__main__':
+        for car in AnotherIterable():
+            print(car)
+
+    ``` 
+
+    **OUTPUT:**
+
+    ```console
+    C:\Users\montoya\AppData\Local\Programs\Python\Python36-32\python.exe C:/Users/montoya/Desktop/CursoPython/Section_09_Advance_buit_in_Functions/iterables.py
+
+    Fiesta
+    Focus
+
+    Process finished with exit code 0
+
+    ```
+
+* Generator comprehension:
+
+```python
+my_numbers_gen = (x for x in [1,2,3,4,5])
+
+print(next(my_numbers_gen))
+print(next(my_numbers_gen))
+print(next(my_numbers_gen))
+print(next(my_numbers_gen))
+
+```
+
+**OUTPUT:**
+
+```console
+C:\Users\montoya\AppData\Local\Programs\Python\Python36-32\python.exe C:/Users/montoya/Desktop/CursoPython/Section_09_Advance_buit_in_Functions/iterables.py
+
+1
+2
+3
+4
+
+Process finished with exit code 0
+
+```
+
+
+[Video: Iterables](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9445610?start=0)
