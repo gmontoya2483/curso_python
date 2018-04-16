@@ -66,6 +66,7 @@
 ## [Section 09: Advance Built in Functions](section_09_advance_built_in_functions.md)
 
 * [Generators](section_09_advance_built_in_functions.md#generators)
+* [Generators classes and iterators](section_09_advance_built_in_functions.md#generators-classes-and-iterators)
 
 
 ## Referencias
