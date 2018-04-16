@@ -63,6 +63,10 @@
 * [Milestone: Project 2 (en un Json file)](section_07_databases.md#milestone-project-2-en-un-json-file)
 * [Developing Context Manager](section_07_databases.md#developing-context-manager)
 
+## [Section 09: Advance Built in Functions](section_09_advance_built_in_functions.md)
+
+* [Generators](section_09_advance_built_in_functions.md#generators)
+
 
 ## Referencias
 
