@@ -76,6 +76,7 @@
 ## [Section 10: Advance Python Development](section_10_advance_python_development.md)
 
 * [Mutability](section_10_advance_python_development.md#mutability)
+* [Argument Mutability](section_10_advance_python_development.md#argument-mutability)
 
 ## Referencias
 
