@@ -73,6 +73,10 @@
 * [any and all functions](section_09_advance_built_in_functions.md#any-and-all-functions)
 * [enumerate function](section_09_advance_built_in_functions.md#enumerate-function)
 
+## [Section 10: Advance Python Development](section_10_advance_python_development.md)
+
+* [Mutability](section_10_advance_python_development.md#mutability)
+
 ## Referencias
 
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)
