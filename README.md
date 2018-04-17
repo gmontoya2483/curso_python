@@ -77,6 +77,7 @@
 
 * [Mutability](section_10_advance_python_development.md#mutability)
 * [Argument Mutability](section_10_advance_python_development.md#argument-mutability)
+* [Default values for parameters](section_10_advance_python_development.md#default-values-for-parameters)
 
 ## Referencias
 

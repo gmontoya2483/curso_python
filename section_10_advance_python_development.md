@@ -6,6 +6,7 @@
 
 * [Mutability](#mutability)
 * [Argument Mutability](#argument-mutability)
+* [Default values for parameters](#default-values-for-parameters)
 
 ## Mutability
 
@@ -172,5 +173,42 @@ print(age)
 Process finished with exit code 0
 ```
 
-
 [Video: Argument mutability](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477742?start=0)
+
+
+## Default values for parameters
+
+Los parametros que tienen default values deben ir al final, no puede haber parametros que no tienen valores por default despues de los que los tienen.
+
+```python
+accounts = {
+    'checking': 1956.00,
+    'savings': 3695.50
+}
+
+
+def add_balance(amount: float, name: str = 'checking') -> float:
+    """Function to update the balance of an account and return the new balnce."""
+    accounts[name] += amount
+    return accounts[name]
+
+
+if __name__ == '__main__':
+    add_balance(500.00, 'savings')
+    print(accounts['savings'])
+
+    add_balance(100.00)
+    print(accounts['checking'])
+
+```
+
+**OUTPUT:**
+
+```console
+4195.5
+2056.0
+
+Process finished with exit code 0
+```
+
+[Video: Default values for parameters](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477748?start=0)
