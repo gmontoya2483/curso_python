@@ -7,6 +7,7 @@
 * [Mutability](#mutability)
 * [Argument Mutability](#argument-mutability)
 * [Default values for parameters](#default-values-for-parameters)
+* [Mutable default arguments - Bad idea](#mutable-default-arguments)
 
 ## Mutability
 
@@ -212,3 +213,40 @@ Process finished with exit code 0
 ```
 
 [Video: Default values for parameters](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477748?start=0)
+
+## Mutable default arguments
+
+Esto es algo que se debe tratar de evitar. El objeto mutable es creado en la definición y es compartido cada vez que la funcion es llamada:
+
+```python
+
+def create_account(name: str, holder: str, account_holders: list = []):
+    account_holders.append(holder)
+    print(id(account_holders))
+    return {
+        'name': name,
+        'main_account_holder': holder,
+        'account_holders': account_holders
+    }
+
+
+if __name__ == '__main__':
+    a1 = create_account('checking', 'Rolf')
+    a2 = create_account('savings', 'Jen')
+
+    print(a2)
+```
+
+**OUTPUT:**
+
+```console
+6557648
+6557648
+{'name': 'savings', 'main_account_holder': 'Jen', 'account_holders': ['Rolf', 'Jen']}
+
+Process finished with exit code 0
+```
+
+Como se puede ver en el output, cada vez que se llama a la funcion ``create_acoount()`` el id de la lista es el mismo. Por otro lado, al imprimir ``a2`` la lista ``account_holders`` tiene a ``Rolf`` que fue agregado al crearse la cuanta ``a1``-  
+
+[Video: Mutable default arguments (Una mala idea)](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477754?start=0)
