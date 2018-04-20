@@ -9,6 +9,7 @@
 * [Default values for parameters](#default-values-for-parameters)
 * [Mutable default arguments - Bad idea](#mutable-default-arguments)
 * [Argument unpacking](#argument-unpacking)
+* [Collections](#collections)
 
 ## Mutability
 
@@ -314,3 +315,159 @@ if __name__ == '__main__':
 ```
 
 [Video: Argument unpacking](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477756?start=0)
+
+## Collections
+
+* **Queue: (cola)** Se puede agregar elementos al final que quitarlos del principios.
+
+* **stack: (pila)** Se agregan elementos al final y se quitan del final.
+
+* **counter:** permite contar cosas.
+
+```python
+from collections import Counter
+
+device_temperatures = [13.5, 14.0, 14.0, 14.5, 14.5, 14.5, 15.0, 16.0]
+temperature_counter = Counter(device_temperatures)
+print(temperature_counter[14.0])
+```
+
+**OUTPUT:**
+
+```console
+2
+
+Process finished with exit code 0
+```
+
+* **defaultdict:** Nunca va a dar una excepción ``KeyError``, en lugar devuelve el valor de una fuanción
+
+```python
+from collections import defaultdict
+
+coworkers = [('Rolf', 'MIT'), ('Jen', 'Oxford'), ('Rolf', 'Cambridge'), ('Charlie', 'Manchester')]
+
+alma_maters = defaultdict(list)
+
+
+for coworker, place  in coworkers:
+    alma_maters[coworker].append(place)
+
+print(alma_maters)
+print(alma_maters['Anne'])
+print(alma_maters)
+```
+
+**OUTPUT:**
+
+```console
+defaultdict(<class 'list'>, {'Rolf': ['MIT', 'Cambridge'], 'Jen': ['Oxford'], 'Charlie': ['Manchester']})
+[]
+defaultdict(<class 'list'>, {'Rolf': ['MIT', 'Cambridge'], 'Jen': ['Oxford'], 'Charlie': ['Manchester'], 'Anne': []})
+
+Process finished with exit code 0
+```
+
+* **Ordered Dict:** Muestra el contenido en el ordern que fue insertado. Permite hacer ``move_to_end`` y ``popitem``.
+
+```python
+from collections import OrderedDict
+
+o = OrderedDict()
+o['Rolf'] = 6
+o['Jose'] = 10
+o['Jen'] = 3
+
+print(o)  # keys are always in the order in which they were inserted
+
+o.move_to_end('Rolf')
+o.move_to_end('Jose', last=False)
+
+print(o)
+
+o.popitem()  # Pop off the last item from the list
+
+print(o)
+```
+
+**OUTPUT:**
+
+```console
+OrderedDict([('Rolf', 6), ('Jose', 10), ('Jen', 3)])
+OrderedDict([('Jose', 10), ('Jen', 3), ('Rolf', 6)])
+OrderedDict([('Jose', 10), ('Jen', 3)])
+
+Process finished with exit code 0
+
+```
+
+* **namedtuple:** Igual a una tupla, pero cada elemento tiene un nombre y la tupla en si mismo también tiene un nombre.
+
+```python
+from collections import namedtuple
+
+# Normal Tuples
+
+account = ('checking', 1850.90)
+
+print(account[0])  # name
+print(account[1])  # balance
+
+print('\n')
+
+# named tuples
+
+Account = namedtuple('Account', ['name', 'balance'])
+account = Account('checking', 1850.90)
+print(account.name)
+print(account.balance)
+print(account)
+
+```
+
+**OUTPUT:**
+
+```console
+
+checking
+1850.9
+
+
+checking
+1850.9
+Account(name='checking', balance=1850.9)
+
+Process finished with exit code 0
+
+```
+
+* **Double ended queue: (deque)** Una queue en la que se puede agregar o remover objeteos de ambos lados.
+
+```python
+from collections import deque
+
+friends = deque(('Rolf', 'Charlie', 'Jen', 'Anna'))
+
+friends.append('Jose')
+friends.appendleft('Anthony')
+print(friends)
+
+friends.pop()
+print(friends)
+
+friends.popleft()
+print(friends)
+```
+
+**OUTPUT:**
+
+```console
+deque(['Anthony', 'Rolf', 'Charlie', 'Jen', 'Anna', 'Jose'])
+deque(['Anthony', 'Rolf', 'Charlie', 'Jen', 'Anna'])
+deque(['Rolf', 'Charlie', 'Jen', 'Anna'])
+
+Process finished with exit code 0
+```
+
+[Video: Queues](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477758?start=0)  
+[Video: Collections](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477762?start=0)

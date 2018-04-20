@@ -80,6 +80,7 @@
 * [Default values for parameters](section_10_advance_python_development.md#default-values-for-parameters)
 * [Mutable default arguments - Bad idea](section_10_advance_python_development.md#mutable-default-arguments)
 * [Argument unpacking](section_10_advance_python_development.md#argument-unpacking)
+* [Collections](section_10_advance_python_development.md#collections)
 
 ## Referencias
 
