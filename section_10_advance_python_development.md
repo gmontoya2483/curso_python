@@ -10,6 +10,8 @@
 * [Mutable default arguments - Bad idea](#mutable-default-arguments)
 * [Argument unpacking](#argument-unpacking)
 * [Collections](#collections)
+* [Timezones, datetime](#timezones-and-datetime)
+* [Timing your code](#timing-your-code)
 
 ## Mutability
 
@@ -471,3 +473,156 @@ Process finished with exit code 0
 
 [Video: Queues](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477758?start=0)  
 [Video: Collections](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477762?start=0)
+
+# Timezones and datetime
+
+En ``Python`` existen dos tipos de entidades de fecha.
+
+* **Naive**: objetos fecha y hora que no conocen acerca del timezone.
+
+    ```python
+    from datetime import datetime
+
+    ahora_naive = datetime.now()
+    print(ahora_naive)
+    ```
+
+    **OUTPUT:**
+
+    ```console
+    2018-04-23 10:14:13.435581
+
+    Process finished with exit code 0
+    ```
+
+* **Aware**: objetos fecha y hora que conocen acerca del timezone.
+
+    ```python
+    ahora_aware = datetime.now(timezone.utc)
+    print(ahora_aware)
+    ```
+
+    **OUTPUT:**
+    ```console
+    2018-04-23 08:14:13.435581+00:00
+
+    Process finished with exit code 0
+    ```
+
+* Time delta
+
+```python
+from datetime import datetime, timezone, timedelta
+
+today = datetime.now(timezone.utc)
+print(f' Ahora: { today }')
+
+later = today + timedelta(hours=3)
+print(f' Mas tarde: { later }')
+
+tomorrow = today + timedelta(days=1)
+print(f' Manana: { tomorrow }')
+
+yesterday = today + timedelta(days=-1)
+print(f' Ayer: { yesterday }')
+```
+
+**OUTPUT:**
+```console
+ Ahora: 2018-04-23 08:33:47.290263+00:00
+ Mas tarde: 2018-04-23 11:33:47.290263+00:00
+ Manana: 2018-04-24 08:33:47.290263+00:00
+ Ayer: 2018-04-22 08:33:47.290263+00:00
+
+Process finished with exit code 0
+```
+
+* ``strftime()`` and ``strptime()``
+
+```python
+today = datetime.now(timezone.utc)
+print(f"Ahora Formatted: { today.strftime('%d-%m-%Y %H:%M') }")  # string format time
+
+user_date = input('Enter the date in YYYY-mm_dd format: ')
+user_date = datetime.strptime(user_date, '%Y-%m-%d')  # string parse time
+print(user_date)
+```
+
+**OUTPUT:**
+```console
+Ahora Formatted: 23-04-2018 08:43
+Enter the date in YYYY-mm_dd format: 2010-05-25
+2010-05-25 00:00:00
+
+Process finished with exit code 0
+```
+
+[Video: Timezones](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477766?start=0)  
+[Video: Date and Times](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477768?start=0)  
+[Datetime-cheatsheet](Datetime-cheatsheet.pdf)
+
+
+# Timing your code
+
+```python
+import time, timeit
+
+
+def power(limit):
+    return [x**2 for x in range(limit)]
+
+
+def measure_runtime(func):
+    start = time.time()
+    func()
+    end = time.time()
+
+    print(f'Start: { start }')
+    print(f'End: { end }')
+    print(f'Duration: { end - start }')
+
+
+if __name__ == '__main__':
+
+    # Option 1: rodeando la funcion start y end y calcular la diferencia
+    start = time.time()
+    p = power(50000)
+    end = time.time()
+
+    print(f'Start: { start }')
+    print(f'End: { end }')
+    print(f'Duration: { end - start }')
+    print('\n')
+
+    # Option 2: user una funcion y pasar la funcion como parametro
+    measure_runtime(lambda : power(50000))
+    print('\n')
+
+    # Option 3: usar timeit
+    duration = timeit.timeit("[x**2 for x in range(10)]")
+    print(f'Duration { duration }')
+    print('\n')
+
+```
+
+**OUTPUT:**
+
+```console
+Start: 1524475613.7985554
+End: 1524475613.8185554
+Duration: 0.019999980926513672
+
+
+Start: 1524475613.8185554
+End: 1524475613.8385553
+Duration: 0.019999980926513672
+
+
+Duration 3.656821846180259
+
+
+
+Process finished with exit code 0
+```
+
+[Video: timing your code](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477770?start=0)

@@ -81,6 +81,8 @@
 * [Mutable default arguments - Bad idea](section_10_advance_python_development.md#mutable-default-arguments)
 * [Argument unpacking](section_10_advance_python_development.md#argument-unpacking)
 * [Collections](section_10_advance_python_development.md#collections)
+* [Timezones, datetime](section_10_advance_python_development.md#timezones-and-datetime)
+* [Timing your code](section_10_advance_python_development.md#timing-your-code)
 
 ## Referencias
 
