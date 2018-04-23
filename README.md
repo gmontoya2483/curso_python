@@ -83,6 +83,7 @@
 * [Collections](section_10_advance_python_development.md#collections)
 * [Timezones, datetime](section_10_advance_python_development.md#timezones-and-datetime)
 * [Timing your code](section_10_advance_python_development.md#timing-your-code)
+* [Regular expressions](section_10_advance_python_development.md#regular-expressions)
 
 ## Referencias
 

@@ -12,6 +12,7 @@
 * [Collections](#collections)
 * [Timezones, datetime](#timezones-and-datetime)
 * [Timing your code](#timing-your-code)
+* [Regular expressions](#regular-expressions)
 
 ## Mutability
 
@@ -626,3 +627,61 @@ Process finished with exit code 0
 ```
 
 [Video: timing your code](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477770?start=0)
+
+
+# Regular expressions
+
+Componentes básicos de ``regex``:
+* ``.`` "cualquiercosa" (un caracter)- letras, numeros, simboles... etc, pero **no** nuevas lineas.  
+* ``+`` "uno o más de"
+* ``*`` "zero o más de"
+* ``?`` "zero o uno de"
+* ``[]`` "[abc] a, b ó c"
+
+
+```python
+#Ejemplo 1
+
+email = 'jose@tecladocode.com'
+expression = '[a-z]+'
+
+matches = re.findall(expression, email)
+print(matches)
+
+name = matches[0]
+domain = f'{matches[1]}.{matches[2]}'
+
+
+# Ejemplo 2:
+email = 'jose@tecladocode.com'
+expression = '[a-z\.]+'
+
+matches = re.findall(expression, email)
+print(matches)
+
+# Ejemplo 3:
+"""
+Let’s say you’ve got a price of an item in a strange format (e.g. extracted from a file):
+"""
+price = 'Price: $189.50'
+expression = 'Price: \$(\d+\.\d+)'
+
+matches = re.search(expression, price)
+print(matches.group(0))  # entire match
+print(matches.group(1))  # first thing around brackets
+```
+
+**OUTPUT:**
+
+```console
+['jose', 'tecladocode', 'com']
+['jose', 'tecladocode.com']
+Price: $189.50
+189.50
+
+Process finished with exit code 0
+```
+
+[Video: regular expression](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477774?start=0)  
+[WebSite: RegExr](https://regexr.com/)  
+[Python 3: re documentation](https://docs.python.org/3/library/re.html)
