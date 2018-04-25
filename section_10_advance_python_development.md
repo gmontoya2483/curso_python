@@ -558,10 +558,354 @@ Enter the date in YYYY-mm_dd format: 2010-05-25
 Process finished with exit code 0
 ```
 
+* Más sobre Naive ``date()``
+
+```python
+import datetime
+
+d = datetime.date(2016, 7, 24)
+print(d)
+print('\n')
+
+tday = datetime.date.today()
+print(tday)
+print(tday.year)
+print(tday.day)
+print(tday.month)
+print(tday.weekday())  # (Monday 0  Sunday 6)
+print(tday.isoweekday())  # (Monday 1  Sunday 7)
+```
+
+**OUTPUT:**
+
+```console
+2016-07-24
+
+
+2018-04-24
+2018
+24
+4
+1
+2
+
+Process finished with exit code 0
+```
+
+* Más sobre ``timedelta()``
+
+```python
+# Time deltas
+tday = datetime.date.today()
+tdelta = datetime.timedelta(days=7)
+print(f'Today: { tday }')
+print(f'+ 7 days: { tday + tdelta }')
+print(f'- 7 days: { tday - tdelta }')
+print('\n')
+
+# Calculando el delta
+bday = datetime.date(2019, 1, 9)
+tday = datetime.date.today()
+till_bday = bday - tday
+
+print(till_bday)
+print(till_bday.days)
+print(till_bday.total_seconds())
+```
+
+**OUTPUT:**
+
+```console
+Today: 2018-04-24
++ 7 days: 2018-05-01
+- 7 days: 2018-04-17
+
+
+260 days, 0:00:00
+260
+22464000.0
+
+Process finished with exit code 0
+```
+
+* Más sobre ``time()``
+
+```python
+import datetime
+
+# time
+t = datetime.time(9, 30, 45, 100000)
+print(t)
+print(t.hour)
+print(t.minute)
+print(t.second)
+print(t.microsecond)
+```
+
+**OUTPUT:**
+
+```console
+09:30:45.100000
+9
+30
+45
+100000
+
+Process finished with exit code 0
+```
+
+* Más sobre ``datetime()``
+
+```python
+import datetime
+
+# date time
+dt = datetime.datetime(2017, 5, 23, 13, 26, 40, 100000)
+print(dt)
+print(dt.year)
+print(dt.month)
+print(dt.day)
+print(dt.hour)
+
+print(dt.weekday())
+print(dt.isoweekday())
+print(dt.isocalendar())
+
+print(dt.time())
+print(dt.date())
+print('\n')
+```
+
+**OUTPUT:**
+
+```console
+02017-05-23 13:26:40.100000
+2017
+5
+23
+13
+1
+2
+(2017, 21, 2)
+13:26:40.100000
+2017-05-23
+
+Process finished with exit code 0
+```
+
+* constructores de ``datetime()``
+
+```python
+# date time constructors
+dt_fix_date = datetime.datetime(2017, 5, 23, 13, 26, 40, 100000)
+
+dt_today = datetime.datetime.today()  # Return the current local time without considering the time zone
+dt_now = datetime.datetime.now()  # Nos da la opcion de pasarle el time zone.
+dt_utcnow = datetime.datetime.utcnow()
+
+print(f'fixed date: { dt_fix_date }')
+print(f'date today: { dt_today }')
+print(f'date now: { dt_now }')
+print(f'date utcnow: { dt_utcnow }')
+```
+
+**OUTPUT:**
+
+```console
+fixed date: 2017-05-23 13:26:40.100000
+date today: 2018-04-24 14:20:28.246844
+date now: 2018-04-24 14:20:28.246843
+date utcnow: 2018-04-24 12:20:28.246843
+
+Process finished with exit code 0
+```
+
+* Uso de la libreria ``pytz`` para el manejo de timezones
+
+Instalar la libreria:
+
+```console
+pip install pytz
+```
+
+Crear un ``datetime`` que sea **Timezone aware**:  
+
+```python
+import datetime
+import pytz
+
+# Crear un datetime tz aware
+dt_fix_date_aware = datetime.datetime(206, 7, 27,12, 30,45, tzinfo=pytz.UTC)
+print(f'Fixed date tz aware UTC: { dt_fix_date_aware }')
+
+# usar el now, con el parametro del tz
+dt_now_aware = datetime.datetime.now(tz=pytz.UTC)
+print(f'Now date tz aware UTC: { dt_now_aware }')
+
+# usar el now, con el parametro del tz
+vienna_tz = pytz.timezone('Europe/Vienna')
+dt_vienna_now_aware = datetime.datetime.now(tz=vienna_tz)
+print(f'Now date in Vienna aware: { dt_vienna_now_aware }')
+
+
+# usar el utcnow(), y aplicarle el tz
+dt_utcnow_aware = datetime.datetime.utcnow().replace(tzinfo=pytz.UTC)
+print(f'utcnow tz aware replace(UTC): { dt_utcnow_aware }')
+
+print('\n')
+```
+
+**OUTPUT:**
+
+```console
+Fixed date tz aware UTC: 0206-07-27 12:30:45+00:00
+Now date tz aware UTC: 2018-04-25 09:24:02.154239+00:00
+Now date in Vienna aware: 2018-04-25 11:24:02.424266+02:00
+utcnow tz aware replace(UTC): 2018-04-25 09:24:02.424266+00:00
+
+Process finished with exit code 0
+```
+
+Convertir un ``datetime`` aware a diferentes **timeszones**:  
+
+```python
+# Convertir a diferentes time zones
+dt_utcnow = datetime.datetime.now(tz=pytz.UTC)
+dt_mtn = dt_utcnow.astimezone(pytz.timezone('US/Mountain'))
+dt_vienna = dt_utcnow.astimezone(pytz.timezone('Europe/Vienna'))
+dt_bs_as = dt_utcnow.astimezone(pytz.timezone('America/Argentina/Buenos_Aires'))
+
+print(f'UTC : { dt_utcnow }')
+print(f'US/Mountain : { dt_mtn }')
+print(f'Europe/Vienna : { dt_vienna }')
+print(f'America/Argentina/Buenos_Aires : { dt_bs_as }')
+
+print('\n')
+```
+
+**OUTPUT:**
+
+```console
+UTC : 2018-04-25 08:55:13.516114+00:00
+US/Mountain : 2018-04-25 02:55:13.516114-06:00
+Europe/Vienna : 2018-04-25 10:55:13.516114+02:00
+America/Argentina/Buenos_Aires : 2018-04-25 05:55:13.516114-03:00
+
+Process finished with exit code 0
+```
+
+Convertir un ``datetime`` **Naive** a **Aware**:  
+
+```python
+# Convertir un datetime Naive a Aware
+dt_vienna_naive = datetime.datetime.now()
+vienna_tz = pytz.timezone('Europe/Vienna')
+dt_vienna_aware = vienna_tz.localize(dt_vienna_naive)
+dt_utc_aware = dt_vienna_aware.astimezone(pytz.timezone('UTC'))
+
+print(f'Local datetime (naive) : { dt_vienna_naive }')
+print(f'Europe/Vienna (aware) : { dt_vienna_aware }')
+print(f'utc (aware) : { dt_utc_aware }')
+
+print('\n')
+```
+
+**OUTPUT:**
+
+```console
+Local datetime (naive) : 2018-04-25 10:55:13.700114
+Europe/Vienna (aware) : 2018-04-25 10:55:13.700114+02:00
+utc (aware) : 2018-04-25 08:55:13.700114+00:00
+
+Process finished with exit code 0
+```
+
+Darle formato a los ``datetime``:  
+
+```python
+# Formating dates
+dt = dt_utcnow.astimezone(pytz.timezone('Europe/Vienna'))
+print(f'ISO Format : { dt.isoformat() }')
+print(f"'%B %d, %Y': { dt.strftime('%B %d, %Y')}")
+
+print('\n')
+```
+
+**OUTPUT:**
+
+```console
+ISO Format : 2018-04-25T10:55:13.516114+02:00
+'%B %d, %Y': April 25, 2018
+
+Process finished with exit code 0
+```
+
+Convertir un ``str`` a un ``datetime``:  
+
+```python
+# Convertir un string a un datetime
+dt_str = 'July 26, 2016'
+dt = datetime.datetime.strptime(dt_str, '%B %d, %Y')
+print(f'Date from String: { dt }')
+```
+
+**OUTPUT:**
+
+```console
+Date from String: 2016-07-26 00:00:00
+
+Process finished with exit code 0
+```
+
+Como averiguar todos los **Timezones**:  
+
+```python
+# Avriguar todos los timezones
+for tz in pytz.all_timezones:
+    print(tz)
+```
+**OUTPUT:**
+
+```console
+Africa/Abidjan
+Africa/Accra
+Africa/Addis_Ababa
+Africa/Algiers
+Africa/Asmara
+Africa/Asmera
+Africa/Bamako
+Africa/Bangui
+Africa/Banjul
+Africa/Bissau
+Africa/Blantyre
+Africa/Brazzaville
+Africa/Bujumbura
+Africa/Cairo
+Africa/Casablanca
+Africa/Ceuta
+Africa/Conakry
+Africa/Dakar
+Africa/Dar_es_Salaam
+Africa/Djibouti
+Africa/Douala
+Africa/El_Aaiun
+Africa/Freetown
+Africa/Gaborone
+Africa/Harare
+Africa/Johannesburg
+Africa/Juba
+
+etc ...
+
+Process finished with exit code 0
+```
+
+
+
 [Video: Timezones](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477766?start=0)  
 [Video: Date and Times](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477768?start=0)  
-[Datetime-cheatsheet](Datetime-cheatsheet.pdf)
-
+[Datetime-cheatsheet](Datetime-cheatsheet.pdf)  
+[Video: How to work with dates, times, timedeltas and Timezones](https://www.youtube.com/watch?v=eirjjyP2qcQ&index=24&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)
 
 # Timing your code
 
