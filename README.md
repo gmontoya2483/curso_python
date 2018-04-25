@@ -84,6 +84,7 @@
 * [Timezones, datetime](section_10_advance_python_development.md#timezones-and-datetime)
 * [Timing your code](section_10_advance_python_development.md#timing-your-code)
 * [Regular expressions](section_10_advance_python_development.md#regular-expressions)
+* [Logging](section_10_advance_python_development.md#logging)
 
 ## Referencias
 

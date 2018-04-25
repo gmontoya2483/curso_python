@@ -13,6 +13,7 @@
 * [Timezones, datetime](#timezones-and-datetime)
 * [Timing your code](#timing-your-code)
 * [Regular expressions](#regular-expressions)
+* [Logging](#logging)
 
 ## Mutability
 
@@ -1028,4 +1029,45 @@ Process finished with exit code 0
 
 [Video: regular expression](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477774?start=0)  
 [WebSite: RegExr](https://regexr.com/)  
-[Python 3: re documentation](https://docs.python.org/3/library/re.html)
+[Python 3: re documentation](https://docs.python.org/3/library/re.html)  
+
+## Logging
+
+* Logging Levels:  
+
+>**CRITICAL:** 50  
+>**ERROR:** 40  
+>**WARNING:** 30  
+>**INFO:** 20  
+>**DEBUG:** 10  
+>**NOTSET:** 0  
+
+Example:  
+
+```python
+import logging
+
+logging.basicConfig(format='%(asctime)s %(levelname)-8s [%(name)s - %(filename)s:%(lineno)d] %(message)s',
+                    datefmt='%d-%m-%Y:%H:%M:%S',
+                    level=logging.DEBUG,
+                    filename='logging.log'
+                    )
+logger = logging.getLogger(__name__)
+
+logger.debug("This is a debug log")
+logger.info("This is an info log")
+logger.critical("This is critical")
+logger.error("An error occurred")
+
+```
+
+```console
+25-04-2018:14:48:00 DEBUG    [__main__ - logging_example.py:10] This is a debug log
+25-04-2018:14:48:00 INFO     [__main__ - logging_example.py:11] This is an info log
+25-04-2018:14:48:00 CRITICAL [__main__ - logging_example.py:12] This is critical
+25-04-2018:14:48:00 ERROR    [__main__ - logging_example.py:13] An error occurred
+```
+
+[Video: Introducción a logging](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477778?start=15)  
+[Video: Loggear en archivos y otras caracteristicas](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477780?start=0)  
+[Python Documentation](https://docs.python.org/3/library/logging.html)
