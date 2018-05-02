@@ -1,12 +1,6 @@
 import logging
 
 logger = logging.getLogger(__name__)
-file_handler = logging.FileHandler('employee.log')
-logger.addHandler(file_handler)
-logger.setLevel(logging.INFO)
-
-formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: %(message)s')
-file_handler.setFormatter(formatter)
 
 
 class Employee:
@@ -27,6 +21,3 @@ class Employee:
         return '{} {}'.format(self.first, self.last)
 
 
-emp_1 = Employee('John', 'Smith')
-emp_2 = Employee('Corey', 'Schafer')
-emp_3 = Employee('Jane', 'Doe')

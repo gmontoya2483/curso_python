@@ -14,6 +14,8 @@
 * [Timing your code](#timing-your-code)
 * [Regular expressions](#regular-expressions)
 * [Logging](#logging)
+* [Mas sobre logging](#mas-sobre-logging)
+* [Ejemplo como usar los logs en una applicacion](#ejemplo-como-usar-los-logs-en-una-applicacion)
 
 ## Mutability
 
@@ -1071,3 +1073,304 @@ logger.error("An error occurred")
 [Video: Introducción a logging](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477778?start=15)  
 [Video: Loggear en archivos y otras caracteristicas](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477780?start=0)  
 [Python Documentation](https://docs.python.org/3/library/logging.html)
+
+## Mas sobre logging
+
+### Niveles de Logs
+
+* ``DEBUG``: Detailed information, typically of interest only when diagnosing problems.
+* ``INFO``: Confirmation that things are working as expected.
+* ``WARNING``: An indication that something unexpected happened, or indicative of some problem in the near future (e.g. ‘disk space low’). The software is still working as expected.
+* ``ERROR``: Due to a more serious problem, the software has not been able to perform some function.
+* ``CRITICAL``: A serious error, indicating that the program itself may be unable to continue running.
+
+El nivel por defecto es ``WARNING``
+
+### Basic Logs
+
+* Ejemplo de un Logging basico - No hay import a otros modulos, por lo tanto no hay conflictos con los archivos de logs.
+
+```Python
+import logging
+
+logging.basicConfig(level=logging.DEBUG,
+                    filename='test.log',
+                    format='%(asctime)s: %(levelname)s: %(message)s')
+
+
+def add(x, y):
+    """ Add Function """
+    return x + y
+
+
+def subtract(x, y):
+    """ Subtract Function """
+    return x - y
+
+
+def multiply(x, y):
+    """ Multiply Function """
+    return x * y
+
+
+def divide(x, y):
+    """ Divide Function """
+    return x / y
+
+
+num_1 = 20
+num_2 = 10
+
+add_result = add(num_1, num_2)
+logging.debug(f'Add: { num_1 } + { num_2 } = { add_result }')
+
+sub_result = subtract(num_1, num_2)
+logging.debug(f'Sub: { num_1 } - { num_2 } = { sub_result }')
+
+mul_result = multiply(num_1, num_2)
+logging.debug(f'Mul: { num_1 } * { num_2 } = { mul_result }')
+
+div_result = divide(num_1, num_2)
+logging.debug(f'Div: { num_1 } / { num_2 } = { div_result }')
+```
+
+**Log File:**
+
+```Console
+2018-05-02 13:50:56,895: DEBUG: Add: 20 + 10 = 30
+2018-05-02 13:50:56,896: DEBUG: Sub: 20 - 10 = 10
+2018-05-02 13:50:56,896: DEBUG: Mul: 20 * 10 = 200
+2018-05-02 13:50:56,896: DEBUG: Div: 20 / 10 = 2.0
+```
+
+* Ejemplo de un Logging basico - No hay import a otros modulos, por lo tanto no hay conflictos con los archivos de logs.
+
+```python
+import logging
+
+logging.basicConfig(level=logging.INFO,
+                    filename='employee.log',
+                    format='%(asctime)s: %(levelname)s: %(message)s')
+
+class Employee:
+    """A sample Employee class"""
+
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+
+        logging.info('Created Employee: {} - {}'.format(self.fullname, self.email))
+
+    @property
+    def email(self):
+        return '{}.{}@email.com'.format(self.first, self.last)
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+
+emp_1 = Employee('John', 'Smith')
+emp_2 = Employee('Corey', 'Schafer')
+emp_3 = Employee('Jane', 'Doe')
+```
+
+**Log File:**
+
+```Console
+2018-05-02 13:57:06,883: INFO: Created Employee: John Smith - John.Smith@email.com
+2018-05-02 13:57:06,884: INFO: Created Employee: Corey Schafer - Corey.Schafer@email.com
+2018-05-02 13:57:06,884: INFO: Created Employee: Jane Doe - Jane.Doe@email.com
+```
+
+* Ejemplo Avanzado de logs.  
+En este caso una archivo de python importa otro archivo. Si se quieren loguear los modulos en difeentes archivos es necesario utilizar ``logger`` y ``FileHandler``  
+Utilizando **Handlers** también nos permite loggear en multiples salidas.  
+Utilizando el **logger**, se puede mostrar el traceback de una exception utilizando la función ``logger.exception()``
+
+``simple_log_sample.py``
+
+```python
+import logging
+import Section_10_1_Mas_Sobre_Logging.employee
+
+logger = logging.getLogger(__name__)
+file_handler = logging.FileHandler('sample.log')
+logger.addHandler(file_handler)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: %(message)s')
+file_handler.setFormatter(formatter)
+
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter)
+logger.addHandler(stream_handler)
+
+
+def add(x, y):
+    """ Add Function """
+    return x + y
+
+
+def subtract(x, y):
+    """ Subtract Function """
+    return x - y
+
+
+def multiply(x, y):
+    """ Multiply Function """
+    return x * y
+
+
+def divide(x, y):
+    """ Divide Function """
+    try:
+        result = x / y
+    except ZeroDivisionError:
+        logger.exception('Tried to divide by Zero')
+    else:
+        return result
+
+
+num_1 = 20
+num_2 = 0
+
+add_result = add(num_1, num_2)
+logger.debug(f'Add: { num_1 } + { num_2 } = { add_result }')
+
+sub_result = subtract(num_1, num_2)
+logger.debug(f'Sub: { num_1 } - { num_2 } = { sub_result }')
+
+mul_result = multiply(num_1, num_2)
+logger.debug(f'Mul: { num_1 } * { num_2 } = { mul_result }')
+
+div_result = divide(num_1, num_2)
+logger.debug(f'Div: { num_1 } / { num_2 } = { div_result }')
+```
+
+``employee.py``
+
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+file_handler = logging.FileHandler('employee.log')
+logger.addHandler(file_handler)
+logger.setLevel(logging.INFO)
+
+formater = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: %(message)s')
+file_handler.setFormatter(formater)
+
+
+class Employee:
+    """A sample Employee class"""
+
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+
+        logger.info(f'Created Employee: { self.fullname } - {self.email}')
+
+    @property
+    def email(self):
+        return '{}.{}@email.com'.format(self.first, self.last)
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+
+
+emp_1 = Employee('John', 'Smith')
+emp_2 = Employee('Corey', 'Schafer')
+emp_3 = Employee('Jane', 'Doe')
+```
+
+Al ejecutar ``simple_log_sample.py`` importa ``employee.py`` y se crea un archivo de log para cada archivo de python. Además los logs de ``simple_log_sample.py`` se muestran en cosola.
+
+**sample.log**
+
+```console
+2018-05-02 15:30:42,702: DEBUG: __main__: Add: 20 + 0 = 20
+2018-05-02 15:30:42,703: DEBUG: __main__: Sub: 20 - 0 = 20
+2018-05-02 15:30:42,703: DEBUG: __main__: Mul: 20 * 0 = 0
+2018-05-02 15:30:42,703: ERROR: __main__: Tried to divide by Zero
+Traceback (most recent call last):
+  File "C:/Users/montoya/Desktop/CursoPython/Section_10_1_Mas_Sobre_Logging/simple_log_sample.py", line 35, in divide
+    result = x / y
+ZeroDivisionError: division by zero
+2018-05-02 15:30:42,704: DEBUG: __main__: Div: 20 / 0 = None
+```
+
+**employee.log**
+
+```console
+2018-05-02 15:30:42,698: INFO: Section_10_1_Mas_Sobre_Logging.employee: Created Employee: John Smith - John.Smith@email.com
+2018-05-02 15:30:42,698: INFO: Section_10_1_Mas_Sobre_Logging.employee: Created Employee: Corey Schafer - Corey.Schafer@email.com
+2018-05-02 15:30:42,698: INFO: Section_10_1_Mas_Sobre_Logging.employee: Created Employee: Jane Doe - Jane.Doe@email.com
+```
+
+[Video: Logging Basics](https://www.youtube.com/watch?v=-ARI4Cz-awo&index=0&list=PL-osiE80TeTv5x_nJb-mtaEKg9Gi_-Nsh)  
+[Video: Advance Logging](https://www.youtube.com/watch?v=jxmzY9soFXg&index=1&list=PL-osiE80TeTv5x_nJb-mtaEKg9Gi_-Nsh)
+
+## Ejemplo como usar los logs en una applicacion
+
+**app.py**
+
+```python
+import logging
+from Section_10_Advance_Python_Development.Section_10_2_Ejemplo_logging_app.employee import Employee
+
+if __name__ == '__main__':
+
+    logging.basicConfig(format='%(asctime)s %(levelname)-8s [%(name)s:%(lineno)d] %(message)s',
+                        datefmt='%d-%m-%Y:%H:%M:%S',
+                        level=logging.DEBUG,
+                        filename='logging.log')
+    logger = logging.getLogger(__name__)
+
+    logger.info('Arranco el Main')
+
+    emp_1 = Employee('John', 'Smith')
+    emp_2 = Employee('Corey', 'Schafer')
+    emp_3 = Employee('Jane', 'Doe')
+```
+
+**employee.py**
+
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class Employee:
+    """A sample Employee class"""
+
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+
+        logger.info(f'Created Employee: { self.fullname } - {self.email}')
+
+    @property
+    def email(self):
+        return '{}.{}@email.com'.format(self.first, self.last)
+
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+```
+
+**logging.log**
+
+```console
+02-05-2018:16:21:04 INFO     [__main__ - app.py:12] Arranco el Main
+02-05-2018:16:21:04 INFO     [Section_10_Advance_Python_Development.Section_10_2_Ejemplo_logging_app.employee - employee.py:13] Created Employee: John Smith - John.Smith@email.com
+02-05-2018:16:21:04 INFO     [Section_10_Advance_Python_Development.Section_10_2_Ejemplo_logging_app.employee - employee.py:13] Created Employee: Corey Schafer - Corey.Schafer@email.com
+02-05-2018:16:21:04 INFO     [Section_10_Advance_Python_Development.Section_10_2_Ejemplo_logging_app.employee - employee.py:13] Created Employee: Jane Doe - Jane.Doe@email.com
+02-05-2018:16:23:02 INFO     [__main__:12] Arranco el Main
+02-05-2018:16:23:02 INFO     [Section_10_Advance_Python_Development.Section_10_2_Ejemplo_logging_app.employee:13] Created Employee: John Smith - John.Smith@email.com
+02-05-2018:16:23:02 INFO     [Section_10_Advance_Python_Development.Section_10_2_Ejemplo_logging_app.employee:13] Created Employee: Corey Schafer - Corey.Schafer@email.com
+02-05-2018:16:23:02 INFO     [Section_10_Advance_Python_Development.Section_10_2_Ejemplo_logging_app.employee:13] Created Employee: Jane Doe - Jane.Doe@email.com
+```
+
