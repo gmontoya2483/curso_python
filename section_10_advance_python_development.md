@@ -16,6 +16,7 @@
 * [Logging](#logging)
 * [Mas sobre logging](#mas-sobre-logging)
 * [Ejemplo como usar los logs en una applicacion](#ejemplo-como-usar-los-logs-en-una-applicacion)
+* [Ejemplo Rotating Log](#ejemplo-rotating-Log)
 
 ## Mutability
 
@@ -1373,4 +1374,92 @@ class Employee:
 02-05-2018:16:23:02 INFO     [Section_10_Advance_Python_Development.Section_10_2_Ejemplo_logging_app.employee:13] Created Employee: Corey Schafer - Corey.Schafer@email.com
 02-05-2018:16:23:02 INFO     [Section_10_Advance_Python_Development.Section_10_2_Ejemplo_logging_app.employee:13] Created Employee: Jane Doe - Jane.Doe@email.com
 ```
+
+## Ejemplo Rotating Log
+
+### RotatingFileHandler
+
+La clase ``RotatingFileHandler`` nos permite crear objetos ``logging handler`` que tienen la habilidad de rotar los archivos de logs de acuerdo al tamano, especificandole la propiedad ``maxBytes``.  
+Tambien se le debe agregar la propiedad ``backupCount`` que va a servir para agregar los contadores '.1','.2', '.3', etc. Esta propiedad es la cantidad maxima de backup que se van a guardar.  
+
+* Ejemplo:
+
+```python
+import logging
+import time
+
+from logging.handlers import RotatingFileHandler
+
+
+if __name__ == '__main__':
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+
+    # agregar el rotating handler
+    handler = RotatingFileHandler('test_rotating.log', maxBytes=20, backupCount=3)
+    formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: %(message)s')
+    handler.setFormatter(formatter)
+
+    logger.addHandler(handler)
+
+    for i in range(10):
+        logger.info(f'Este es el log: { i }')
+        time.sleep(1.5)
+```
+
+**Output**
+
+``test_rotating.log``  
+``test_rotating.log.1``  
+``test_rotating.log.2``  
+``test_rotating.log.3`` 
+
+### TimedRotatingFileHandler
+
+La clase ``RotatingFileHandler`` nos permite crear objetos ``logging handler`` que tienen la habilidad de rotar los archivos de logs de acuerdo al tiempo que ha pasado, especificandole la propiedad ``when`` y la propiedad ``interval``.  
+
+Se le puede asignar a la propiedad ``when`` los siguientes valores:
+
+* **'s'** segundo
+* **'m'** minuto
+* **'h'** hora
+* **'d'** dia
+* **'w0' - 'w1' (0 = Lunes)** día de la semana  
+* **'midnight'** a la medianoche
+
+Cuando se especifica **w** el valor pasado como ``interval`` no es tenido en cuenta.
+
+Tambien se le debe agregar la propiedad ``backupCount`` para determinar la cantidad maxima de backup que se van a guardar. A cada backup se le va a agregar un timestamp con el siguiente formato: ``%Y-%m-%d_%H-%M-%S``
+
+* Ejemplo
+
+```python
+import logging
+import time
+
+from logging.handlers import TimedRotatingFileHandler
+
+
+if __name__ == '__main__':
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+
+    # agregar el rotating handler
+    handler = TimedRotatingFileHandler('test_timed_rotating.log', when='m', interval=1, backupCount=3)
+    formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(name)s: %(message)s')
+    handler.setFormatter(formatter)
+
+    logger.addHandler(handler)
+
+    for i in range(4):
+        logger.info(f'Este es el log: { i }')
+        time.sleep(75)
+``` 
+
+**Output**
+
+``test_timed_rotating.log``  
+``test_timed_rotating.log.2018-05-03_12-35``  
+``test_timed_rotating.log.2018-05-03_12-36``  
+``test_timed_rotating.log.2018-05-03_12-37`` 
 

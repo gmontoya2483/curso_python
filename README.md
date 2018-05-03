@@ -87,6 +87,7 @@
 * [Logging](section_10_advance_python_development.md#logging)
 * [Mas sobre logging](section_10_advance_python_development.md#mas-sobre-logging)
 * [Ejemplo como usar los logs en una applicacion](section_10_advance_python_development.md#ejemplo-como-usar-los-logs-en-una-applicacion)
+* [Ejemplo Rotating Log](section_10_advance_python_development.md#ejemplo-rotating-Log)
 
 ## Referencias
 
