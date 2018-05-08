@@ -17,6 +17,7 @@
 * [Mas sobre logging](#mas-sobre-logging)
 * [Ejemplo como usar los logs en una applicacion](#ejemplo-como-usar-los-logs-en-una-applicacion)
 * [Ejemplo Rotating Log](#ejemplo-rotating-Log)
+* [Mas sobre Regular Expressions](#mas-sobre-regular-expressions)
 
 ## Mutability
 
@@ -1454,12 +1455,286 @@ if __name__ == '__main__':
     for i in range(4):
         logger.info(f'Este es el log: { i }')
         time.sleep(75)
-``` 
+```
 
-**Output**
+**Output:**
 
 ``test_timed_rotating.log``  
 ``test_timed_rotating.log.2018-05-03_12-35``  
 ``test_timed_rotating.log.2018-05-03_12-36``  
 ``test_timed_rotating.log.2018-05-03_12-37`` 
 
+## Mas sobre Regular Expressions
+
+
+### Raw string
+
+No tiene en cuenta los caracteres de escape.  
+Ejemplo:
+
+```Python
+print('\tTab')
+print(r'\tTab')
+```
+
+**Output:**
+
+```console
+	Tab
+\tTab
+
+Process finished with exit code 0
+```
+
+### Ejemplos de Regex
+
+```python
+import re
+
+text_to_search = '''
+abcdefghijklmnopqurtuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+1234567890
+
+Ha HaHa
+
+MetaCharacters (Need to be escaped):
+.[{()\^$|?*+
+
+coreyms.com
+
+321--555-4321
+321-555-4321
+123.555.1234
+123*555*1234
+
+800-555-4321
+900-555-4321
+
+Mr. Schafer
+Mr Smith
+Ms Davis
+Mrs. Robinson
+Mr. T
+'''
+
+sentence = 'Start a sentence and then bring it to an end'
+```
+
+* Búsqueda simple:
+
+```python
+if __name__ == '__main__':
+
+    # Búsqueda simple
+    pattern = re.compile(r'abc')
+    matches = pattern.finditer(text_to_search)
+    for match in matches:
+        print(match)
+
+    print(text_to_search[1:4])
+```
+
+**Output:**
+
+```console
+<_sre.SRE_Match object; span=(1, 4), match='abc'>
+abc
+
+Process finished with exit code 0
+```
+
+* Buscar los . :
+
+```python
+if __name__ == '__main__':
+
+    # Búsqueda simple
+    pattern = re.compile(r'\.')
+    matches = pattern.finditer(text_to_search)
+    for match in matches:
+        print(match)
+```
+
+**Output:**
+
+```console
+<_sre.SRE_Match object; span=(113, 114), match='.'>
+<_sre.SRE_Match object; span=(134, 135), match='.'>
+<_sre.SRE_Match object; span=(170, 171), match='.'>
+<_sre.SRE_Match object; span=(174, 175), match='.'>
+<_sre.SRE_Match object; span=(223, 224), match='.'>
+<_sre.SRE_Match object; span=(254, 255), match='.'>
+<_sre.SRE_Match object; span=(267, 268), match='.'>
+
+Process finished with exit code 0
+```
+
+* Buscar Numeros de Telefono :
+
+```python
+if __name__ == '__main__':
+
+    # Buscar numeros de telefono
+    pattern = re.compile(r'\d{3}[.-]\d{3}[.-]\d{4}')
+    matches = pattern.finditer(text_to_search)
+    for match in matches:
+        print(match)
+    print('\n')
+```
+
+**Output:**
+
+```console
+<_sre.SRE_Match object; span=(154, 166), match='321-555-4321'>
+<_sre.SRE_Match object; span=(167, 179), match='123.555.1234'>
+<_sre.SRE_Match object; span=(194, 206), match='800-555-4321'>
+<_sre.SRE_Match object; span=(207, 219), match='900-555-4321'>
+
+Process finished with exit code 0
+```
+
+* Buscar Apellidos :
+
+```python
+if __name__ == '__main__':
+
+    # Buscar apellidos
+    pattern = re.compile(r'(Mr|Ms|Mrs).?\s[A-Z]\w*')
+    matches = pattern.finditer(text_to_search)
+    for match in matches:
+        print(match)
+        print(match.group(0))
+        print(match.group(1))
+
+    print('\n')
+```
+
+**Output:**
+
+```console
+<_sre.SRE_Match object; span=(221, 232), match='Mr. Schafer'>
+Mr. Schafer
+Mr
+<_sre.SRE_Match object; span=(233, 241), match='Mr Smith'>
+Mr Smith
+Mr
+<_sre.SRE_Match object; span=(242, 250), match='Ms Davis'>
+Ms Davis
+Ms
+<_sre.SRE_Match object; span=(251, 264), match='Mrs. Robinson'>
+Mrs. Robinson
+Mrs
+<_sre.SRE_Match object; span=(265, 270), match='Mr. T'>
+Mr. T
+Mr
+
+Process finished with exit code 0
+```
+
+* Buscar e-mails :
+
+```python
+import re
+
+emails = '''
+CoreyMSchafer@gmail.com
+corey.schafer@university.edu
+corey-321-schafer@my-work.net
+gabi.montoya@gmail.com.ar
+'''
+
+if __name__ == '__main__':
+
+    pattern = re.compile(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')
+    matches = pattern.finditer(emails)
+    for match in matches:
+        print(match)
+        print(match.group(0))
+```
+
+**Output:**
+
+```console
+<_sre.SRE_Match object; span=(1, 24), match='CoreyMSchafer@gmail.com'>
+CoreyMSchafer@gmail.com
+<_sre.SRE_Match object; span=(25, 53), match='corey.schafer@university.edu'>
+corey.schafer@university.edu
+<_sre.SRE_Match object; span=(54, 83), match='corey-321-schafer@my-work.net'>
+corey-321-schafer@my-work.net
+<_sre.SRE_Match object; span=(84, 109), match='gabi.montoya@gmail.com.ar'>
+gabi.montoya@gmail.com.ar
+
+Process finished with exit code 0
+```
+
+* Buscar urls, groups y substitutions :
+
+```python
+import re
+
+urls = '''
+https://www.google.com
+http://coreyms.com
+https://youtube.com
+https://www.nasa.gov
+'''
+
+if __name__ == '__main__':
+
+    # Creación de grupos
+    pattern = re.compile(r'https?://(www\.)?(\w+)(\.\w+)')
+    matches = pattern.finditer(urls)
+    for match in matches:
+        print(match)
+        print(match.group(0))
+        print(match.group(1))
+        print(match.group(2))
+        print(match.group(3))
+    print('\n')
+
+    # Substitutions
+    pattern = re.compile(r'https?://(www\.)?(\w+)(\.\w+)')
+    subbed_urls = pattern.sub(r'\2\3', urls)
+    print(subbed_urls)
+    print('\n')
+```
+
+**Output:**
+
+```console
+<_sre.SRE_Match object; span=(1, 23), match='https://www.google.com'>
+https://www.google.com
+www.
+google
+.com
+<_sre.SRE_Match object; span=(24, 42), match='http://coreyms.com'>
+http://coreyms.com
+None
+coreyms
+.com
+<_sre.SRE_Match object; span=(43, 62), match='https://youtube.com'>
+https://youtube.com
+None
+youtube
+.com
+<_sre.SRE_Match object; span=(63, 83), match='https://www.nasa.gov'>
+https://www.nasa.gov
+www.
+nasa
+.gov
+
+
+
+google.com
+coreyms.com
+youtube.com
+nasa.gov
+
+
+Process finished with exit code 0
+```
+
+
+[Video: Regular Expressions (Regex) Tutorial: How to Match Any Pattern of Text](https://www.youtube.com/watch?v=sa-TUpSx1JA)  
+[Video: Regex](https://www.youtube.com/watch?v=K8L6KVGG-7o&index=29&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)
