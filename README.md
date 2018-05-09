@@ -87,8 +87,13 @@
 * [Logging](section_10_advance_python_development.md#logging)
 * [Mas sobre logging](section_10_advance_python_development.md#mas-sobre-logging)
 * [Ejemplo como usar los logs en una applicacion](section_10_advance_python_development.md#ejemplo-como-usar-los-logs-en-una-applicacion)
-* [Ejemplo Rotating Log](section_10_advance_python_development.md#ejemplo-rotating-Log)
+* [Ejemplo Rotating Log](section_10_advance_python_development.md#ejemplo-rotating-log)
 * [Mas sobre Regular Expressions](section_10_advance_python_development.md#mas-sobre-regular-expressions)
+
+## [Section 11: Web Scraping](section_11_web_scraping.md)
+* [Understanding HTML con BeautifulSoup](section_11_web_scraping.md#understanding-html-con-beautifuldsoup)
+
+
 
 ## Referencias
 

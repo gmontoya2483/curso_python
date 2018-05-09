@@ -16,7 +16,7 @@
 * [Logging](#logging)
 * [Mas sobre logging](#mas-sobre-logging)
 * [Ejemplo como usar los logs en una applicacion](#ejemplo-como-usar-los-logs-en-una-applicacion)
-* [Ejemplo Rotating Log](#ejemplo-rotating-Log)
+* [Ejemplo Rotating Log](#ejemplo-rotating-log)
 * [Mas sobre Regular Expressions](#mas-sobre-regular-expressions)
 
 ## Mutability
