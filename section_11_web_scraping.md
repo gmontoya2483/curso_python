@@ -8,6 +8,8 @@
 * [More complex Html parsing](#more-complex-html-parsing)
 * [Estructurar el parseador en forma correcta](#estructurar-el-parseador-en-forma-correcta)
 * [Extraer los locators](#extraer-los-locators)
+* [Entendiendo HTML usando el browser](#entendiendo-html-usando-el-browser)
+* [Scrapping our first WebSite](#scrapping-our-first-website)
 
 
 ## Understanding HTML con BeautifulSoup
@@ -469,6 +471,37 @@ Three
 Process finished with exit code 0
 ```
 [Video: Separar los locators de la clase parser:](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477888?start=0)
+
+## Entendiendo HTML usando el browser
+
+[Video: Understanding HTML with the browser](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477890?start=0)
+
+## Scrapping our first WebSite
+
+> **NOTA:** Para poder abrir el contenido de una pagina web es necesario importar la librería ``requests``
+```python
+import requests
+from bs4 import BeautifulSoup
+
+page = requests.get('http://www.example.com/')
+print(page.content)
+
+soup = BeautifulSoup(page.content, 'html.parser')
+print(soup.find('h1').string)
+print(soup.select_one('p a').attrs['href'])
+```
+
+**OUTPUT:**
+
+```console
+b'<!doctype html>\n<html>\n<head>\n    <title>Example Domain</title>\n\n    <meta charset="utf-8" />\n    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    <style type="text/css">\n    body {\n        background-color: #f0f0f2;\n        margin: 0;\n        padding: 0;\n        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;\n        \n    }\n    div {\n        width: 600px;\n        margin: 5em auto;\n        padding: 50px;\n        background-color: #fff;\n        border-radius: 1em;\n    }\n    a:link, a:visited {\n        color: #38488f;\n        text-decoration: none;\n    }\n    @media (max-width: 700px) {\n        body {\n            background-color: #fff;\n        }\n        div {\n            width: auto;\n            margin: 0 auto;\n            border-radius: 0;\n            padding: 1em;\n        }\n    }\n    </style>    \n</head>\n\n<body>\n<div>\n    <h1>Example Domain</h1>\n    <p>This domain is established to be used for illustrative examples in documents. You may use this\n    domain in examples without prior coordination or asking for permission.</p>\n    <p><a href="http://www.iana.org/domains/example">More information...</a></p>\n</div>\n</body>\n</html>\n'
+Example Domain
+http://www.iana.org/domains/example
+
+Process finished with exit code 0
+
+```
+[Video: Scrapping our first WebSite](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477894?start=0)
 
 
 ## Referencias:

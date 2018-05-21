@@ -95,6 +95,8 @@
 * [More complex Html parsing](section_11_web_scraping.md#more-complex-html-parsing)
 * [Estructurar el parseador en forma correcta](section_11_web_scraping.md#estructurar-el-parseador-en-forma-correcta)
 * [Extraer los locators](section_11_web_scraping.md#extraer-los-locators)
+* [Entendiendo HTML usando el browser](section_11_web_scraping.md#entendiendo-html-usando-el-browser)
+* [Scrapping our first WebSite](section_11_web_scraping.md#scrapping-our-first-website)
 
 
 
