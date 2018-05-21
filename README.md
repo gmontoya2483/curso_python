@@ -92,6 +92,7 @@
 
 ## [Section 11: Web Scraping](section_11_web_scraping.md)
 * [Understanding HTML con BeautifulSoup](section_11_web_scraping.md#understanding-html-con-beautifuldsoup)
+* [More complex Html parsing](section_11_web_scraping.md#more-complex-html-parsing)
 
 
 
@@ -99,3 +100,4 @@
 
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
 [Python Loggings Basics by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTv5x_nJb-mtaEKg9Gi_-Nsh)
+[Github - tecladocode -complete-python-course](https://github.com/tecladocode/complete-python-course)
