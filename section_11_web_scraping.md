@@ -10,13 +10,14 @@
 * [Extraer los locators](#extraer-los-locators)
 * [Entendiendo HTML usando el browser](#entendiendo-html-usando-el-browser)
 * [Scrapping our first WebSite](#scrapping-our-first-website)
+* [Project: Quotes Scraper](#project-quotes-scraper)
 
 
 ## Understanding HTML con BeautifulSoup
 
 * Instalar la libreria ``beautifulsoup4``
 
-![Python banner](documentation/add_beatifulsoup4.png)
+![Librerias](documentation/add_beatifulsoup4.png)
 
 * Ejemplo Simple como usar BeautifulSoup:
 
@@ -502,6 +503,135 @@ Process finished with exit code 0
 
 ```
 [Video: Scrapping our first WebSite](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477894?start=0)
+
+
+## Project: Quotes Scraper
+
+### Estructura del proyecto:
+
+![Esctructura del Proyecto](documentation/quotes_scraper_structure.png)
+
+### Defininir los locators
+
+* ``quotes_page_locators.py``
+```python
+class QuotesPageLocators:
+    QUOTE = 'div.quote'
+```
+
+* ``quote_locators.py``
+```python
+class QuoteLocators:
+    AUTHOR = 'small.author'
+    CONTENT = 'span.text'
+    TAGS = 'div.tags a.tag'
+```
+ 
+### Definir el Quote parser
+
+* ``quote.py``
+
+```python
+from Section_11_Web_Scraping.ProjectQuotesScraper.locators.quote_locators import QuoteLocators
+from bs4 import BeautifulSoup
+
+
+class QuoteParser:
+    """
+    Given one of the specific quote divs(page_section), find out the data about the quote (quote content, author, tags).
+    """
+
+    def __init__(self, page_section: BeautifulSoup):
+        self.page_section = page_section
+
+    def __repr__(self):
+        return f'<Quote {self.content}, by {self.author}>'
+
+    @property
+    def content(self):
+        locator = QuoteLocators.CONTENT
+        return self.page_section.select_one(locator).string
+
+    @property
+    def author(self):
+        locator = QuoteLocators.AUTHOR
+        return self.page_section.select_one(locator).string
+
+    @property
+    def tags(self):
+        locator = QuoteLocators.TAGS
+        return [tag.string for tag in self.page_section.select(locator)]
+        
+        
+```
+
+### Definir la Quote page
+
+* ``quote_page.py``
+
+```python
+from bs4 import BeautifulSoup
+
+from Section_11_Web_Scraping.ProjectQuotesScraper.locators.quotes_page_locators import QuotesPageLocators
+from Section_11_Web_Scraping.ProjectQuotesScraper.parsers.quote import QuoteParser
+
+
+class QuotePage:
+    def __init__(self, page):
+        self.soup = BeautifulSoup(page, 'html.parser')
+
+    @property
+    def quotes(self):
+        locator = QuotesPageLocators.QUOTE
+        quotes = self.soup.select(locator)
+        return [QuoteParser(quote) for quote in quotes]
+
+
+```
+
+### Integrar la aplicación
+
+* ``app.py``
+
+```python
+import requests
+from Section_11_Web_Scraping.ProjectQuotesScraper.pages.quotes_page import QuotePage
+
+
+if __name__ == '__main__':
+    page_content = requests.get('http://quotes.toscrape.com').content
+    page = QuotePage(page_content)
+
+    for quote in page.quotes:
+        print(quote)
+
+```
+**OUTPUT:**
+
+```console
+<Quote “The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”, by Albert Einstein>
+<Quote “It is our choices, Harry, that show what we truly are, far more than our abilities.”, by J.K. Rowling>
+<Quote “There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”, by Albert Einstein>
+<Quote “The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”, by Jane Austen>
+<Quote “Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.”, by Marilyn Monroe>
+<Quote “Try not to become a man of success. Rather become a man of value.”, by Albert Einstein>
+<Quote “It is better to be hated for what you are than to be loved for what you are not.”, by André Gide>
+<Quote “I have not failed. I've just found 10,000 ways that won't work.”, by Thomas A. Edison>
+<Quote “A woman is like a tea bag; you never know how strong it is until it's in hot water.”, by Eleanor Roosevelt>
+<Quote “A day without sunshine is like, you know, night.”, by Steve Martin>
+
+Process finished with exit code 0
+
+```
+
+[Video: Milestone Project: A Quote Scraper](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477898?start=0)  
+[Video: Estructurando una app de scraping](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477906?start=0)  
+[Video: Definiendo los locators](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477914?start=0)  
+[Video: Definir el Quote parser](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477920?start=0)  
+[Video: The Quotes page](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477928?start=0)  
+[Video: Recap the Quote project](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477942?start=0)
+
+
 
 
 ## Referencias:
