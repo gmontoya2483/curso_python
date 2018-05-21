@@ -9,5 +9,9 @@ __pycache__/
 # database
 # data.db
 
-# .idea
+
+#.idea
 .idea/
+
+#Logs
+*.log

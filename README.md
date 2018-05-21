@@ -60,8 +60,42 @@
 
 * [Milestone: Project 2 (en memoria)](section_07_databases.md#milestone-project-2-en-memoria)
 * [Milestone: Project 2 (en un CSV file)](section_07_databases.md#milestone-project-2-en-un-csv-file)
+* [Milestone: Project 2 (en un Json file)](section_07_databases.md#milestone-project-2-en-un-json-file)
+* [Developing Context Manager](section_07_databases.md#developing-context-manager)
+
+## [Section 09: Advance Built in Functions](section_09_advance_built_in_functions.md)
+
+* [Generators](section_09_advance_built_in_functions.md#generators)
+* [Generators classes and iterators](section_09_advance_built_in_functions.md#generators-classes-and-iterators)
+* [Iterables](section_09_advance_built_in_functions.md#iterables)
+* [Filter function](section_09_advance_built_in_functions.md#filter-function)
+* [Map function](section_09_advance_built_in_functions.md#map-function)
+* [any and all functions](section_09_advance_built_in_functions.md#any-and-all-functions)
+* [enumerate function](section_09_advance_built_in_functions.md#enumerate-function)
+
+## [Section 10: Advance Python Development](section_10_advance_python_development.md)
+
+* [Mutability](section_10_advance_python_development.md#mutability)
+* [Argument Mutability](section_10_advance_python_development.md#argument-mutability)
+* [Default values for parameters](section_10_advance_python_development.md#default-values-for-parameters)
+* [Mutable default arguments - Bad idea](section_10_advance_python_development.md#mutable-default-arguments)
+* [Argument unpacking](section_10_advance_python_development.md#argument-unpacking)
+* [Collections](section_10_advance_python_development.md#collections)
+* [Timezones, datetime](section_10_advance_python_development.md#timezones-and-datetime)
+* [Timing your code](section_10_advance_python_development.md#timing-your-code)
+* [Regular expressions](section_10_advance_python_development.md#regular-expressions)
+* [Logging](section_10_advance_python_development.md#logging)
+* [Mas sobre logging](section_10_advance_python_development.md#mas-sobre-logging)
+* [Ejemplo como usar los logs en una applicacion](section_10_advance_python_development.md#ejemplo-como-usar-los-logs-en-una-applicacion)
+* [Ejemplo Rotating Log](section_10_advance_python_development.md#ejemplo-rotating-log)
+* [Mas sobre Regular Expressions](section_10_advance_python_development.md#mas-sobre-regular-expressions)
+
+## [Section 11: Web Scraping](section_11_web_scraping.md)
+* [Understanding HTML con BeautifulSoup](section_11_web_scraping.md#understanding-html-con-beautifuldsoup)
+
 
 
 ## Referencias
 
-[Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)
+[Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
+[Python Loggings Basics by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTv5x_nJb-mtaEKg9Gi_-Nsh)
