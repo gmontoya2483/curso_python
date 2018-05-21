@@ -93,6 +93,8 @@
 ## [Section 11: Web Scraping](section_11_web_scraping.md)
 * [Understanding HTML con BeautifulSoup](section_11_web_scraping.md#understanding-html-con-beautifuldsoup)
 * [More complex Html parsing](section_11_web_scraping.md#more-complex-html-parsing)
+* [Estructurar el parseador en forma correcta](section_11_web_scraping.md#estructurar-el-parseador-en-forma-correcta)
+* [Extraer los locators](section_11_web_scraping.md#extraer-los-locators)
 
 
 
