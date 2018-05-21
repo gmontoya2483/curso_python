@@ -8,3 +8,6 @@ __pycache__/
 
 # database
 # data.db
+
+# .idea
+.idea/
