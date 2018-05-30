@@ -11,6 +11,7 @@
 * [Entendiendo HTML usando el browser](#entendiendo-html-usando-el-browser)
 * [Scrapping our first WebSite](#scrapping-our-first-website)
 * [Project: Quotes Scraper](#project-quotes-scraper)
+* [Project: Books scraper project](#project-books-scraper-project)
 
 
 ## Understanding HTML con BeautifulSoup
@@ -632,7 +633,113 @@ Process finished with exit code 0
 [Video: Recap the Quote project](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477942?start=0)
 
 
+## Project: Books scraper project
 
+### Estructura del proyecto:
+
+![Esctructura del Proyecto](documentation/quotes_scraper_structure.png)
+
+
+### Defininir los locators
+
+* ``book_locators.py``
+```python
+class BookLocators:
+    NAME_LOCATOR = 'article.product_pod h3 a'
+    LINK_LOCATOR = 'article.product_pod h3 a'
+    PRICE_LOCATOR = 'article.product_pod p.price_color'
+    RATING_LOCATOR = 'article.product_pod p.star - rating'
+```
+
+* ``all_books_page_locators.py``
+```python
+class AllBooksPageLocators:
+    BOOKS = 'div.page div.page_inner section li.col-xs-6.col-sm-4.col-md-3.col-lg-3'
+```
+
+### Defininir los locators
+
+* ``all_books_page.py``
+
+```python
+from bs4 import BeautifulSoup
+from Section_11_Web_Scraping.ProjectBooksScraper.locators.all_books_page_locators import AllBooksPageLocators
+from Section_11_Web_Scraping.ProjectBooksScraper.parsers.book_parser import BookParser
+
+
+class AllBooksPage:
+    def __init__(self, page_content):
+        self.soup = BeautifulSoup(page_content, 'html.parser')
+
+    @property
+    def books(self):
+        return [BookParser(e) for e in self.soup.select(AllBooksPageLocators.BOOKS)]
+```
+
+### Crear el book parser
+
+```python
+import re
+from Section_11_Web_Scraping.ProjectBooksScraper.locators.book_locators import BookLocators
+
+
+class BookParser:
+    """
+    A class to take in an HTML page (or part of it), and find properties of an item in it
+    """
+
+    RATINGS = {
+        'One': 1,
+        'Two': 2,
+        'Three': 3,
+        'Four': 4,
+        'Five': 5
+    }
+
+    def __init__(self, parent):
+        self.parent = parent
+
+    @property
+    def name(self):
+        locator = BookLocators.NAME_LOCATOR
+        item_link = self.parent.select_one(locator)
+        item_name = item_link.attrs['title']
+        return item_name
+
+    @property
+    def link(self):
+        locator = BookLocators.LINK_LOCATOR
+        item_link = self.parent.select_one(locator).attrs['href']
+        return item_link
+
+    @property
+    def price(self):
+        locator = BookLocators.PRICE_LOCATOR
+        item_price = self.parent.select_one(locator).string  # £51.77
+
+        pattern = '£(\d+\.\d+)'
+        matches = re.search(pattern, item_price)
+        return float(matches.group(1))
+
+    @property
+    def rating(self):
+        locator = BookLocators.RATING_LOCATOR
+        star_rating_tag = self.parent.select_one(locator)
+        classes = star_rating_tag.attrs['class']  # ['star-rating', 'Three']
+        rating_classes = [class_item for class_item in classes if class_item != 'star-rating']
+        rating_number = BookParser.RATINGS.get(rating_classes[0])
+        return rating_number
+```
+
+> NOTA: la ``@property`` ``books``  devuelve una lista de ``Booksparser`` (``BeatifulSoup`` objects)
+
+
+[Video 1: Book Scraper + application](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477954?start=0)  
+[Video 2: HTML Locators](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477964?start=0)  
+[Video 3: Creating the Locators](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477978?start=0)  
+[Video 4: Creating our Book Page](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477984?start=0)  
+[Video 5: Creating our Book Parser](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477994?start=0)  
+[Video 6: Writing our app file](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477998?start=0)
 
 ## Referencias:
 [Github - tecladocode -complete-python-course](https://github.com/tecladocode/complete-python-course/tree/master/section11/projects)

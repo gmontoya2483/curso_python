@@ -98,6 +98,7 @@
 * [Entendiendo HTML usando el browser](section_11_web_scraping.md#entendiendo-html-usando-el-browser)
 * [Scrapping our first WebSite](section_11_web_scraping.md#scrapping-our-first-website)
 * [Project: Quotes Scraper](section_11_web_scraping.md##project-quotes-scraper)
+* [Project: Books scraper project](section_11_web_scraping.md#project-books-scraper-project)
 
 
 
