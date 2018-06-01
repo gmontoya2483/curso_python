@@ -872,6 +872,82 @@ def menu():
 
 ```
 
+### Obtener todas las paginas (paginas totales hardcoded)
+
+* ``app.py``
+
+```python
+import requests
+from Section_11_Web_Scraping.ProjectBooksScraper.pages.all_books_page import AllBooksPage
+
+page_content = requests.get('http://books.toscrape.com').content
+page = AllBooksPage(page_content)
+
+books = page.books
+
+for page_num in range(1, 50):
+    url = f'http://books.toscrape.com/catalogue/page-{page_num+1}.html'
+    page_content = requests.get(url).content
+    page = AllBooksPage(page_content)
+    books.extend(page.books)
+
+```
+
+### Obtener la cantidad de paginas (scraper)
+
+* ``all_books_page_locators.py``
+
+```python
+class AllBooksPageLocators:
+    BOOKS = 'div.page div.page_inner section li.col-xs-6.col-sm-4.col-md-3.col-lg-3'
+    PAGER = 'div.page div.page_inner section ul.pager li.current'
+```
+
+* ``all_books_page.py``
+```python
+import re
+from bs4 import BeautifulSoup
+
+from Section_11_Web_Scraping.ProjectBooksScraper.locators.all_books_page_locators import AllBooksPageLocators
+from Section_11_Web_Scraping.ProjectBooksScraper.parsers.book_parser import BookParser
+
+
+class AllBooksPage:
+    def __init__(self, page_content):
+        self.soup = BeautifulSoup(page_content, 'html.parser')
+
+    @property
+    def books(self):
+        return [BookParser(e) for e in self.soup.select(AllBooksPageLocators.BOOKS)]
+
+    @property
+    def page_count(self):
+        content = self.soup.select_one(AllBooksPageLocators.PAGER).string
+
+        pattern = 'Page [0-9]+ of ([0-9]+)'
+        matcher = re.search(pattern, content)
+        return int(matcher.group(1))
+
+```
+
+* ``app.py``
+
+```python
+import requests
+from Section_11_Web_Scraping.ProjectBooksScraper.pages.all_books_page import AllBooksPage
+
+page_content = requests.get('http://books.toscrape.com').content
+page = AllBooksPage(page_content)
+
+books = page.books
+
+for page_num in range(1, page.page_count):
+    url = f'http://books.toscrape.com/catalogue/page-{page_num+1}.html'
+    page_content = requests.get(url).content
+    page = AllBooksPage(page_content)
+    books.extend(page.books)
+```
+
 
 
 [Video 1: Book Scraper + application](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477954?start=0)  
@@ -882,7 +958,13 @@ def menu():
 [Video 6: Writing our app file](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477998?start=0)  
 [Video 7: Sorting the books](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478004?start=0)  
 [Video 8: Construyendo el menu](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478008?start=0)  
-[Video 9: Una mejor forma de crear el menu](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478012?start=0)
+[Video 9: Una mejor forma de crear el menu](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478012?start=0)  
+[Video 10: Obteniendo multiples páginas](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478016?start=0)  
+[Video 11: Obteniendo multiples páginas -2](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478030?start=0)  
+[Video 12: Obtener la cantidad total de paginas desde la pagina web](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478036?start=0)  
+[Video 13: Agregar loggin](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478038?start=0)  
+[Video 14: Warnings on Java script](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478040?start=0)  
+
 
 
 ## Referencias:
