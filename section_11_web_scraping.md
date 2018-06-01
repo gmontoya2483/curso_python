@@ -637,7 +637,7 @@ Process finished with exit code 0
 
 ### Estructura del proyecto:
 
-![Esctructura del Proyecto](documentation/quotes_scraper_structure.png)
+![Esctructura del Proyecto](documentation/books_scraper_structure.png)
 
 
 ### Defininir los locators
