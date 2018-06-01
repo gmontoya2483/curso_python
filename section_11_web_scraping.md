@@ -845,11 +845,32 @@ if __name__ == '__main__':
 
 ```
 
+### Mejorar el menu
+
+* ``menu.py``
+```python
+
+...
+
+user_choices ={
+    'b': print_best_books,
+    'c': print_cheapest_books,
+    'n': get_next_book
+}
 
 
+def print_invalid_option():
+    print('--- INVALID OPTION SELECTED ---')
+    print('Please choose a valid command.')
 
 
+def menu():
+    user_input = input(USER_CHOICE)
+    while user_input != 'q':
+        user_choices.get(user_input, print_invalid_option)()
+        user_input = input(USER_CHOICE)
 
+```
 
 
 
@@ -860,7 +881,8 @@ if __name__ == '__main__':
 [Video 5: Creating our Book Parser](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477994?start=0)  
 [Video 6: Writing our app file](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477998?start=0)  
 [Video 7: Sorting the books](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478004?start=0)  
-[Video 8: Construyendo el menu](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478008?start=0)
+[Video 8: Construyendo el menu](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478008?start=0)  
+[Video 9: Una mejor forma de crear el menu](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478012?start=0)
 
 
 ## Referencias:

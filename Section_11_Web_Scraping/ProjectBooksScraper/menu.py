@@ -15,12 +15,16 @@ Enter your choice: '''
 
 def print_best_books():
     best_books = sorted(books, key=lambda x: (x.rating * -1, x.price))[:10]  # * -1 ordena en forma descendente,
+
+    print('--- BEST BOOKS ---')
     for book in best_books:
         print(book)
 
 
 def print_cheapest_books():
     cheapest_books = sorted(books, key=lambda x: (x.price, x.rating * -1))[:10]  # la tuple es multiple sort
+
+    print('--- CHEAPEST ---')
     for book in cheapest_books:
         print(book)
 
@@ -29,24 +33,26 @@ books_generator = (x for x in books)
 
 
 def get_next_book():
+    print('--- NEXT AVAILABLE ON THE CATALOGUE ---')
     print(next(books_generator))
+
+
+user_choices ={
+    'b': print_best_books,
+    'c': print_cheapest_books,
+    'n': get_next_book
+}
+
+
+def print_invalid_option():
+    print('--- INVALID OPTION SELECTED ---')
+    print('Please choose a valid command.')
 
 
 def menu():
     user_input = input(USER_CHOICE)
     while user_input != 'q':
-        if user_input == 'b':
-            print('--- BEST ---')
-            print_best_books()
-        elif user_input == 'c':
-            print('--- CHEAPEST ---')
-            print_cheapest_books()
-        elif user_input == 'n':
-            print('--- NEXT BOOK IN CATALOGUE ---')
-            get_next_book()
-        else:
-            print('--- INVALID OPTION SELECTED ---')
-
+        user_choices.get(user_input, print_invalid_option)()
         user_input = input(USER_CHOICE)
 
 
