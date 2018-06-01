@@ -18,6 +18,9 @@ class BookParser:
     def __init__(self, parent):
         self.parent = parent
 
+    def __repr__(self):
+        return f'<Book {self.name}, £{self.price}, ({self.rating} stars) >'
+
     @property
     def name(self):
         locator = BookLocators.NAME_LOCATOR

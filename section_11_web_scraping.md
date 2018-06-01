@@ -648,7 +648,7 @@ class BookLocators:
     NAME_LOCATOR = 'article.product_pod h3 a'
     LINK_LOCATOR = 'article.product_pod h3 a'
     PRICE_LOCATOR = 'article.product_pod p.price_color'
-    RATING_LOCATOR = 'article.product_pod p.star - rating'
+    RATING_LOCATOR = 'article.product_pod p.star-rating'
 ```
 
 * ``all_books_page_locators.py``
@@ -698,6 +698,9 @@ class BookParser:
 
     def __init__(self, parent):
         self.parent = parent
+        
+    def __repr__(self):
+        return f'<Book {self.name}, £{self.price}, ({self.rating} stars) >'
 
     @property
     def name(self):
@@ -733,13 +736,132 @@ class BookParser:
 
 > NOTA: la ``@property`` ``books``  devuelve una lista de ``Booksparser`` (``BeatifulSoup`` objects)
 
+### Crear el app
+
+* ```app.py```
+
+```python
+
+import requests
+from Section_11_Web_Scraping.ProjectBooksScraper.pages.all_books_page import AllBooksPage
+
+
+page_content = requests.get('http://books.toscrape.com').content
+page = AllBooksPage(page_content)
+
+books = page.books
+
+for book in books:
+    print(book)
+
+```
+
+### Ordenar los libros
+
+* ``menu.py``
+
+```python
+from Section_11_Web_Scraping.ProjectBooksScraper.app import books
+
+
+def print_best_books():
+    best_books = sorted(books, key=lambda x: (x.rating * -1, x.price))[:10]  # * -1 ordena en forma descendente,
+    for book in best_books:
+        print(book)
+
+
+def print_cheapest_books():
+    cheapest_books = sorted(books, key=lambda x: (x.price, x.rating * -1))[:10]  # la tuple es multiple sort
+    for book in cheapest_books:
+        print(book)
+
+
+print('--- BEST ---')
+print_best_books()
+print('--- CHEAPEST ---')
+print_cheapest_books()
+
+```
+
+### Crear el menu
+
+* ``menu.py``
+
+```python
+from Section_11_Web_Scraping.ProjectBooksScraper.app import books
+
+
+USER_CHOICE = '''
+
+Enter one of the following
+
+- 'b' to look at 5-star books
+- 'c' to look at the cheapest books
+- 'n' to just get the next available book on the catalogue
+- 'q' to exit
+
+Enter your choice: '''
+
+
+def print_best_books():
+    best_books = sorted(books, key=lambda x: (x.rating * -1, x.price))[:10]  # * -1 ordena en forma descendente,
+    for book in best_books:
+        print(book)
+
+
+def print_cheapest_books():
+    cheapest_books = sorted(books, key=lambda x: (x.price, x.rating * -1))[:10]  # la tuple es multiple sort
+    for book in cheapest_books:
+        print(book)
+
+
+books_generator = (x for x in books)
+
+
+def get_next_book():
+    print(next(books_generator))
+
+
+def menu():
+    user_input = input(USER_CHOICE)
+    while user_input != 'q':
+        if user_input == 'b':
+            print('--- BEST ---')
+            print_best_books()
+        elif user_input == 'c':
+            print('--- CHEAPEST ---')
+            print_cheapest_books()
+        elif user_input == 'n':
+            print('--- NEXT BOOK IN CATALOGUE ---')
+            get_next_book()
+        else:
+            print('--- INVALID OPTION SELECTED ---')
+
+        user_input = input(USER_CHOICE)
+
+
+if __name__ == '__main__':
+    menu()
+
+```
+
+
+
+
+
+
+
+
 
 [Video 1: Book Scraper + application](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477954?start=0)  
 [Video 2: HTML Locators](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477964?start=0)  
 [Video 3: Creating the Locators](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477978?start=0)  
 [Video 4: Creating our Book Page](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477984?start=0)  
 [Video 5: Creating our Book Parser](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477994?start=0)  
-[Video 6: Writing our app file](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477998?start=0)
+[Video 6: Writing our app file](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9477998?start=0)  
+[Video 7: Sorting the books](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478004?start=0)  
+[Video 8: Construyendo el menu](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9478008?start=0)
+
 
 ## Referencias:
 [Github - tecladocode -complete-python-course](https://github.com/tecladocode/complete-python-course/tree/master/section11/projects)
