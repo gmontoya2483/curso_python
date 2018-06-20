@@ -100,7 +100,8 @@
 * [Project: Quotes Scraper](section_11_web_scraping.md##project-quotes-scraper)
 * [Project: Books scraper project](section_11_web_scraping.md#project-books-scraper-project)
 
-
+## [Section 12: Asynchronous Python Development](section_12_asynchronous_python_development.md)
+* [Introduction to this section](#introduction-to-this-section)
 
 ## Referencias
 
