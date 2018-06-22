@@ -12,6 +12,8 @@
 * [Usando concurrent Feature - ThreadPoolExecutor](#sando-concurrent-feature-threadpoolexecutor)
 * [DO NOT KILL THREADS](#do-not-kill-threads)
 * [Documentacion adicional](#documentacion-adicional)
+* [Dealing with shared state in Threads - BE CAREFUL](#dealing-with-shared-state-in-threads-be-careful)
+* [Queuing in Threads with shared state](#queuing-in-threads-with-shared-state)
 
 ## Introduction to this section
 
@@ -561,13 +563,158 @@ Process finished with exit code 0
 ```
 
 
-
-
-
 [Video: concurrent Feature - ProcessPoolExecutor](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9489758?start=0)
 
+
+## Dealing with shared state in Threads - BE CAREFUL
+
+Hay que ser cuidadoso cuando se hace multithreading y se utilizan recursos compartidos, como se puede ver en el siguiente ejemplo (donde se agregaron demoras en forma adrede), el resultado no es el esperado.
+
+```python
+import time, random
+from threading import Thread
+
+counter = 0
+
+
+def increment_counter():
+    global counter
+    time.sleep(random.random())
+    counter += 1
+    time.sleep(random.random())
+    print(f'New counter value: {counter}')
+    time.sleep(random.random())
+    print('------------')
+
+
+for x in range(10):
+    t = Thread(target=increment_counter)
+    time.sleep(random.random())
+    t.start()
+
+``` 
+
+**OUTPUT:**
+
+```console
+New counter value: 2
+------------
+New counter value: 2
+------------
+New counter value: 5
+New counter value: 6
+------------
+------------
+New counter value: 6
+New counter value: 6
+------------
+------------
+New counter value: 8
+------------
+New counter value: 8
+------------
+New counter value: 9
+------------
+New counter value: 10
+------------
+
+Process finished with exit code 0
+```
+
+[Video: Dealing with shared state in Threads](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9489764?start=0)
+
+## Queuing in Threads with shared state
+
+Para poder solucionar el uso de recursos compartidos es necesarios utilizar diferentes ``queues``. La propiedad que tiene ``Queue.queue`` es que una vez que un thread toma el recurso lo lockea y no puede ser accedido por otro.
+
+```python
+import time
+import random
+import queue
+from threading import Thread
+
+counter = 0
+job_queue = queue.Queue()  # things to be printed out
+counter_queue = queue.Queue()  # amounts by which to increase counter
+
+
+def increment_manager():
+    global counter
+    while True:
+        increment = counter_queue.get()  # This waits until an item is available and then LOCKS the queue
+        time.sleep(random.random())
+        old_counter = counter
+        time.sleep(random.random())
+        counter = old_counter + increment
+        time.sleep(random.random())
+        job_queue.put((f'New counter value is {counter}', '-----------'))
+        time.sleep(random.random())
+        counter_queue.task_done()  # this unlocks the queue
+        time.sleep(random.random())
+
+
+def printer_manager():
+    while True:
+        for line in job_queue.get():
+            print(line)
+            time.sleep(random.random())
+        job_queue.task_done()
+
+
+def increment_counter():
+    counter_queue.put(1)
+
+
+if __name__ == '__main__':
+
+    # printer_manager and increment_manager run continuously because of the `daemon` flag.
+    Thread(target=increment_manager, daemon=True).start()
+    Thread(target=printer_manager, daemon=True).start()
+
+    worker_threads = [Thread(target=increment_counter) for thread in range(10)]
+
+    for thread in worker_threads:
+        thread.start()
+
+    for thread in worker_threads:
+        thread.join()
+
+    counter_queue.join()  # wait for counter_queue to be empty
+    job_queue.join()  # wait for job_queue to be empty
+```
+
+**OUTPUT:**
+
+```console
+New counter value is 1
+-----------
+New counter value is 2
+-----------
+New counter value is 3
+-----------
+New counter value is 4
+-----------
+New counter value is 5
+-----------
+New counter value is 6
+-----------
+New counter value is 7
+-----------
+New counter value is 8
+-----------
+New counter value is 9
+-----------
+New counter value is 10
+-----------
+
+Process finished with exit code 0
+```
+
+
+[VIDEO: Queuing in Threads with shared state](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9489768?start=0)
 
 
 ## Documentacion adicional
 
 [PYTHON: A QUICK INTRODUCTION TO THE CONCURRENT.FUTURES MODULE](http://masnun.com/2016/03/29/python-a-quick-introduction-to-the-concurrent-futures-module.html)
+
