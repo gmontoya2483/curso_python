@@ -101,7 +101,22 @@
 * [Project: Books scraper project](section_11_web_scraping.md#project-books-scraper-project)
 
 ## [Section 12: Asynchronous Python Development](section_12_asynchronous_python_development.md)
-* [Introduction to this section](#introduction-to-this-section)
+* [Introduction to this section](section_12_asynchronous_python_development.md#introduction-to-this-section)
+* [Dining philosophers Problem](section_12_asynchronous_python_development.md#dining-philosophers-problem)
+* [Processes and Threads](section_12_asynchronous_python_development.md#processes-and-threads)
+* [Python GIL](section_12_asynchronous_python_development.md#python-gil)
+* [Ejemplo de Threads en Python](section_12_asynchronous_python_development.md#ejemplo-de-threads-en-python)
+* [Usando concurrent Feature - ThreadPoolExecutor](section_12_asynchronous_python_development.md#sando-concurrent-feature-threadpoolexecutor)
+* [DO NOT KILL THREADS](section_12_asynchronous_python_development.md#do-not-kill-threads)
+* [Documentacion adicional](section_12_asynchronous_python_development.md#documentacion-adicional)
+* [Dealing with shared state in Threads - BE CAREFUL](section_12_asynchronous_python_development.md#dealing-with-shared-state-in-threads-be-careful)
+* [Queuing in Threads with shared state](section_12_asynchronous_python_development.md#queuing-in-threads-with-shared-state)
+* [Using Generators instead of Threads](section_12_asynchronous_python_development.md#using-generators-instead-of-threads)
+* [Single threaded task scheduler](section_12_asynchronous_python_development.md#single-threaded-task-scheduler)
+* [Yielding from another iterator](section_12_asynchronous_python_development.md#yielding-from-another-iterator)
+* [Receiving data through yield](section_12_asynchronous_python_development.md#receiving-data-through-yield)
+* [Async and await keywords](section_12_asynchronous_python_development.md#async-and-await-keywords)
+* [Documentacion adicional](section_12_asynchronous_python_development.md#documentacion-adicional)
 
 ## Referencias
 

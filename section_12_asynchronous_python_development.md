@@ -14,6 +14,12 @@
 * [Documentacion adicional](#documentacion-adicional)
 * [Dealing with shared state in Threads - BE CAREFUL](#dealing-with-shared-state-in-threads-be-careful)
 * [Queuing in Threads with shared state](#queuing-in-threads-with-shared-state)
+* [Using Generators instead of Threads](#using-generators-instead-of-threads)
+* [Single threaded task scheduler](#single-threaded-task-scheduler)
+* [Yielding from another iterator](#yielding-from-another-iterator)
+* [Receiving data through yield](#receiving-data-through-yield)
+* [Async and await keywords](#async-and-await-keywords)
+* [Documentacion adicional](#documentacion-adicional)
 
 ## Introduction to this section
 
@@ -710,11 +716,278 @@ New counter value is 10
 Process finished with exit code 0
 ```
 
-
 [VIDEO: Queuing in Threads with shared state](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9489768?start=0)
 
 
+## Using Generators instead of Threads
+
+* Ejemplo del uso de generators:
+
+````python
+def countdown(n):
+    while n > 0:
+        yield n
+        n -= 1
+
+
+if __name__ == '__main__':
+    c1 = countdown(10)
+    c2 = countdown(20)
+    print(next(c1))
+    print(next(c2))
+    print(next(c1))
+    print(next(c2))
+````
+
+**OUTPUT:**
+````console
+10
+20
+9
+19
+
+Process finished with exit code 0
+````
+
+[Video: Using Generators instead of Threads](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9489766?start=0)
+
+
+## Single threaded task scheduler
+
+```python
+def countdown(n):
+    while n > 0:
+        yield n
+        n -= 1
+
+
+if __name__ == '__main__':
+    tasks = [countdown(10), countdown(5), countdown(20)]
+
+while tasks:
+    task = tasks[0]
+    tasks.remove(task)
+    try:
+        x = next(task)
+        print(x)
+        tasks.append(task)
+    except StopIteration:
+        print('Task finished')
+```
+
+**OUTPUT:**
+````console
+10
+5
+20
+9
+4
+19
+8
+3
+18
+7
+2
+17
+6
+1
+16
+5
+Task finished
+15
+4
+14
+3
+13
+2
+12
+1
+11
+Task finished
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Task finished
+
+Process finished with exit code 0
+````
+
+[Video: Using Generators instead of Threads](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9489774?start=0)
+
+
+## Yielding from another iterator
+
+```python
+from collections import deque
+
+friends = deque(('Rolf', 'Jose', 'Charlie', 'Jen', 'Anna'))
+
+
+def get_friend():
+    yield from friends
+
+
+def greet(g):
+    while True:
+        try:
+            friend = next(g)
+            yield f'HELLO {friend}'
+        except StopIteration:
+            pass
+
+
+if __name__ == '__main__':
+    friends_generator = get_friend()
+    g = greet(friends_generator)
+    print(next(g))
+    print(next(g))
+    print(next(g))
+    print(next(friends_generator))
+```
+
+**OUTPUT:**
+````console
+HELLO Rolf
+HELLO Jose
+HELLO Charlie
+Jen
+
+Process finished with exit code 0
+````
+
+[Video: Yielding from another iterator](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9489776?start=0)
+
+
+## Receiving data through yield
+
+* Ejemplo Simple:
+
+```python
+def greet():
+    friend = yield
+    print(f'Hello, {friend}')
+
+
+if __name__ == '__main__':
+    g = greet()
+    g.send(None)  # priming the generator
+    g.send('Adam')
+```
+
+**OUTPUT:**
+````console
+Hello, Adam
+Traceback (most recent call last):
+  File "C:/Users/montoya/Desktop/CursoPython/Section_12_asynchronous_python_development/generators_receiving_data_throgh_yield.py", line 9, in <module>
+    g.send('Adam')
+StopIteration
+
+Process finished with exit code 1
+````
+
+
+````python
+from collections import deque
+
+friends = deque(('Rolf', 'Jose', 'Charlie', 'Jen', 'Anna'))
+
+
+def friend_upper():
+    while friends:
+        friend = friends.popleft().upper()
+        greeting = yield
+        print(f'{greeting} {friend}')
+
+
+def greet(g):
+    g.send(None)
+    while True:
+        greeting = yield
+        g.send(greeting)
+
+
+if __name__ == '__main__':
+    greeter = greet(friend_upper())
+    greeter.send(None)
+    greeter.send('Hello')
+    greeter.send('Hola')
+    greeter.send('Chau')
+````
+
+**OUTPUT:**
+````console
+Hello ROLF
+Hola JOSE
+Chau CHARLIE
+
+Process finished with exit code 0
+````
+
+[Video: Receiving data through yield](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9489778?start=0)
+
+## Async and await keywords
+
+[Async and await keywords](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9489780?start=0)
+
+```python
+from collections import deque
+from types import coroutine
+
+friends = deque(('Rolf', 'Jose', 'Charlie', 'Jen', 'Anna'))
+
+
+@coroutine
+def friend_upper():
+    while friends:
+        friend = friends.popleft().upper()
+        greeting = yield
+        print(f'{greeting} {friend}')
+
+
+async def greet(g):
+    print('Starting...')
+    await g
+    print('Ending....')
+
+
+if __name__ == '__main__':
+    greeter = greet(friend_upper())
+    greeter.send(None)
+    greeter.send('Hello')
+    greeter.send('Hola')
+    greeter.send('Chau')
+    greeter.send('Chau')
+    greeter.send('Chau')
+```
+
+**OUTPUT:**
+````console
+Starting...
+Hello ROLF
+Hola JOSE
+Chau CHARLIE
+Chau JEN
+Chau ANNA
+Ending....
+Traceback (most recent call last):
+  File "C:/Users/montoya/Desktop/CursoPython/Section_12_asynchronous_python_development/async_await.py", line 28, in <module>
+    greeter.send('Chau')
+StopIteration
+
+Process finished with exit code 1
+````
+
 ## Documentacion adicional
 
-[PYTHON: A QUICK INTRODUCTION TO THE CONCURRENT.FUTURES MODULE](http://masnun.com/2016/03/29/python-a-quick-introduction-to-the-concurrent-futures-module.html)
+[PYTHON: A QUICK INTRODUCTION TO THE CONCURRENT.FUTURES MODULE](http://masnun.com/2016/03/29/python-a-quick-introduction-to-the-concurrent-futures-module.html)  
+[David Beazley - Python Concurrency From the Ground Up: LIVE! - PyCon 2015](https://www.youtube.com/watch?reload=9&v=MCs5OvhV9S4)  
+[Keynote David Beazley - Topics of Interest (Python Asyncio)](https://www.youtube.com/watch?v=ZzfHjytDceU)  
+[Raymond Hettinger, Keynote on Concurrency, PyBay 2017](https://www.youtube.com/watch?v=9zinZmE3Ogk)
 
