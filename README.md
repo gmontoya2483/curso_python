@@ -118,6 +118,8 @@
 * [Async and await keywords](section_12_asynchronous_python_development.md#async-and-await-keywords)
 * [Documentacion adicional](section_12_asynchronous_python_development.md#documentacion-adicional)
 
+## [Section 13: Python on the console and managing project dependencies](section_13_python_on_console_and_dependencies.md)
+
 ## Referencias
 
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
