@@ -126,6 +126,13 @@
 * [Usando Pipenv](section_13_python_on_console_and_dependencies.md#usando-pipenv)
 * [Usando Pipenv y virtualenv](section_13_python_on_console_and_dependencies.md#usando-pipenv-y-virtualenv)
 
+## [Section 14: Web Development with Flask](section_14_web_dev_with_flask.md)
+* [Introduction to this section](section_14_web_dev_with_flask.md#introduction-to-this-section)
+* [Nuestro primer end point](section_14_web_dev_with_flask.md#nuestro-primer-end-point)
+* [Devolviendo información con Flask](section_14_web_dev_with_flask.md#devolviendo-información-con-flask)
+* [Rendering HTML](section_14_web_dev_with_flask.md#rendering-html)
+* [Paginas de Error y herencia en Jinja2](section_14_web_dev_with_flask.md#paginas-de-error-y-herencia-en-jinja2)
+
 
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
