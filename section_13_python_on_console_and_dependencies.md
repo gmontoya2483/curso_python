@@ -8,7 +8,9 @@
 * [Running python from your console](#running-python-from-your-console)
 * [What is a virtualenv](#what-is-a-virtualenv)
 * [Navigating the terminal and using virtualenv](#navigating-the-terminal-and-using-virtualenv)
-* [Usando Pipenv](#uUsando-pipenv)
+* [Usando Pipenv](#usando-pipenv)
+* [Usando Pipenv y virtualenv](#usando-pipenv-y-virtualenv)
+
 
 
 ## Introduction to this section
@@ -220,7 +222,37 @@ Luego se debe instalar ``pipenv``: ``pip install pipenv``
 > **NOTA:** para actualizar la version de pip: ``pip install --upgrade pip``
 
 
+Una vez que ``pipenv`` esta instaldo se puede ejecutar el comando ``pipenv`` y nos muestra las distientas opciones.  
+El parametro pas importante es ``install``, que si se posee un archivo ``requirements.txt`` instala todas dependencias de ese archivo.  
+
+Este comando crea un entorno virtual y además crea dos archivos: ``Pipfile`` y ``Pipfile.lock``  
+
+El archivo ``Pipfile`` tiene la lista de paquetes que salen del archivo ``requierements.txt``
+
+El archivo ``Pipfile.lock`` tiene una lista de hash number en formato Json, lo que nos da una capa mas de seguridad en cuanto a los paqquetes que se instalan.  
+
+EL archivo requierements no es mas necesario y ahora se debe compartir los archivos ``Pipfile`` y ``Pipfile.lock``.  
+
+El archivo ``Pipfile`` no necesita más tener las versiones de los paquetes dado que esto esta definido en el archivo ``Pipfile.lock``. Por lo que se deben reeplazar todas las versiones  por "*":  
+
+``aiohttp = "*"``
+
+
 [Video: using Pipenv](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9548096?start=0)
+
+
+## Usando Pipenv y virtualenv
+
+``Pipenv`` crea un directorio virtual para el proyecto en una ubicación completamente distinta a donde esta el proyecto.  
+
+ Al ejecutar ``pipenv run python``, se ejcuta python dentro del enttorno virtual.  
+ 
+ Para correr la aplicacion deseada dentro del su entorno virtual, se debe ejecutar ``pipenv run python app.py`` (o elnombre que se le haya puesto al archivo principal).  
+ 
+  > **IMPORTANTE:** si se mueve el proyecto de lugar es necesario re-crear el entorno virtual.
+
+[Video: Using Pipenv and virtualenv](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9548100?start=0)
+
 
 
 ## References

@@ -119,9 +119,15 @@
 * [Documentacion adicional](section_12_asynchronous_python_development.md#documentacion-adicional)
 
 ## [Section 13: Python on the console and managing project dependencies](section_13_python_on_console_and_dependencies.md)
+* [Introduction to this section](section_13_python_on_console_and_dependencies.md#introduction-to-this-section)
+* [Running python from your console](section_13_python_on_console_and_dependencies.md#running-python-from-your-console)
+* [What is a virtualenv](section_13_python_on_console_and_dependencies.md#what-is-a-virtualenv)
+* [Navigating the terminal and using virtualenv](section_13_python_on_console_and_dependencies.md#navigating-the-terminal-and-using-virtualenv)
+* [Usando Pipenv](section_13_python_on_console_and_dependencies.md#usando-pipenv)
+* [Usando Pipenv y virtualenv](section_13_python_on_console_and_dependencies.md#usando-pipenv-y-virtualenv)
+
 
 ## Referencias
-
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
 [Python Loggings Basics by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTv5x_nJb-mtaEKg9Gi_-Nsh)
 [Github - tecladocode -complete-python-course](https://github.com/tecladocode/complete-python-course)
