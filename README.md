@@ -132,7 +132,8 @@
 * [Devolviendo información con Flask](section_14_web_dev_with_flask.md#devolviendo-información-con-flask)
 * [Rendering HTML](section_14_web_dev_with_flask.md#rendering-html)
 * [Paginas de Error y herencia en Jinja2](section_14_web_dev_with_flask.md#paginas-de-error-y-herencia-en-jinja2)
-
+* [Rendering Forms](section_14_web_dev_with_flask.md#rendering-forms)
+* [Accessing POST form data](section_14_web_dev_with_flask.md#accessing-post-form-data)
 
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
