@@ -11,6 +11,7 @@
 * [Paginas de Error y herencia en Jinja2](#paginas-de-error-y-herencia-en-jinja2)
 * [Rendering Forms](#rendering-forms)
 * [Accessing POST form data](#accessing-post-form-data)
+* [Putting our form in a single endpoint](#putting-our-form-in-a-single-endpoint)
 
 ## Introduction to this section
 
@@ -385,3 +386,83 @@ if __name__ == '__main__':
 ```
 
 [Video: Accessing POST form data with flask](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9552036?start=0)
+
+
+## Putting our form in a single endpoint
+
+* app.py
+
+```python
+from flask import Flask, render_template, request, redirect, url_for
+
+# Definir el nombre de la applicación Flask
+app = Flask(__name__)
+
+posts = {
+    0:  {
+        'id': 0,
+        'title': 'Hello, world',
+        'content': 'This is my first blog post!'
+    }
+}
+
+
+# Definir la primer url de la applicación
+@app.route('/')
+def home():
+    return 'Hello, world!'
+
+
+@app.route('/post/<int:post_id>') # /post/0
+def post(post_id):
+    post = posts.get(post_id)
+    if not post:
+        return render_template('404.html', message=f'A post with id { post_id }  was not found.'), 404
+    return render_template('post.html', post=post)
+
+
+@app.route('/post/create', methods=['GET', 'POST'])
+def create():
+    if request.method == 'POST':
+        title = request.form.get('title')
+        content = request.form.get('content')
+        post_id = len(posts)
+        posts[post_id] = {'id': post_id, 'title': title, 'content': content}
+        return redirect(url_for('post', post_id=post_id))
+
+    # si es GET hace el render del form
+    return render_template('create.jinja2')
+
+
+# Ejecutar la applicacion
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+* create.jinja2
+
+```html
+{% extends 'base.jinja2' %}
+
+{% block content %}
+<h1>Create post</h1>
+<form  method="POST"> <!-- el action puede ser removido dado que  sinoesta vuelve alpathque lo llamo-->
+    <div>
+        <label for="title">Title</label>
+        <input type="text" name="title"/>
+    </div>
+    <div>
+        <label for="content">Content</label>
+        <textarea name="content"></textarea>
+    </div>
+
+    <div>
+        <input type="submit" />
+    </div>
+
+
+</form>
+{% endblock %}
+```
+
+[Video: Putting our form in a single endpoint](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9552040?start=0)
