@@ -135,7 +135,7 @@
 * [Rendering Forms](section_14_web_dev_with_flask.md#rendering-forms)
 * [Accessing POST form data](section_14_web_dev_with_flask.md#accessing-post-form-data)
 * [Putting our form in a single endpoint](section_14_web_dev_with_flask.md#putting-our-form-in-a-single-endpoint)
-
+* [Using Jinja2 for loops](section_14_web_dev_with_flask.md#using-jinja2-for-loops)
 
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  

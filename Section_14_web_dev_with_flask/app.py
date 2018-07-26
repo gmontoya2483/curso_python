@@ -15,7 +15,7 @@ posts = {
 # Definir la primer url de la applicación
 @app.route('/')
 def home():
-    return 'Hello, world!'
+    return render_template('home.jinja2', posts= posts)
 
 
 @app.route('/post/<int:post_id>') # /post/0

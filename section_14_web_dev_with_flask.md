@@ -12,6 +12,7 @@
 * [Rendering Forms](#rendering-forms)
 * [Accessing POST form data](#accessing-post-form-data)
 * [Putting our form in a single endpoint](#putting-our-form-in-a-single-endpoint)
+* [Using Jinja2 for loops](#using-jinja2-for-loops)
 
 ## Introduction to this section
 
@@ -466,3 +467,73 @@ if __name__ == '__main__':
 ```
 
 [Video: Putting our form in a single endpoint](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9552040?start=0)
+
+* Using Jinja2 for loops
+
+* home.jinja2
+
+``` html
+{% extends 'base.jinja2' %}
+
+{% block content %}
+<h1>Welcome to your blog.</h1>
+<h2>Posts</h2>
+<ul>
+    {% for post_id, post in posts.items() %}
+    <li>
+        <a href="{{ url_for('post', post_id=post_id) }}">{{ post['title'] }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+```
+
+* app.py
+```python
+from flask import Flask, render_template, request, redirect, url_for
+
+# Definir el nombre de la applicación Flask
+app = Flask(__name__)
+
+posts = {
+    0:  {
+        'id': 0,
+        'title': 'Hello, world',
+        'content': 'This is my first blog post!'
+    }
+}
+
+
+# Definir la primer url de la applicación
+@app.route('/')
+def home():
+    return render_template('home.jinja2', posts= posts)
+
+
+@app.route('/post/<int:post_id>') # /post/0
+def post(post_id):
+    post = posts.get(post_id)
+    if not post:
+        return render_template('404.html', message=f'A post with id { post_id }  was not found.'), 404
+    return render_template('post.html', post=post)
+
+
+@app.route('/post/create', methods=['GET', 'POST'])
+def create():
+    if request.method == 'POST':
+        title = request.form.get('title')
+        content = request.form.get('content')
+        post_id = len(posts)
+        posts[post_id] = {'id': post_id, 'title': title, 'content': content}
+        return redirect(url_for('post', post_id=post_id))
+
+    # si es GET hace el render del form
+    return render_template('create.jinja2')
+
+
+# Ejecutar la applicacion
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+[Video:using Jinja2 for loops to create a nicer homepage](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9552042?start=0)
