@@ -13,6 +13,7 @@
 * [Accessing POST form data](#accessing-post-form-data)
 * [Putting our form in a single endpoint](#putting-our-form-in-a-single-endpoint)
 * [Using Jinja2 for loops](#using-jinja2-for-loops)
+* [Adding navigation to our website](#adding-navigation-to-our-website)
 
 ## Introduction to this section
 
@@ -537,3 +538,8 @@ if __name__ == '__main__':
 ```
 
 [Video:using Jinja2 for loops to create a nicer homepage](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9552042?start=0)
+
+
+## Adding navigation to our website
+
+[Video: adding navigation to our Website](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9552046?start=0)
