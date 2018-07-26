@@ -542,4 +542,39 @@ if __name__ == '__main__':
 
 ## Adding navigation to our website
 
+* base.jinja2
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+     <a href="{{ url_for('home') }}">HOME</a>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>
+```
+
+* home.jinja2
+
+```html
+{% extends 'base.jinja2' %}
+
+{% block content %}
+<h1>Welcome to your blog.</h1>
+<h2>Posts</h2>
+<ul>
+    {% for post_id, post in posts.items() %}
+    <li>
+        <a href="{{ url_for('post', post_id=post_id) }}">{{ post['title'] }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('create') }}">Create new Post</a>
+{% endblock %}
+```
+
 [Video: adding navigation to our Website](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9552046?start=0)
