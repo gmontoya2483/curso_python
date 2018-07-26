@@ -138,6 +138,12 @@
 * [Using Jinja2 for loops](section_14_web_dev_with_flask.md#using-jinja2-for-loops)
 * [Adding navigation to our website](section_14_web_dev_with_flask.md#adding-navigation-to-our-website)
 
+## [Section 15: Decorators](section_15_decorators.md)
+* [Introduction to this section](section_15_decorators.md#introduction-to-this-section)
+* [A simple decorator](section_15_decorators.md#a-simple-decorator)
+* [@ syntax](section_15_decorators.md#@-syntax)
+* [Functools wraps](section_15_decorators.md#functools-wraps)
+
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
 [Python Loggings Basics by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTv5x_nJb-mtaEKg9Gi_-Nsh)
