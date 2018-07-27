@@ -12,6 +12,7 @@
 * [Decorators with parameters](#decorators-with-parameters)
 * [Function that accept multiple arguments](#function-that-accept-multiple-arguments)
 * [Generic decorators for any function](#generic-decorators-for-any-function)
+* [Resumen Decorators](#resumen-decorators)
 
 ## Introduction to this section
 
@@ -293,3 +294,82 @@ Process finished with exit code 0
 ```
 
 [Video: Generic decorators for any function](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9490874?start=0)
+
+
+## Resumen Decorators
+
+
+Decorators: it is a function that gets called before another function. To create a decorators it is needed to import the functools library
+
+### Basic decorator without argumants
+
+```python
+    import functools
+
+    def my_decorator(func):
+        @functools.wraps(func)
+        def function_that_runs_func():
+            print("In the decorator!")
+            func()
+            print ("After the decorator!\n")
+        return function_that_runs_func
+
+    @my_decorator
+    def my_function():
+        print("I´m the function!!!")
+
+    my_function()
+```
+
+## Decorators with arguments
+
+Se agrega un nivel al wrapping.
+
+```python
+    import functools
+
+    def decorator_with_arguments(number):
+    def my_decorator(func):
+        @functools.wraps(func)
+        def function_that_runs_func():
+            print("In the decorator, decorator parameter: {}".format(number))
+            func()
+            print("After the decorator, decorator parameter: {}\n".format(number))
+        return function_that_runs_func
+    return my_decorator
+
+
+    @decorator_with_arguments(56)
+    def my_function_too():
+        print("Hello")
+
+    my_function_too()
+```
+
+### Decorators with arguments in the fuction
+
+Se agregan los argumentos ```*args``` and ```**kwargs```
+
+```python
+    import functools
+
+    def my_decorator_three(func):
+    @functools.wraps(func)
+    def function_that_runs_func(*args, **kwargs):
+        print("In the decorator!")
+        func(*args, **kwargs)
+        print ("After the decorator!\n")
+    return function_that_runs_func
+
+    @my_decorator_three
+    def my_function_with_parameters(number_1, number_2):
+        print("I´m the function!!!, the sum is {}".format(number_1 + number_2))
+
+
+    my_function_with_parameters(3,5)
+```
+
+[Video: Explicacion sobre Decorators](https://www.udemy.com/rest-api-flask-and-python/learn/v4/t/lecture/5960098?start=0)
+
+[Video: Explicacion sobre Advance Decorators](https://www.udemy.com/rest-api-flask-and-python/learn/v4/t/lecture/5960100?start=0)
+

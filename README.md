@@ -147,7 +147,7 @@
 * [Decorators with parameters](section_15_decorators.md#decorators-with-parameters)
 * [Function that accept multiple arguments](section_15_decorators.md#function-that-accept-multiple-arguments)
 * [Generic decorators for any function](section_15_decorators.md#generic-decorators-for-any-function)
-
+* [Resumen Decorators](section_15_decorators.md#resumen-decorators)
 
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
