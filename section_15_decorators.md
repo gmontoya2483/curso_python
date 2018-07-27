@@ -8,6 +8,7 @@
 * [A simple decorator](#a-simple-decorator)
 * [@ syntax](#@-syntax)
 * [Functools wraps](#functools-wraps)
+* [Decorators functions with parameters](#decorators-functions-with-parameters)
 
 ## Introduction to this section
 
@@ -155,5 +156,54 @@ Process finished with exit code 0
 ```
 
 
-
 [Video: Functools wraps](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9490864?start=0)
+
+
+## Decorators functions with parameters
+
+This case has the problem that the decorator is not general, it only can
+ be used for function that only have one parameter (this example)
+
+``` python
+import functools
+
+user = {'username': 'jose123', 'access_level': 'admin'}
+
+
+def user_has_permission(func):
+    @functools.wraps(func)
+    def secure_func(panel):
+        if user.get('access_level') == 'admin':
+            return func(panel)
+    return secure_func  # Devuelve una función
+
+
+@user_has_permission
+def my_function(panel):
+    return f'Password for {panel} panel is 1234'
+
+
+@user_has_permission
+def another():
+    return 'Hello'
+
+
+print(my_function('movies'))
+
+print(another())
+```
+
+**OUTPUT:**
+
+``` console
+Password for movies panel is 1234
+Traceback (most recent call last):
+  File "C:/Users/Gabriel/Documents/Projects/curso_python/Section_15_decorators/with_parameters.py", line 26, in <module>
+    print(another())
+TypeError: secure_func() missing 1 required positional argument: 'panel'
+
+Process finished with exit code 1
+```
+
+
+[Video: Decorator functions with parameters](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9490868?start=0)
