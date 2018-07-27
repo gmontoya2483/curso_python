@@ -152,7 +152,8 @@
 
 ## [Section 16: Advance Object Oriented Programming](section_16_advance_object_oriented.md)
 * [Introduction to this section](section_16_advance_object_oriented.md#introduction-to-this-section)
-
+* [Introduction to multiple inheritance](section_16_advance_object_oriented.md#introduction-to-multiple-inheritance)
++ [Intro to ABC](section_16_advance_object_oriented.md#intro-to-abc)
 
 
 ## Referencias

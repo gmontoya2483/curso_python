@@ -5,6 +5,8 @@
 ## Indice
 
 * [Introduction to this section](#introduction-to-this-section)
+* [Introduction to multiple inheritance](#introduction-to-multiple-inheritance)
++ [Intro to ABC](#intro-to-abc)
 
 
 ## Introduction to this section
@@ -110,3 +112,61 @@ Process finished with exit code 0
 ```
 
 [Video: Introduction to multiple inheritance](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9583280?start=0)
+
+## Intro to ABC
+
+Al utilizar ABC hace una clase abstracta que no puede ser instaciada. Tambien se definen los  metodos abstractos qque deben ser implemantados por la clase que hereda de la clase abstracta.
+
+``` python
+from abc import ABCMeta, abstractmethod
+
+
+class Animal(metaclass=ABCMeta):
+    def walk(self):
+        print('Walking...')
+
+    @abstractmethod
+    def num_legs(self):
+        pass
+
+
+class Dog(Animal):
+    def __init__(self, name):
+        self.name = name
+
+    def num_legs(self):
+        return 4
+
+
+class Monkey(Animal):
+    def __init__(self, name):
+        self.name = name
+
+    def num_legs(self):
+        return 2
+
+
+dog = Dog('Pichicho')
+print(dog.num_legs())
+
+monkey = Monkey('Chita')
+print(monkey.num_legs())
+
+animal = Animal()
+print(animal.num_legs())
+```
+
+**OUTPUT:**
+
+``` console
+4
+Traceback (most recent call last):
+2
+  File "C:/Users/Gabriel/Documents/Projects/curso_python/Section_16_advance_object_oriented_programming/abc/animals.py", line 35, in <module>
+    animal = Animal()
+TypeError: Can't instantiate abstract class Animal with abstract methods num_legs
+
+Process finished with exit code 1
+```
+
+[Video: Intro to ABC](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9583284?start=0)
