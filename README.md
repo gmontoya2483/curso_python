@@ -149,6 +149,12 @@
 * [Generic decorators for any function](section_15_decorators.md#generic-decorators-for-any-function)
 * [Resumen Decorators](section_15_decorators.md#resumen-decorators)
 
+
+## [Section 16: Advance Object Oriented Programming](section_16_advance_object_oriented.md)
+* [Introduction to this section](section_16_advance_object_oriented.md#introduction-to-this-section)
+
+
+
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
 [Python Loggings Basics by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTv5x_nJb-mtaEKg9Gi_-Nsh)
