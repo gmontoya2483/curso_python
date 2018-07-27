@@ -144,7 +144,7 @@
 * [@ syntax](section_15_decorators.md#@-syntax)
 * [Functools wraps](section_15_decorators.md#functools-wraps)
 * [Decorators functions with parameters](section_15_decorators.md#decorators-functions-with-parameters)
-
+* [Decorators with parameters](section_15_decorators.md#decorators-with-parameters)
 
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  

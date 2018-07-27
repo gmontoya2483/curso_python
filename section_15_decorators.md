@@ -9,6 +9,7 @@
 * [@ syntax](#@-syntax)
 * [Functools wraps](#functools-wraps)
 * [Decorators functions with parameters](#decorators-functions-with-parameters)
+* [Decorators with parameters](#decorators-with-parameters)
 
 ## Introduction to this section
 
@@ -207,3 +208,39 @@ Process finished with exit code 1
 
 
 [Video: Decorator functions with parameters](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9490868?start=0)
+
+## Decorators with parameters
+
+``` python
+import functools
+
+user = {'username': 'jose123', 'access_level': 'admin'}
+
+
+def user_has_permission(access_level):
+    def my_decorator(func):
+        @functools.wraps(func)
+        def secure_func(panel):
+            if user.get('access_level') == access_level:
+                return func(panel)
+        return secure_func
+    return my_decorator
+
+
+@user_has_permission('admin')
+def my_function(panel):
+    return f'Password for {panel} panel is 1234'
+
+
+print(my_function('movies'))
+```
+
+**OUTPUT:**
+
+``` console
+Password for movies panel is 1234
+
+Process finished with exit code 0
+```
+
+[Video: Decorators with parameters](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9490870?start=0)
