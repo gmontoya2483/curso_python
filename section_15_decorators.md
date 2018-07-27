@@ -10,6 +10,8 @@
 * [Functools wraps](#functools-wraps)
 * [Decorators functions with parameters](#decorators-functions-with-parameters)
 * [Decorators with parameters](#decorators-with-parameters)
+* [Function that accept multiple arguments](#function-that-accept-multiple-arguments)
+* [Generic decorators for any function](#generic-decorators-for-any-function)
 
 ## Introduction to this section
 
@@ -244,3 +246,50 @@ Process finished with exit code 0
 ```
 
 [Video: Decorators with parameters](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9490870?start=0)
+
+
+## Function that accept multiple arguments
+
+[Video: Function that accepts multiple arguments](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9490872?start=0)
+
+
+## Generic decorators for any function
+
+``` python
+import functools
+
+user = {'username': 'jose123', 'access_level': 'admin'}
+
+
+def user_has_permission(func):
+    @functools.wraps(func)
+    def secure_func(*args, **kwargs):
+        if user.get('access_level') == 'admin':
+            return func(*args, **kwargs)
+    return secure_func
+
+
+@user_has_permission
+def my_function(panel):
+    return f'Password for {panel} panel is 1234'
+
+
+@user_has_permission
+def another():
+    return 'Hello'
+
+
+print(my_function('movies'))
+print(another())
+```
+
+**OUTPUT:**
+
+``` console
+Password for movies panel is 1234
+Hello
+
+Process finished with exit code 0
+```
+
+[Video: Generic decorators for any function](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9490874?start=0)
