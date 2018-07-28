@@ -7,6 +7,7 @@
 * [Introduction to this section](#introduction-to-this-section)
 * [Introduction to multiple inheritance](#introduction-to-multiple-inheritance)
 + [Intro to ABC](#intro-to-abc)
+* [The usefulness of ABCs](#the-usefulness-of-abcs)
 
 
 ## Introduction to this section
@@ -170,3 +171,58 @@ Process finished with exit code 1
 ```
 
 [Video: Intro to ABC](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9583284?start=0)
+
+
+## The usefulness of ABCs
+
+``` python
+from abc import ABCMeta, abstractmethod
+
+
+class Animal(metaclass=ABCMeta):
+    def walk(self):
+        print('Walking...')
+
+    @abstractmethod
+    def num_legs(self):
+        pass
+
+
+class Dog(Animal):
+    def __init__(self, name):
+        self.name = name
+
+    def num_legs(self):
+        return 4
+
+
+class Monkey(Animal):
+    def __init__(self, name):
+        self.name = name
+
+    def num_legs(self):
+        return 2
+
+
+animals = [Dog('Rolf'), Monkey('Bob'), Monkey('Chita'), Dog('Boby')]
+for animal in animals:
+    print(isinstance(animal, Animal))
+    print(animal.num_legs())
+
+```
+
+**OUTPUT:**
+``` console
+True
+4
+True
+2
+True
+2
+True
+4
+
+Process finished with exit code 0
+```
+
+[Video: The usefulness of ABCs](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9583294?start=0)
