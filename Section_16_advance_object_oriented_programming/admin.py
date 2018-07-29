@@ -1,8 +1,8 @@
 from Section_16_advance_object_oriented_programming.user import User
-from Section_16_advance_object_oriented_programming.saveable import Saveable
 
 
-class Admin(User, Saveable):
+
+class Admin(User):
     def __init__(self, username, password, access):
         super(Admin, self).__init__(username, password)
         self.access = access

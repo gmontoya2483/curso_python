@@ -8,6 +8,7 @@
 * [Introduction to multiple inheritance](#introduction-to-multiple-inheritance)
 + [Intro to ABC](#intro-to-abc)
 * [The usefulness of ABCs](#the-usefulness-of-abcs)
+* [The relationship between ABCs and interfaces](#the-relationship-between-abcs-and-interfaces)
 
 
 ## Introduction to this section
@@ -226,3 +227,100 @@ Process finished with exit code 0
 ```
 
 [Video: The usefulness of ABCs](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9583294?start=0)
+
+
+## The relationship between ABCs and interfaces
+
+* admin.py
+
+``` python
+from Section_16_advance_object_oriented_programming.user import User
+
+
+
+class Admin(User):
+    def __init__(self, username, password, access):
+        super(Admin, self).__init__(username, password)
+        self.access = access
+
+    def __repr__(self):
+        return f'<Admin { self.username }, access { self.access }'
+
+    def to_dict(self):
+        return {
+            'username': self.username,
+            'password': self.password,
+            'access': self.access
+        }
+
+```
+
+* saveable.py
+
+``` python
+from abc import ABCMeta, abstractmethod
+
+from Section_16_advance_object_oriented_programming.database import Database
+
+
+class Saveable(metaclass=ABCMeta):
+    def save(self):
+        Database.insert(self.to_dict())
+
+    @abstractmethod
+    def to_dict(self):
+        pass
+
+```
+
+* user.py
+
+``` python
+from Section_16_advance_object_oriented_programming.saveable import Saveable
+
+
+class User(Saveable):
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+    def login(self):
+        return 'Logged in!'
+
+    def __repr__(self):
+        return f'<User { self.username }>'
+
+    def to_dict(self):
+        return {
+            'username': self.username,
+            'password': self.password
+        }
+
+```
+
+* app.py
+
+``` python
+from Section_16_advance_object_oriented_programming.admin import Admin
+from Section_16_advance_object_oriented_programming.user import User
+
+
+a = Admin('Rolf', '1234', 3)
+u = User('Jose', '4444')
+
+users = [a, u]
+for user in users:
+    user.save()
+    print(user.to_dict())
+```
+
+**OUTPUT:**
+
+``` console
+{'username': 'Rolf', 'password': '1234', 'access': 3}
+{'username': 'Jose', 'password': '4444'}
+
+Process finished with exit code 0
+```
+
+[Video: The relationship between ABCs and interfaces](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9583298?start=0)

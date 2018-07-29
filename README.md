@@ -155,6 +155,7 @@
 * [Introduction to multiple inheritance](section_16_advance_object_oriented.md#introduction-to-multiple-inheritance)
 + [Intro to ABC](section_16_advance_object_oriented.md#intro-to-abc)
 * [The usefulness of ABCs](section_16_advance_object_oriented.md#the-usefulness-of-abcs)
+* [The relationship between ABCs and interfaces](section_16_advance_object_oriented.md#the-relationship-between-abcs-and-interfaces)
 
 
 ## Referencias
