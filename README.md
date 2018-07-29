@@ -153,10 +153,10 @@
 ## [Section 16: Advance Object Oriented Programming](section_16_advance_object_oriented.md)
 * [Introduction to this section](section_16_advance_object_oriented.md#introduction-to-this-section)
 * [Introduction to multiple inheritance](section_16_advance_object_oriented.md#introduction-to-multiple-inheritance)
-+ [Intro to ABC](section_16_advance_object_oriented.md#intro-to-abc)
+* [Intro to ABC](section_16_advance_object_oriented.md#intro-to-abc)
 * [The usefulness of ABCs](section_16_advance_object_oriented.md#the-usefulness-of-abcs)
 * [The relationship between ABCs and interfaces](section_16_advance_object_oriented.md#the-relationship-between-abcs-and-interfaces)
-
+* [The property setter](section_16_advance_object_oriented.md#the-property-setter)
 
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  

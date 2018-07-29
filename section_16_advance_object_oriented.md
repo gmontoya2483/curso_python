@@ -9,7 +9,7 @@
 + [Intro to ABC](#intro-to-abc)
 * [The usefulness of ABCs](#the-usefulness-of-abcs)
 * [The relationship between ABCs and interfaces](#the-relationship-between-abcs-and-interfaces)
-
+* [The property setter](#the-property-setter)
 
 ## Introduction to this section
 
@@ -324,3 +324,69 @@ Process finished with exit code 0
 ```
 
 [Video: The relationship between ABCs and interfaces](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9583298?start=0)
+
+## The property setter
+
+``` python
+"""
+Flight Leg:
+
+GLA -> LHR -> CAN
+2 segments (GLA -> LHR, LHR -> CAN)
+"""
+
+from typing import List
+
+
+class Segment:
+    def __init__(self, departure, destination):
+        self.departure = departure
+        self.destination = destination
+
+
+class Flight:
+    def __init__(self, segments: List[Segment]):
+        self.segments = segments
+
+    def __repr__(self):
+        """
+
+        :return: string in the format of GLA -> LHR -> CAN
+        """
+        stops = [self.segments[0].departure, self.segments[0].destination]
+        for seg in self.segments[1:]:
+            stops.append(seg.destination)
+        return ' -> '.join(stops)
+
+
+    @property
+    def departure_point(self):
+        return self.segments[0].departure
+
+    @departure_point.setter
+    def departure_point(self, val):
+        self.segments[0].departure = val
+
+
+flight = Flight([Segment('GLA', 'LHR'), Segment('LHR', 'VIE')])
+print(flight.departure_point)
+
+flight.departure_point = 'EDI'
+print(flight.departure_point)
+
+print(flight)
+```
+
+**OUTPUT:**
+
+``` console
+GLA
+EDI
+EDI -> LHR -> VIE
+
+Process finished with exit code 0
+
+```
+
+
+[Video: The property setter](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/9583306?start=0)
