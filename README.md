@@ -158,7 +158,17 @@
 * [The relationship between ABCs and interfaces](section_16_advance_object_oriented.md#the-relationship-between-abcs-and-interfaces)
 * [The property setter](section_16_advance_object_oriented.md#the-property-setter)
 
+
+## [Section 17: Algorithms and Data Structures](section_17_algorithms_data_structure.md)
+* [Introduction to this section](section_17_algorithms_data_structure.md#introduction-to-this-section)
+* [Presentations](section_17_algorithms_data_structure.md#presentations)
+* [Coding](section_17_algorithms_data_structure.md#coding)
+
+
+
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
 [Python Loggings Basics by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTv5x_nJb-mtaEKg9Gi_-Nsh)
 [Github - tecladocode -complete-python-course](https://github.com/tecladocode/complete-python-course)
+[Best Practices for Coding - PyCon 2015](https://www.youtube.com/watch?v=wf-BqAjZb8M)
+

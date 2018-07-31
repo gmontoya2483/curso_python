@@ -6,7 +6,7 @@
 
 * [Introduction to this section](#introduction-to-this-section)
 * [Introduction to multiple inheritance](#introduction-to-multiple-inheritance)
-+ [Intro to ABC](#intro-to-abc)
+* [Intro to ABC](#intro-to-abc)
 * [The usefulness of ABCs](#the-usefulness-of-abcs)
 * [The relationship between ABCs and interfaces](#the-relationship-between-abcs-and-interfaces)
 * [The property setter](#the-property-setter)
