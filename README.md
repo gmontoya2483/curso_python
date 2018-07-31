@@ -165,6 +165,12 @@
 * [Coding](section_17_algorithms_data_structure.md#coding)
 
 
+## [Section 18: Libraries](section_18_libraries.md)
+* [Introduction to this section](section_18_libraries.md#introduction-to-this-section)
+* [Libraries overview](section_18_libraries.md#libraries-overview)
+* [Using pylint](section_18_libraries.md#using-pylint)
+* [Using yapf](section_18_libraries.md#using-yapf)
+
 
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
