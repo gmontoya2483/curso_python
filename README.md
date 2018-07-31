@@ -170,6 +170,7 @@
 * [Libraries overview](section_18_libraries.md#libraries-overview)
 * [Using pylint](section_18_libraries.md#using-pylint)
 * [Using yapf](section_18_libraries.md#using-yapf)
+* [Sending emails with smtplib](section_18_libraries.md#sending-emails-with-smtplib)  
 
 
 ## Referencias
