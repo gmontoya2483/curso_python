@@ -10,6 +10,7 @@
 * [Using yapf](#using-yapf)
 * [Sending emails with smtplib](#sending-emails-with-smtplib)  
 * [Sending emails with Mailgun](#sending-emails-with-mailgun)
+* [Creating a reusable mailgun library](#creating-a-reusable-mailgun-library)
 
 
 ## Introduction to this section
@@ -108,4 +109,35 @@ requests.post(
 
 [Mailgun.com](https://www.mailgun.com)   
 [Video: Sending emails with Mailgun](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/10057976?start=0)  
-[Mailgun: send message documentation](https://documentation.mailgun.com/en/latest/user_manual.html#sending-messages)  
+[Mailgun: send message documentation](https://documentation.mailgun.com/en/latest/user_manual.html#sending-messages)
+
+
+## Creating a reusable mailgun library
+
+```python
+import requests
+
+
+class Mailgun:
+    MAILGUN_API_URL = 'https://api.mailgun.net/v3/YOURDOMAIN/messages'
+    MAILGUN_API_KEY = 'XXXXXXXXXXXXXXXXX'
+
+    FROM_NAME = 'Gabriel Hernan'
+    FROM_EMAIL = 'you@yourdomain'
+
+    @classmethod
+    def send_email(cls, to_emails, subject, content):
+        requests.post(
+            cls.MAILGUN_API_URL,
+            auth=('api', cls.MAILGUN_API_KEY),  # This is basic AUTH
+            data={
+                'from': f'{cls.FROM_NAME} <{cls.FROM_EMAIL}>',
+                'to': to_emails,
+                'subject': subject,
+                'text': content
+            })
+
+
+```
+
+[Video: Creating a reusable mailgun library]   

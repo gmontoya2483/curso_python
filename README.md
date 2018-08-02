@@ -172,6 +172,7 @@
 * [Using yapf](section_18_libraries.md#using-yapf)
 * [Sending emails with smtplib](section_18_libraries.md#sending-emails-with-smtplib)  
 * [Sending emails with Mailgun](section_18_libraries.md#sending-emails-with-mailgun)
+* [Creating a reusable mailgun library](section_18_libraries.md#creating-a-reusable-mailgun-library)
 
 
 ## Referencias
