@@ -171,11 +171,12 @@
 * [Using pylint](section_18_libraries.md#using-pylint)
 * [Using yapf](section_18_libraries.md#using-yapf)
 * [Sending emails with smtplib](section_18_libraries.md#sending-emails-with-smtplib)  
+* [Sending emails with Mailgun](section_18_libraries.md#sending-emails-with-mailgun)
 
 
 ## Referencias
 [Curso Udamy - The Complete Python Course | Learn Python by Doing](https://www.udemy.com/the-complete-python-course/learn/v4/content)  
-[Python Loggings Basics by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTv5x_nJb-mtaEKg9Gi_-Nsh)
-[Github - tecladocode -complete-python-course](https://github.com/tecladocode/complete-python-course)
+[Python Loggings Basics by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTv5x_nJb-mtaEKg9Gi_-Nsh)  
+[Github - tecladocode -complete-python-course](https://github.com/tecladocode/complete-python-course)  
 [Best Practices for Coding - PyCon 2015](https://www.youtube.com/watch?v=wf-BqAjZb8M)
 

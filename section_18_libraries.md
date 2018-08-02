@@ -9,6 +9,7 @@
 * [Using pylint](#using-pylint)
 * [Using yapf](#using-yapf)
 * [Sending emails with smtplib](#sending-emails-with-smtplib)  
+* [Sending emails with Mailgun](#sending-emails-with-mailgun)
 
 
 ## Introduction to this section
@@ -73,3 +74,38 @@ smtp_connector.quit()
 
 [Video: sending emails with smtplib](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/10057972?start=0)  
 [Tutorial: Python - Sending Email using SMTP](https://www.tutorialspoint.com/python/python_sending_email.htm)
+
+
+## Sending emails with Mailgun
+
+```python
+import requests
+
+
+MAILGUN_API_URL = 'https://api.mailgun.net/v3/YOURDOMAIN/messages'
+MAILGUN_API_KEY = 'XXXXXXXXXXXXXXXXX'
+
+FROM_NAME = 'Gabriel Hernan'
+FROM_EMAIL = 'you@yourdomain'
+
+TO_EMAILS = ['mail_1', 'mail_2']
+SUBJECT = 'Test e-mail mailgun'
+
+
+CONTENT = "testing some mailgun!!!"
+
+requests.post(
+    MAILGUN_API_URL,
+    auth=('api', MAILGUN_API_KEY),  # This is basic AUTH
+    data={
+        'from': f'{FROM_NAME} <{FROM_EMAIL}>',
+        'to': TO_EMAILS,
+        'subject': SUBJECT,
+        'text': CONTENT
+    })
+
+```
+
+[Mailgun.com](https://www.mailgun.com)   
+[Video: Sending emails with Mailgun](https://www.udemy.com/the-complete-python-course/learn/v4/t/lecture/10057976?start=0)  
+[Mailgun: send message documentation](https://documentation.mailgun.com/en/latest/user_manual.html#sending-messages)  
